@@ -1,0 +1,2 @@
+onScriptedTilesExploreCave = function(player)
+end

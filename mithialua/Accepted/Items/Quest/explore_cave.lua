@@ -1,0 +1,93 @@
+mica = {
+    -- on_drop = function(player, item)
+	-- 	if player.mapTitle == "Rat Cave" and
+	-- 	player.x == 25 and
+	-- 	player.y == 2 and 
+	-- 	player.registry["explore_rat_cave"] == 1 then
+	-- 		player:removeItem("mica", 1)
+	-- 		player.fakeDrop = 1
+	-- 		player:sendAnimation(18, 5)
+	-- 		player:sendAnimation(11, 5)
+	-- 		player:flushDurationNoUncast(13)
+	-- 		player:sendMinitext("Mica is absorbed to the ground")
+    --         player.registry["explore_rat_cave"] = 2
+	-- 		player.karma = player.karma + 0.1
+	-- 		player:addLegend(
+	-- 			"Explore Rat Cave",
+	-- 			"explore_rat_cave",
+	-- 			163,
+	-- 			6
+	-- 		)
+	-- 		player:forceSave()
+	-- 		player:warp(101, 20, 13)
+	-- 		player:dialogSeq(
+	-- 			{
+	-- 				t,
+	-- 				"Congratulations you have success to explore rat cave",
+	-- 				"Now you can use teleport menu from f1"
+	-- 			},
+	-- 			0
+	-- 		)
+	-- 	end
+
+	-- 	if player.mapTitle == "Bat Cave" and
+	-- 	player.x == 5 and
+	-- 	player.y == 5 and 
+	-- 	player.registry["explore_bat_cave"] == 1 then
+	-- 		player:removeItem("mica", 1)
+	-- 		player.fakeDrop = 1
+	-- 		player:sendAnimation(18, 5)
+	-- 		player:sendAnimation(11, 5)
+	-- 		player:flushDurationNoUncast(13)
+	-- 		player:sendMinitext("Mica is absorbed to the ground")
+    --         player.registry["explore_bat_cave"] = 2
+	-- 		player.karma = player.karma + 0.1
+	-- 		player:addLegend(
+	-- 			"Explore Bat Cave",
+	-- 			"explore_bat_cave",
+	-- 			163,
+	-- 			6
+	-- 		)
+	-- 		player:forceSave()
+	-- 		player:warp(101, 20, 13)
+	-- 		player:dialogSeq(
+	-- 			{
+	-- 				t,
+	-- 				"Congratulations you have success to explore bat cave",
+	-- 				"Now you can use teleport menu from f1"
+	-- 			},
+	-- 			0
+	-- 		)
+	-- 	end
+
+	-- 	if player.mapTitle == "Snake Cave" and
+	-- 	player.x == 12 and
+	-- 	player.y == 5 and 
+	-- 	player.registry["explore_snake_cave"] == 1 then
+	-- 		player:removeItem("mica", 1)
+	-- 		player.fakeDrop = 1
+	-- 		player:sendAnimation(18, 5)
+	-- 		player:sendAnimation(11, 5)
+	-- 		player:flushDurationNoUncast(13)
+	-- 		player:sendMinitext("Mica is absorbed to the ground")
+    --         player.registry["explore_snake_cave"] = 2
+	-- 		player.karma = player.karma + 0.1
+	-- 		player:addLegend(
+	-- 			"Explore Snake Cave",
+	-- 			"explore_snake_cave",
+	-- 			163,
+	-- 			6
+	-- 		)
+	-- 		player:forceSave()
+	-- 		player:warp(101, 20, 13)
+	-- 		player:dialogSeq(
+	-- 			{
+	-- 				t,
+	-- 				"Congratulations you have success to explore snake cave",
+	-- 				"Now you can use teleport menu from f1"
+	-- 			},
+	-- 			0
+	-- 		)
+	-- 	end
+	-- end
+}
