@@ -4316,16 +4316,16 @@ function Player.giveXPStacked(player, amount, bonus)
 			player:sendMinitext("Error contact GM")
 		end
 
-		player.exp = player.exp + get + bonus
-		-- player.exp = player.exp + get
+		-- player.exp = player.exp + get + bonus
+		player.exp = player.exp + get
 
 		player:checkLevel()
 		player:sendStatus()
 
-		if get + bonus > 0 then
-		-- if get > 0 then
-			player:sendMinitext(Tools.formatNumber(get) .. " (+" .. Tools.formatNumber(bonus) .. " bonus) experience!")
-			-- player:sendMinitext(Tools.formatNumber(get) .. " exp")
+		-- if get + bonus > 0 then
+		if get > 0 then
+			-- player:sendMinitext(Tools.formatNumber(get) .. " (+" .. Tools.formatNumber(bonus) .. " bonus) experience!")
+			player:sendMinitext(Tools.formatNumber(get) .. " exp")
 		end
 	end
 end
@@ -4598,8 +4598,8 @@ end
 
 Player.returnFunc = function(player)
 	local map = 101
-    local x = math.random(20, 35) 
-    local y = math.random(30, 36)
+    local x = math.random(17, 32) 
+    local y = math.random(15, 20)
 	player:warp(map, x, y)
 end
 

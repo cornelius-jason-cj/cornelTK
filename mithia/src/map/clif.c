@@ -14246,9 +14246,10 @@ int clif_changestatus(USER* sd, int type) {
 	case 0x00: //Ride/something else
 		if (RFIFOB(sd->fd, 7) == 1) {
 			if (sd->status.state == 0) {
-				clif_findmount(sd);
+        sl_doscript_blargs("onMountItem", NULL, 1, &sd->bl);
+				// clif_findmount(sd);
 
-				if (sd->status.state == 0) clif_sendminitext(sd, "Good try, but there is nothing here that you can ride.");
+				// if (sd->status.state == 0) clif_sendminitext(sd, "Good try, but there is nothing here that you can ride.");
 			}
 			else if (sd->status.state == 1) {
 				clif_sendminitext(sd, "Spirits can't do that.");

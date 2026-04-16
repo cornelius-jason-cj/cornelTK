@@ -244,10 +244,10 @@ int config_read(const char* cfg_file) {
 				dump_save = atoi(r2);
 				//NEW CHARS
 			}
-			else if (strcmpi(r1, "start_money") == 1) {
+			else if (strcmpi(r1, "start_money") == 0) {
 				start_money = atoi(r2);
 			}
-			else if (strcmpi(r1, "start_point") == 1) {
+			else if (strcmpi(r1, "start_point") == 0) {
 				sscanf(r2, "%d,%d,%d", &m, &x, &y);
 			}
 		}
