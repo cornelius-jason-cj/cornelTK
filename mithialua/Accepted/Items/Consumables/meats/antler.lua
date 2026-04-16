@@ -1,14 +1,21 @@
 antler = {
 	use = function(player)
-		local health = 248
+    player:dialogSeq(
+      { 
+            t,
+            "you can't use dropped items until you craft them into usable items.",
+      },
+      1
+    )
+		-- local health = 248
 
-		player:sendAction(8, 25)
-		player.attacker = player.ID
-		player:addHealthExtend(health, 0, 0, 0, 0, 0)
-		player:removeItem('antler', 1)
+		-- player:sendAction(8, 25)
+		-- player.attacker = player.ID
+		-- player:addHealthExtend(health, 0, 0, 0, 0, 0)
+		-- player:removeItem('antler', 1)
 
-		if player.health == player.maxHealth then
-			player:sendMinitext("You feel satiated.")
-		end
+		-- if player.health == player.maxHealth then
+		-- 	player:sendMinitext("You feel satiated.")
+		-- end
 	end
 }
