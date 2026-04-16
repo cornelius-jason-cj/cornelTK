@@ -13,7 +13,7 @@ local questList = {
     "killing_quest_mythic_dragon",
 }
 
-GuruNpc = {
+MayorOfCityNpc = {
     click = async(function(player, npc)
 		local t = {
 			graphic = convertGraphic(npc.look, "monster"),
@@ -119,8 +119,8 @@ GuruNpc = {
             player:dialogSeq(
 				{
 					t,
-                    "Welcome to our town! I'm Guru, and I'll help you get started.",
-                    "First, head to Field 01 (004, 002) to hunt squirrels and rabbits.",
+                    "Welcome to our town! I'm Cornelius, and I'll help you get started.",
+                    "First, please hunt squirrels and rabbits.",
                     "Then come to me when you got 5 acorn and 5 rabbit meat"
 				},
 				1
@@ -137,15 +137,15 @@ GuruNpc = {
                             t,
                             "Great job!",
                             "Remember, you can't use dropped items until you craft them into usable items.",
-                            "Go to the butcher at (047, 038) and craft the meat.",
+                            "Go to the Lien at (044, 034) and craft the meat.",
                             "After that, you can use the meat to help with hunting. Come back to me once you reach level 5."
                         },
                         1
                     )
-                    player:addItem("wooden_sabre", 1)
-                    player:addItem("small_meat", 1)
-                    player:addItem("herb_pipe", 1)
-                    player:giveXP(1000)
+                    -- player:addItem("wooden_sabre", 1)
+                    -- player:addItem("small_meat", 1)
+                    -- player:addItem("herb_pipe", 1)
+                    player:giveXP(750)
                     player.registry["start_journey"] = 1
                 else 
                     player:dialogSeq({t, "Come back to me when you have those items"}, 0)
@@ -159,7 +159,7 @@ GuruNpc = {
 
         if choice == "I have reach level 5" then
             if player.level ~= 5 then 
-                player:dialogSeq({t, "Come back to me when you have reach level 5"}, 0)
+                player:dialogSeq({t, "Come back to me when you have reach level 5, you can earn EXP by crafting items at (044, 034)"}, 0)
             end 
             
             player:dialogSeq(
@@ -188,7 +188,7 @@ GuruNpc = {
                     },
                     1
                 )
-                player:warp(102, 2, 16)
+                player:warp(101, 8, 7)
             elseif choice2 == "Rogue" then
                 player:dialogSeq(
                     {
@@ -198,7 +198,7 @@ GuruNpc = {
                     },
                     1
                 )
-                player:warp(103, 36, 14)
+                player:warp(101, 41, 7)
             elseif choice2 == "Mage" then
                 player:dialogSeq(
                     {
@@ -208,7 +208,7 @@ GuruNpc = {
                     },
                     1
                 )
-                player:warp(104, 8, 16)
+                player:warp(101, 19, 7)
             elseif choice2 == "Poet" then
                 player:dialogSeq(
                     {
@@ -218,7 +218,7 @@ GuruNpc = {
                     },
                     1
                 )
-                player:warp(105, 31, 14)
+                player:warp(101, 30, 7)
             end
         end
 

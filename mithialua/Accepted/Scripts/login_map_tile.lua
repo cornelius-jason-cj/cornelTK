@@ -48,7 +48,7 @@ login = function(player)
 	)
 	player:msg(
 		0,
-		"Please meet Guru at coordinates (024, 017). He will help guide you on your journey.",
+		"Please meet Cornelius at coordinates (024, 017). He will help guide you on your journey.",
 		player.ID
 	)
 	

@@ -18,13 +18,13 @@ PotionCraftNpc = {
 
 		if choice == "Small Meat" then
 			local choice2 = player:menuString(
-				"To craft Small Meat, you'll need 25 acorns and 25 rabbit meats. Do you have the ingredients?",
+				"To craft Small Meat, you'll need 15 acorns and 15 rabbit meats. Do you have the ingredients?",
 				{"Yes, here they are", "Never mind"}
 			)
 			if choice2 == "Yes, here they are" then
-				if player:hasItem("acorn", 25) == true and player:hasItem('rabbit_meat', 25) == true then
-					player:removeItem("acorn", 25)
-					player:removeItem("rabbit_meat", 25)
+				if player:hasItem("acorn", 15) == true and player:hasItem('rabbit_meat', 15) == true then
+					player:removeItem("acorn", 15)
+					player:removeItem("rabbit_meat", 15)
 					player:addItem("small_meat", 1)
 					player:giveXP(500)
 					player:dialogSeq({t, "Great! You've successfully crafted Small Meat."}, 0)
@@ -38,13 +38,13 @@ PotionCraftNpc = {
 
 		if choice == "Herb Pipe" then
 			local choice2 = player:menuString(
-				"To craft Small Meat, you'll need 15 antler and 1 gold acorn. Do you have the ingredients?",
+				"To craft Small Meat, you'll need 5 antler and 5 gold acorn. Do you have the ingredients?",
 				{"Yes, here they are", "Never mind"}
 			)
 			if choice2 == "Yes, here they are" then
-				if player:hasItem("antler", 15) == true and player:hasItem('gold_acorn', 1) == true then
-					player:removeItem("antler", 15)
-					player:removeItem("gold_acorn", 1)
+				if player:hasItem("antler", 5) == true and player:hasItem('gold_acorn', 5) == true then
+					player:removeItem("antler", 5)
+					player:removeItem("gold_acorn", 5)
 					player:addItem("herb_pipe", 1)
 					player:giveXP(500)
 					player:dialogSeq({t, "Great! You've successfully crafted Small Meat."}, 0)

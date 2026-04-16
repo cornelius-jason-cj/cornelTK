@@ -91,16 +91,17 @@ PoetGuruNpc = {
                 )
 				
                 if player.sex == 0 then
-					player:addItem("summer_mantle", 1)
+					player:addItem("peasant_garb", 1)
 				end
 				if player.sex == 1 then
-	                player:addItem("summer_drapery", 1)
+	                player:addItem("peasant_dress", 1)
 				end
-                player:addItem("white_cloud_mount", 1)
+                player:addItem("yellow_horse_mount", 1)
+                player:addItem("wooden_saber", 1)
                 player:addGold(500)
                 player:updatePath(4, 0)
-				player.baseHealth = 700
-				player.baseMagic = 600
+				player.baseHealth = 250
+				player.baseMagic = 225
 				player.registry["start_journey"] = 2
 				player:calcStat()
 				player:sendStatus()

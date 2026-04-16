@@ -90,16 +90,17 @@ MageGuruNpc = {
                     1
                 )
 				if player.sex == 0 then
-					player:addItem("farmer_clothes", 1)
+					player:addItem("peasant_garb", 1)
 				end
 				if player.sex == 1 then
-	                player:addItem("summer_skirt", 1)
+	                player:addItem("peasant_dress", 1)
 				end
-                player:addItem("white_cloud_mount", 1)
+                player:addItem("red_horse_mount", 1)
+                player:addItem("wooden_saber", 1)
                 player:addGold(500)
                 player:updatePath(3, 0)
-				player.baseHealth = 300
-				player.baseMagic = 800
+				player.baseHealth = 100
+				player.baseMagic = 300
 				player.registry["start_journey"] = 2
 				player:calcStat()
 				player:sendStatus()

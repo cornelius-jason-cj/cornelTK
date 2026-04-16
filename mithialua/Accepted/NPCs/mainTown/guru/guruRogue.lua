@@ -89,17 +89,17 @@ RogueGuruNpc = {
                     1
                 )
 				if player.sex == 0 then
-					player:addItem("farmer_waistcoat", 1)
+					player:addItem("peasant_garb", 1)
 				end
 				if player.sex == 1 then
-	                player:addItem("summer_blouse", 1)
+	                player:addItem("peasant_dress", 1)
 				end
-                player:addItem("white_cloud_mount", 1)
-                player:addItem("steel_dagger", 1)
+                player:addItem("white_horse_mount", 1)
+                player:addItem("wooden_saber", 1)
                 player:addGold(500)
                 player:updatePath(2, 0)
-				player.baseHealth = 1100
-				player.baseMagic = 400
+				player.baseHealth = 450
+				player.baseMagic = 125
 				player.registry["start_journey"] = 2
 				player:calcStat()
 				player:sendStatus()

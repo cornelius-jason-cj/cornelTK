@@ -90,17 +90,17 @@ WarriorGuruNpc = {
                     1
                 )
 				if player.sex == 0 then
-					player:addItem("jade_scale_mail", 1)
+					player:addItem("peasant_garb", 1)
 				end
 				if player.sex == 1 then
-	                player:addItem("summer_mail_dress", 1)
+	                player:addItem("peasant_dress", 1)
 				end
-                player:addItem("white_cloud_mount", 1)
-                player:addItem("steel_sword", 1)
+                player:addItem("gold_horse_mount", 1)
+                player:addItem("wooden_saber", 1)
                 player:addGold(500)
                 player:updatePath(1, 0)
-				player.baseHealth = 1500
-				player.baseMagic = 200
+				player.baseHealth = 600
+				player.baseMagic = 50
 				player.registry["start_journey"] = 2
 				player:calcStat()
 				player:sendStatus()
@@ -149,7 +149,7 @@ WarriorGuruNpc = {
 				},
 				1
 			)
-            choice2 = player:menuString(
+        choice2 = player:menuString(
 				"Do you bring all the requirement items?",
 				{"Yes", "No"}
 			)
