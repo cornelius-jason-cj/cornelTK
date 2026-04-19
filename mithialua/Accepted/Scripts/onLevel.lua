@@ -84,6 +84,7 @@ onLevel = function(player)
 	player:calcStat()
 	player.health = player.maxHealth
 	player.magic = player.maxMagic
+  player.exp = 0
 	player:playSound(123)
 	player:sendStatus()
 	player:sendAnimation(2, 0)
