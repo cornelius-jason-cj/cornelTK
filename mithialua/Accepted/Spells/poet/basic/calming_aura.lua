@@ -23,8 +23,8 @@ calming_aura = {
 
 		player:sendAction(6, 20)
 		player:playSound(22)
-        player:setDuration(spellIdent, durations)
-        player:setAether(spellIdent, aethers)
+    player:setDuration(spellIdent, durations)
+    player:setAether(spellIdent, aethers)
 		player:sendMinitext("You cast " .. spellName .. ".")
 		player.magic = player.magic - magicCost
 		player:sendStatus()
@@ -44,7 +44,9 @@ calming_aura = {
 	while_cast = function(player)
 		local spellName = "Calming Aura"
 		local spellIdent = "calming_aura"
-        local healAmount = math.floor(player.maxHealth * 0.025 + player.maxMagic * 0.05)
+    local multiplier = (0.075 + (player.level + 1) / 1000)
+    -- local healAmount = math.floor(player.maxHealth * 0.025 + player.maxMagic * 0.05)
+    local healAmount = math.floor((player.maxHealth + player.maxMagic) * multiplier)
 		for i = 1, #player.group do
 			local target = Player(player.group[i])
 

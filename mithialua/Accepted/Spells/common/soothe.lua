@@ -1,15 +1,17 @@
 soothe = {
 	cast = function(player)
-		if (not player:canCast(1, 1, 0)) then
+		local magicCost = 10
+    if (not player:canCast(1, 1, 0)) then
 			return
 		end
-		if (player.magic < 3) then
+
+		if (player.magic < magicCost) then
 			player:sendMinitext("You do not have enough mana.")
 			return
 		end
 		player.attacker = player.ID
 		player:addHealthExtend(50, 0, 0, 0, 0, 0)
-		player.magic = player.magic - 3
+		player.magic = player.magic - magicCost
 		player:playSound(708)
 		player:sendAnimation(5)
 		player:sendMinitext("You cast Soothe.")

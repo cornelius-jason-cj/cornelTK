@@ -1,25 +1,27 @@
 blaze_torent = {
     cast = function(player, target)
-		local spellName = "Blaze Torent"
-		local spellIdent = "blaze_torent"
-        local aethers = 2000
-        local spellFX = 3001
+      local spellName = "Blaze Torent"
+      local spellIdent = "blaze_torent"
+      local aethers = 2000
+      local spellFX = 3001
 
-        if not player:canCast(1, 1, 0) then
-			return
-		end
+      if not player:canCast(1, 1, 0) then
+        return
+      end
 
-        local multiplier = (0.125 + (player.level + 1) / 1000)
-        local damage = math.floor(player.maxMagic * multiplier)
+      local multiplier = (0.125 + (player.level + 1) / 1000)
+      local damage = math.floor(player.maxMagic * multiplier)
 
-        local magicCost = damage * 0.0225
-		local worked = global_zap.cast(player, target, damage, magicCost, spellFX)
-		if worked ~= 0 then
-			player:sendMinitext("You cast " .. spellName .. ".")
-		end
-		if worked == 2 then
-			target:sendMinitext(player.name .. " cast " .. spellName .. " on you.")
-		end
+      local magicCost = damage * 0.125
+      local worked = global_zap.cast(player, target, damage, magicCost, spellFX)
+      
+      if worked ~= 0 then
+        player:sendMinitext("You cast " .. spellName .. ".")
+      end
+      
+      if worked == 2 then
+        target:sendMinitext(player.name .. " cast " .. spellName .. " on you.")
+      end
         
         player:setAether(spellIdent, aethers)
 	end,

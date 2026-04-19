@@ -1,70 +1,82 @@
 triple_slash = {
     cast = function(player)
-        local spellName = "Triple Slash"
-        local spellIdent = "triple_slash"
-		local aethers = 2000
+      local spellName = "Triple Slash"
+      local spellIdent = "triple_slash"
+		  local aethers = 3000
 
-        if not player:canCast(1, 1, 0) then
-			return
-		end
+      if not player:canCast(1, 1, 0) then
+        return
+      end
 
-        local multiplier = (0.25 + (player.level + 1) / 1000)
-        local rage = player.rage / 3
-        local damage = math.floor(player.maxHealth * multiplier ) * rage
-        local currentMagic = player.magic
-        local magicCost = player.maxMagic * 0.1
-        local spellFX = 1001
-		local x = {-1, 0, 1, 0}
-		local y = {0, -1, 0, 1}
+      -- local multiplier = (0.25 + (player.level + 1) / 1000)
+      -- local rage = player.rage / 3
+      -- local damage = math.floor(player.maxHealth * multiplier ) * rage
+      -- local currentMagic = player.magic
+      -- local magicCost = player.maxMagic * 0.1
+      -- local healthCost = math.floor(player.maxHealth * 0.1 )
+      -- local damage = math.floor(player.maxHealth * 0.2 )
+      local multiplier = (0.125 + (player.level + 1) / 1000)
+      local damage = math.floor(player.maxHealth * multiplier)
+      local healthCost = damage
+      -- local magicCost = 0
+      local spellFX = 1001
+      local x = {-1, 0, 1, 0}
+      local y = {0, -1, 0, 1}
         
-        if (player.magic < magicCost) then
-			player:sendMinitext("You do not have enough mana.")
-			return
-		end
+      -- if (player.magic < magicCost) then
+			--   player:sendMinitext("You do not have enough mana.")
+			-- return
+
+      if (player.health < healthCost) then
+        player:sendMinitext("You do not have enough vita.")
+        return
+      end
 
 
-        for i = 1, 4 do
-			local targets = player:getObjectsInCell(
-				player.m,
-				player.x + x[i],
-				player.y + y[i],
-				BL_MOB
-			)
+      for i = 1, 4 do
+        local targets = player:getObjectsInCell(
+          player.m,
+          player.x + x[i],
+          player.y + y[i],
+          BL_MOB
+        )
         
-            if (#targets > 0) then
-                global_attack.cast(
-                    player,
-                    targets[1],
-                    damage,
-                    0,
-                    spellFX
-                )
-            end
+          if (#targets > 0) then
+            global_attack.cast(
+              player,
+              targets[1],
+              damage,
+              0,
+              spellFX
+            )
+          end
 
-            targets = player:getObjectsInCell(
-				player.m,
-				player.x + x[i],
-				player.y + y[i],
-				BL_PC
-			)
-            if (#targets > 0) then
-                local worked = global_attack.cast(
-                    player,
-                    targets[1],
-                    damage,
-                    0,
-                    spellFX
-                )
-    
-                if (worked == 2) then
-                    targets[1]:sendMinitext(player.name .. " cast " .. spellNames[alignmentIndex] .. " on you.")
-                end
+          targets = player:getObjectsInCell(
+            player.m,
+            player.x + x[i],
+            player.y + y[i],
+            BL_PC
+          )
+
+          if (#targets > 0) then
+            local worked = global_attack.cast(
+              player,
+              targets[1],
+              damage,
+              0,
+              spellFX
+            )
+  
+            if (worked == 2) then
+              targets[1]:sendMinitext(player.name .. " cast " .. spellNames[alignmentIndex] .. " on you.")
             end
+          end
         end
         
-        player.magic = player.magic - magicCost
+    -- player.magic = player.magic - magicCost
+    player.health = player.health - healthCost
 		player:sendStatus()
-        player:setAether(spellIdent, aethers)
+    player:setAether(spellIdent, aethers)
 		player:sendMinitext("You cast " .. spellName .. ".")
 		player:sendAction(6, 35)
     end,
