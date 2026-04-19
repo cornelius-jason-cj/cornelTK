@@ -1,6 +1,6 @@
 itemspawner = function()
-	kugnaeFarmChestnutSpawn()
-	buyaChestnutSpawn()
+	-- kugnaeFarmChestnutSpawn()
+	-- buyaChestnutSpawn()
 end
 
 kugnaeFarmChestnutSpawn = function()
