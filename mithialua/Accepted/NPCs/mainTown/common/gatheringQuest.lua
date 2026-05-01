@@ -12,12 +12,12 @@ gatheringQuest = {
         local opts = {"Yes, here it is", "No"}
         
         player:dialogSeq(
-            {
-                t, 
-                "Adventurer, I have an important task for you. Our people are in need of these items",
-                "They need 200 pcs of this items:\n- Amber\n- Dark amber\n- Tarnished amber\n- Tarnisehd dark amber",
-            },
-            1
+          {
+            t, 
+            "Adventurer, I have an important task for you. Our people are in need of these items",
+            "They need 200 pcs of this items:\n- Amber\n- Dark amber\n- Tarnished amber\n- Tarnisehd dark amber",
+          },
+          1
         )
 
 

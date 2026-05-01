@@ -193,133 +193,133 @@ huntingQuest = {
     end,
 
     mythic_rabbit = function(player, npc)
-        local t = {
-			graphic = convertGraphic(npc.look, "monster"),
-			color = npc.lookColor
-		}
+      local t = {
+        graphic = convertGraphic(npc.look, "monster"),
+        color = npc.lookColor
+      }
 
-        local questName = "killing_quest_mythic_rabbit"
-        local registryName = "hunting_quest_mythic_rabbit"
-        local legendName = "Mythic Rabbit"
-        local rewardExp = 100000000
-        local rewardGold = 5000
-        local mobName = huntingListQuest.mythic_rabbit.displayName
-		local mobs = huntingListQuest.mythic_rabbit.mobs
-        local totalHunting = player.registry[registryName]
-        local newTotalHunting = totalHunting + 1
+      local questName = "killing_quest_mythic_rabbit"
+      local registryName = "hunting_quest_mythic_rabbit"
+      local legendName = "Mythic Rabbit"
+      local rewardExp = 100000000
+      local rewardGold = 5000
+      local mobName = huntingListQuest.mythic_rabbit.displayName
+		  local mobs = huntingListQuest.mythic_rabbit.mobs
+      local totalHunting = player.registry[registryName]
+      local newTotalHunting = totalHunting + 1
 
-        if  player.registry[questName] == 1 then
-            local killCount = huntingQuest.calculateKillCount(player, mobs)
-            local maxKills = 500
-    
-            if (killCount >= maxKills) then
-                player:giveXP(rewardExp)
-                player:addGold(rewardGold)
-                player.karma = player.karma + 0.1
-                player.registry[registryName] = newTotalHunting
+      if  player.registry[questName] == 1 then
+        local killCount = huntingQuest.calculateKillCount(player, mobs)
+        local maxKills = 500
+  
+        if (killCount >= maxKills) then
+          player:giveXP(rewardExp)
+          player:addGold(rewardGold)
+          player.karma = player.karma + 0.1
+          player.registry[registryName] = newTotalHunting
 
-                if (player:hasLegend(registryName)) then
-                    player:removeLegendbyName(registryName)
-                end
-                
-                for i = 1, #mobs do
-                    local mob = mobs[i]
-                    player.registry[_huntingQuestKillCount .. mob] = 0
-                    player:flushKills(mob)
-                end
+          if (player:hasLegend(registryName)) then
+            player:removeLegendbyName(registryName)
+          end
+          
+          for i = 1, #mobs do
+            local mob = mobs[i]
+            player.registry[_huntingQuestKillCount .. mob] = 0
+            player:flushKills(mob)
+          end
 
-                player.registry[questName] = 0
+          player.registry[questName] = 0
 
-                player:addLegend(
-                    "Conqueror " .. legendName .. " " .. newTotalHunting .. " times",
-                    registryName,
-                    3,
-                    128
-                )
-                player:forceSave()
-                
-                player:dialogSeq({t, "Thank you, my friend. You have done a great service, please take these rewards as a token of our gratitude."}, 0)
-                return
-            else
-                player:dialogSeq({t, "Come back to me when you finish the task"}, 0)
-                return
-            end
+          player:addLegend(
+            "Conqueror " .. legendName .. " " .. newTotalHunting .. " times",
+            registryName,
+            3,
+            128
+          )
+          player:forceSave()
+            
+          player:dialogSeq({t, "Thank you, my friend. You have done a great service, please take these rewards as a token of our gratitude."}, 0)
+          return
+        else
+          player:dialogSeq({t, "Come back to me when you finish the task"}, 0)
+          return
         end
+      end
 
-        player:dialogSeq({t, "Your task is to killing 500 rabbits in mythic rabbit, the boss doesn't count"}, 1)
-        player.registry[questName] = 1
+      player:dialogSeq({t, "Your task is to killing 500 rabbits in mythic rabbit, the boss doesn't count"}, 1)
+      player.registry[questName] = 1
 
-		for i = 1, #mobs do
-			local mob = mobs[i]
-			player.registry[_huntingQuestKillCount .. mob] = player:killCount(mob)
-		end
+      for i = 1, #mobs do
+        local mob = mobs[i]
+        player.registry[_huntingQuestKillCount .. mob] = player:killCount(mob)
+      end
 
-        player:forceSave()
+      player:forceSave()
     end,
 
     mythic_monkey = function(player, npc)
-        local t = {
-			graphic = convertGraphic(npc.look, "monster"),
-			color = npc.lookColor
-		}
+      local t = {
+        graphic = convertGraphic(npc.look, "monster"),
+        color = npc.lookColor
+      }
 
-        local questName = "killing_quest_mythic_monkey"
-        local registryName = "hunting_quest_mythic_monkey"
-        local legendName = "Mythic Monkey"
-        local rewardExp = 250000000
-        local rewardGold = 5000
-        local mobName = huntingListQuest.mythic_monkey.displayName
-		local mobs = huntingListQuest.mythic_monkey.mobs
-        local totalHunting = player.registry[registryName]
-        local newTotalHunting = totalHunting + 1
+      local questName = "killing_quest_mythic_monkey"
+      local registryName = "hunting_quest_mythic_monkey"
+      local legendName = "Mythic Monkey"
+      local rewardExp = 250000000
+      local rewardGold = 5000
+      local mobName = huntingListQuest.mythic_monkey.displayName
+		  local mobs = huntingListQuest.mythic_monkey.mobs
+      local totalHunting = player.registry[registryName]
+      local newTotalHunting = totalHunting + 1
 
-        if  player.registry[questName] == 1 then
-            local killCount = huntingQuest.calculateKillCount(player, mobs)
-            local maxKills = 500
-    
-            if (killCount >= maxKills) then
-                player:giveXP(rewardExp)
-                player:addGold(rewardGold)
-                player.karma = player.karma + 0.1
-                player.registry[registryName] = newTotalHunting
+      if  player.registry[questName] == 1 then
+        local killCount = huntingQuest.calculateKillCount(player, mobs)
+        local maxKills = 500
+  
+        if (killCount >= maxKills) then
+          player:giveXP(rewardExp)
+          player:addGold(rewardGold)
+          player.karma = player.karma + 0.1
+          player.registry[registryName] = newTotalHunting
 
-                if (player:hasLegend(registryName)) then
-                    player:removeLegendbyName(registryName)
-                end
-                
-                for i = 1, #mobs do
-                    local mob = mobs[i]
-                    player.registry[_huntingQuestKillCount .. mob] = 0
-                    player:flushKills(mob)
-                end
+          if (player:hasLegend(registryName)) then
+              player:removeLegendbyName(registryName)
+          end
+          
+          for i = 1, #mobs do
+              local mob = mobs[i]
+              player.registry[_huntingQuestKillCount .. mob] = 0
+              player:flushKills(mob)
+          end
 
-                player.registry[questName] = 0
+          player.registry[questName] = 0
 
-                player:addLegend(
-                    "Conqueror " .. legendName .. " " .. newTotalHunting .. " times",
-                    registryName,
-                    3,
-                    128
-                )
-                player:forceSave()
-                
-                player:dialogSeq({t, "Thank you, my friend. You have done a great service, please take these rewards as a token of our gratitude."}, 0)
-                return
-            else
-                player:dialogSeq({t, "Come back to me when you finish the task"}, 0)
-                return
-            end
+          player:addLegend(
+              "Conqueror " .. legendName .. " " .. newTotalHunting .. " times",
+              registryName,
+              3,
+              128
+          )
+          player:forceSave()
+          
+          player:dialogSeq({t, "Thank you, my friend. You have done a great service, please take these rewards as a token of our gratitude."}, 0)
+          return
+        else
+          player:dialogSeq({t, "Come back to me when you finish the task"}, 0)
+          return
         end
+      end
 
-        player:dialogSeq({t, "Your task is to killing 500 monkeys in mythic monkey, the boss doesn't count"}, 1)
-        player.registry[questName] = 1
+      player:dialogSeq({t, "Your task is to killing 500 monkeys in mythic monkey, the boss doesn't count"}, 1)
+      player.registry[questName] = 1
 
-		for i = 1, #mobs do
-			local mob = mobs[i]
-			player.registry[_huntingQuestKillCount .. mob] = player:killCount(mob)
-		end
+      for i = 1, #mobs do
+        local mob = mobs[i]
+        player.registry[_huntingQuestKillCount .. mob] = player:killCount(mob)
+      end
 
-        player:forceSave()
+      player:forceSave()
     end,
 
     mythic_dog = function(player, npc)

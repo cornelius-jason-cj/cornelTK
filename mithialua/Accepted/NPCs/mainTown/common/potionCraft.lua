@@ -25,7 +25,7 @@ PotionCraftNpc = {
 				if player:hasItem("acorn", 10) == true and player:hasItem('rabbit_meat', 10) == true then
 					player:removeItem("acorn", 10)
 					player:removeItem("rabbit_meat", 10)
-					player:addItem("small_meat", 1)
+					player:addItem("small_meat", 10)
 					player:giveXP(500)
 					player:dialogSeq({t, "Great! You've successfully crafted Small Meat."}, 0)
 				else 

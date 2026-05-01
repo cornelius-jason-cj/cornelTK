@@ -90,10 +90,10 @@ F1Npc = {
 			string = string .. "\n\nMap ID: " .. player.m .. " X: " .. player.x .. " Y: " .. player.y
 		end
 
-		table.insert(opts, "Toggles")
-		table.insert(opts, "Storage")
 		table.insert(opts, "Silver Thread")
-		table.insert(opts, "Teleport")
+		table.insert(opts, "Toggles")
+		-- table.insert(opts, "Storage")
+		-- table.insert(opts, "Teleport")
 
 		if player.level == 99 then
 			table.insert(opts, "Convert Exp")
