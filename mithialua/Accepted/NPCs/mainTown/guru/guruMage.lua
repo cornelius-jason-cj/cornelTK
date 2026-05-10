@@ -17,31 +17,33 @@ MageGuruNpc = {
 		elseif player.baseClass ~= 3 then
 			player:dialogSeq({t, "I'm not your Guru"}, 0)
 		elseif player.baseClass == 3 then
-			-- if player.level < 99 then
-			-- 	table.insert(opts, "Divine Secret")
-			-- end
 			table.insert(opts, "Learn Secret")
-            table.insert(opts, "Forget Secret")
+      table.insert(opts, "Forget Secret")
 			table.insert(opts, "Karma Check")
 		end
 
 		table.insert(opts, "---------------------")
+    table.insert(opts, "Quest Weapon")
+    table.insert(opts, "Quest Armor")
 
 		if player.level >= 15 and
-		player.registry["first_assignment"] == 0 then
+		  player.registry["first_assignment"] == 0
+    then
 			table.insert(opts, "Take First Assignment")
 		end
 
 		if player.level >= 35 and
-		player.registry["first_assignment"] == 1 and
-		player.registry["second_assignment"] == 0 then
+      player.registry["first_assignment"] == 1 and
+      player.registry["second_assignment"] == 0
+    then
 			table.insert(opts, "Take Second Assignment")
 		end
 		
 		if player.level >= 55 and
-		player.registry["first_assignment"] == 1 and
-		player.registry["second_assignment"] == 1 and
-		player.registry["third_assignment"] == 0 then
+      player.registry["first_assignment"] == 1 and
+      player.registry["second_assignment"] == 1 and
+      player.registry["third_assignment"] == 0
+    then
 			table.insert(opts, "Take Third Assignment")
 		end
 
@@ -79,117 +81,80 @@ MageGuruNpc = {
 			choice2 = player:menuString(
 				"Will you join the path of the mage?",
 				{"Yes", "No"}
-            )
+      )
             
-            if choice2 == "Yes" then
-                player:dialogSeq(
-                    {
-                        t,
-                        "Great! You have made a great decision. I see you becoming a great hero in these lands. Now let me set you up with some supplies."
-                    },
-                    1
-                )
+      if choice2 == "Yes" then
+        player:dialogSeq(
+          {
+            t,
+            "Great! You have made a great decision. I see you becoming a great hero in these lands. Now let me set you up with some supplies."
+          },
+          1
+        )
+
 				if player.sex == 0 then
 					player:addItem("peasant_garb", 1)
 				end
+
 				if player.sex == 1 then
-	                player:addItem("peasant_dress", 1)
+          player:addItem("peasant_dress", 1)
 				end
-                player:addItem("red_horse_mount", 1)
-                player:addItem("wooden_saber", 1)
-                player:addGold(500)
-                player:updatePath(3, 0)
+
+        player:addItem("red_horse_mount", 1)
+        player:addItem("wooden_saber", 1)
+        player:addGold(500)
+        player:updatePath(3, 0)
 				player.baseHealth = 100
 				player.baseMagic = 300
 				player.registry["start_journey"] = 2
 				player:calcStat()
 				player:sendStatus()
     
-                player:dialogSeq(
-                    {
-                        t,
-                        "Here is some armor, and a weapon. These are specific to the mage path, and will help get you started.",
-                        "I have also given you some gold, it's all I can spare right now. It will help you with repairs, and getting some other equipment like rings.",
-                        "You also have four herb pipes, these will replenish your mana. Once they are used up you should buy some more, shop keepers around town sell them",
-                        "If you wish to learn some skills let me know, I can teach you many things to help you in battle."
-                    },
-                    1
-                )
-            end
+        player:dialogSeq(
+          {
+            t,
+            "Here is some armor, and a weapon. These are specific to the mage path, and will help get you started.",
+            "I have also given you some gold, it's all I can spare right now. It will help you with repairs, and getting some other equipment like rings.",
+            "You also have four herb pipes, these will replenish your mana. Once they are used up you should buy some more, shop keepers around town sell them",
+            "If you wish to learn some skills let me know, I can teach you many things to help you in battle."
+          },
+          1
+        )
+      end
             
-            if choice2 == "No" then
-                player:dialogSeq(
-                    {
-                        t,
-                        "Very well, I will be waiting here if you change your mind. I am seeking great people all the time to join this great path."
-                    },
-                    1
-                )
-            end
-        end
+      if choice2 == "No" then
+        player:dialogSeq(
+          {
+            t,
+            "Very well, I will be waiting here if you change your mind. I am seeking great people all the time to join this great path."
+          },
+          1
+        )
+      end
+    end
 
 		if choice == "Divine Secret" then
 			player:futureSpells(npc)
-        end
+    end
 		
-        if choice == "Learn Secret" then
+    if choice == "Learn Secret" then
 			player:learnMagic(npc)
 		end
         
-        if choice == "Forget Secret" then
-			player:forgetSpell(npc)
-        end
+    if choice == "Forget Secret" then
+      player:forgetSpell(npc)
+    end
+
+    if choice == "Quest Weapon" then
+      weaponQuest.basicWeapon(player, npc)
+    end
+
+    if choice == "Quest Armor" then
+      armorQuest.basicArmor(player, npc)
+    end
 
 		if choice == "Take First Assignment" then
-			player:dialogSeq(
-				{
-					t,
-                    "Hello, here is your first assigment",
-                    "collect 25 pcs items that drop from monster in bat and snake cave",
-				},
-				1
-			)
-            choice2 = player:menuString(
-				"Do you bring all the requirement items?",
-				{"Yes", "No"}
-			)
-			if choice2 == "Yes" then
-				if player:hasItem("snake_meat", 25) == true and
-				player:hasItem('fine_snake_meat', 25) == true and
-				player:hasItem('ginseng_piece', 25) == true and
-				player:hasItem('ginseng', 25) == true then
-                    player:dialogSeq(
-                        {
-                            t,
-                            "Great job!",
-							"Here is your reward"
-                        },
-                        1
-                    )
-
-					player:removeItem("snake_meat",25)
-					player:removeItem("fine_snake_meat",25)
-					player:removeItem("ginseng_piece",25)
-					player:removeItem("ginseng",25)
-
-                    player.registry["first_assignment"] = 1
-					player:addItem("wicked_staff", 1)
-					
-					if player.sex == 0 then 
-						player:addItem("royal_clothes", 1)
-					end
-					
-					if player.sex == 1 then
-						player:addItem("autumn_skirt", 1)
-					end
-                else 
-                    player:dialogSeq({t, "Come back to me when you have those items"}, 0)
-                end
-			end
-
-			if choice2 == "No" then
-                player:dialogSeq({t, "Okay see you later"}, 0)
-            end
+      assignmentQuest.firstAssignment(player, npc)
 		end
 
 		if choice == "Take Second Assignment" then

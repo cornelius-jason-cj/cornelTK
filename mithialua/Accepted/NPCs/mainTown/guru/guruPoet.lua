@@ -20,11 +20,13 @@ PoetGuruNpc = {
 			-- 	table.insert(opts, "Divine Secret")
 			-- end
 			table.insert(opts, "Learn Secret")
-            table.insert(opts, "Forget Secret")
+      table.insert(opts, "Forget Secret")
 			table.insert(opts, "Karma Check")
 		end
 
 		table.insert(opts, "---------------------")
+    table.insert(opts, "Quest Weapon")
+    table.insert(opts, "Quest Armor")
 
 		if player.level >= 15 and
 		player.registry["first_assignment"] == 0 then
@@ -131,78 +133,89 @@ PoetGuruNpc = {
 
 		if choice == "Divine Secret" then
 			player:futureSpells(npc)
-        end
+    end
 		
-        if choice == "Learn Secret" then
+    if choice == "Learn Secret" then
 			player:learnMagic(npc)
 		end
         
-        if choice == "Forget Secret" then
+    if choice == "Forget Secret" then
 			player:forgetSpell(npc)
-        end
+    end
+
+    if choice == "Quest Weapon" then
+      weaponQuest.basicWeapon(player, npc)
+    end
+
+    if choice == "Quest Armor" then
+      armorQuest.basicArmor(player, npc)
+    end
 
 		if choice == "Take First Assignment" then
 			player:dialogSeq(
 				{
 					t,
-                    "Hello, here is your first assigment",
-                    "Collect 15 pcs items that drop from monster in field 01 and rat cave",
+          "Hello, here is your first assigment",
+          "Collect 200 pcs items that drop from monster in field 01 and rat cave",
 				},
 				1
 			)
-            choice2 = player:menuString(
+
+      choice2 = player:menuString(
 				"Do you bring all the requirement items?",
 				{"Yes", "No"}
 			)
+
 			if choice2 == "Yes" then
 				if player:hasItem("rabbit_meat", 15) == true and
-				player:hasItem('acorn', 15) == true and
-				player:hasItem('antler', 15) == true and
-				player:hasItem('gold_acorn', 15) == true and
-				player:hasItem('rat_meat', 15) == true and
-				player:hasItem('mica', 15) == true then
-                    player:dialogSeq(
-                        {
-                            t,
-                            "Great job!",
-							"Here is your reward"
-                        },
-                        1
-                    )
+          player:hasItem('acorn', 15) == true and
+          player:hasItem('antler', 15) == true and
+          player:hasItem('gold_acorn', 15) == true and
+          player:hasItem('rat_meat', 15) == true and
+          player:hasItem('mica', 15) == true
+        then
+        player:dialogSeq(
+          {
+            t,
+            "Great job!",
+            "Here is your reward"
+          },
+          1
+        )
 
-					player:removeItem("rabbit_meat",15)
-					player:removeItem("acorn",15)
-					player:removeItem("antler",15)
-					player:removeItem("gold_acorn",15)
-					player:removeItem("rat_meat",15)
-					player:removeItem("mica",15)
+        player:removeItem("rabbit_meat",15)
+        player:removeItem("acorn",15)
+        player:removeItem("antler",15)
+        player:removeItem("gold_acorn",15)
+        player:removeItem("rat_meat",15)
+        player:removeItem("mica",15)
 
-                    player.registry["first_assignment"] = 1
-					player:addItem("deaths_staff", 1)
+        player.registry["first_assignment"] = 1
+        player:addItem("deaths_staff", 1)
 					
-					if player.sex == 0 then 
-						player:addItem("autumn_mantle", 1)
-					end
+        if player.sex == 0 then 
+          player:addItem("autumn_mantle", 1)
+        end
 					
-					if player.sex == 1 then
-						player:addItem("autumn_drapery", 1)
-					end
-                else 
-                    player:dialogSeq({t, "Come back to me when you have those items"}, 0)
-                end
+        if player.sex == 1 then
+          player:addItem("autumn_drapery", 1)
+        end
+        else 
+          player:dialogSeq({t, "Come back to me when you have those items"}, 0)
+        end
 			end
 
 			if choice2 == "No" then
-                player:dialogSeq({t, "Okay see you later"}, 0)
-            end
+        player:dialogSeq({t, "Okay see you later"}, 0)
+      end
 		end
 
 		if choice == "Take Second Assignment" then
 			player:dialogSeq(
 				{
 					t,
-                    "Hello, here is your second assigment",
-                    "Collect\n25 pcs fox fur\n25 pcs red fox fur\n5 pcs fox tail ",
+          "Hello, here is your second assigment",
+          "Collect\n25 pcs fox fur\n25 pcs red fox fur\n5 pcs fox tail ",
 				},
 				1
 			)
