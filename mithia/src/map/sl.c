@@ -7845,6 +7845,7 @@ int pcl_addhealth(lua_State* state, USER* sd) {
 	clif_sendstatus(sd, SFLAG_HPMP);
 	return 0;
 }
+
 int pcl_removehealth(lua_State* state, USER* sd) {
 	sl_checkargs(state, "n");
 	int damage = lua_tonumber(state, sl_memberarg(1));

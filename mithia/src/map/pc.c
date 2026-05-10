@@ -704,23 +704,34 @@ int pc_timer(int id, int none) {
 }*/
 
 int pc_checklevel(USER* sd) {
-	int x;
+	// int x;
 	int path;
 	unsigned int lvlxp = 0;
-	int newlevel = 0;
+	// int newlevel = 0;
 	path = sd->status.class;
 
 	if (path > 5) {
 		path = classdb_path(path);
 	}
 
-	for (x = sd->status.level; x < 99; x++) {
-		lvlxp = classdb_level(path, x);
+	// for (x = sd->status.level; x < 99; x++) {
+	// 	lvlxp = classdb_level(path, x);
 
-		if (sd->status.exp >= lvlxp) {
-			sl_doscript_blargs("onLevel", NULL, 1, &sd->bl);
-		}
-	}
+	// 	if (sd->status.exp >= lvlxp) {
+	// 		sl_doscript_blargs("onLevel", NULL, 1, &sd->bl);
+	// 	}
+	// }
+
+  while (sd->status.level < 99) {
+    lvlxp = classdb_level(path, sd->status.level);
+
+    if (sd->status.exp < lvlxp)
+        break;
+
+    sd->status.exp -= lvlxp;
+
+    sl_doscript_blargs("onLevel", NULL, 1, &sd->bl);
+  }
 
 	return 0;
 }
@@ -2054,7 +2065,7 @@ int pc_useitem(USER* sd, int id) {
 
 		sl_async_freeco(sd);
 		sl_doscript_simple(itemdb_yname(sd->status.inventory[id].id), "use", &sd->bl);
-		sl_doscript_blargs("use", NULL, 1, &sd->bl);
+		// sl_doscript_blargs("use", NULL, 1, &sd->bl);
 
 		pc_delitem(sd, id, 1, 2);
 		break;
