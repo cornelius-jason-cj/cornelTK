@@ -8,28 +8,28 @@ local _mobDropsTable = {
 		loot = {
 			items = {"rabbit_meat"},
 			amounts = {1},
-			rates = {80}
+			rates = {90}
 		}
 	},
 	["squirrel"] = {
 		loot = {
 			items = {"acorn", "gold_acorn"},
 			amounts = {1, 1},
-			rates = {75, 25}
+			rates = {90, 25}
 		}
 	},
 	["deer"] = {
 		loot = {
 			items = {"antler"},
 			amounts = {1},
-			rates = {50}
+			rates = {75}
 		}
 	},
 	["doe"] = {
 		loot = {
 			items = {"antler"},
 			amounts = {1},
-			rates = {50}
+			rates = {75}
 		}
 	},
 	--------------
@@ -37,42 +37,42 @@ local _mobDropsTable = {
 		loot = {
 			items = {"rat_meat", "mica"},
 			amounts = {1, 1},
-			rates = {75, 25}
+			rates = {50, 25}
 		}
 	},
 	["mouse"] = {
 		loot = {
 			items = {"rat_meat", "mica"},
 			amounts = {1, 1},
-			rates = {75, 25}
+			rates = {50, 25}
 		}
 	},
 	["bat"] = {
 		loot = {
 			items = {"ginseng_piece", "ginseng"},
 			amounts = {1, 1},
-			rates = {75, 25}
+			rates = {50, 25}
 		}
 	},
 	["big_bat"] = {
 		loot = {
 			items = {"ginseng_piece", "ginseng"},
 			amounts = {1, 1},
-			rates = {75, 25}
+			rates = {50, 25}
 		}
 	},
 	["snake"] = {
 		loot = {
 			items = {"snake_meat", "fine_snake_meat"},
 			amounts = {1, 1},
-			rates = {75, 25}
+			rates = {50, 25}
 		}
 	},
 	["mud_snake"] = {
 		loot = {
 			items = {"snake_meat", "fine_snake_meat"},
 			amounts = {1, 1},
-			rates = {75, 25}
+			rates = {50, 25}
 		}
 	}
 }

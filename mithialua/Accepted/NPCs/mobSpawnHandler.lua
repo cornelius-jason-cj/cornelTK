@@ -108,18 +108,18 @@ MobSpawnHandlerNpc = {
 		-- 	end
 		-- end
 
-		MobSpawnHandlerNpc.handleSpawn(npc, 101, {1}, {50}, 120)
-		MobSpawnHandlerNpc.handleSpawn(npc, 101, {2}, {50}, 120)
-		MobSpawnHandlerNpc.handleSpawn(npc, 101, {3}, {25}, 120)
-		MobSpawnHandlerNpc.handleSpawn(npc, 101, {4}, {25}, 120)
+		MobSpawnHandlerNpc.handleSpawn(npc, 102, {1}, {70}, 120)
+		MobSpawnHandlerNpc.handleSpawn(npc, 102, {2}, {70}, 120)
+		MobSpawnHandlerNpc.handleSpawn(npc, 102, {3}, {15}, 120)
+		MobSpawnHandlerNpc.handleSpawn(npc, 102, {4}, {15}, 120)
 
     -- field cave 01
-		MobSpawnHandlerNpc.handleSpawn(npc, 102, {5}, {10}, 120)
-		MobSpawnHandlerNpc.handleSpawn(npc, 102, {6}, {10}, 120)
-		MobSpawnHandlerNpc.handleSpawn(npc, 102, {7}, {10}, 120)
-		MobSpawnHandlerNpc.handleSpawn(npc, 102, {8}, {10}, 120)
-		MobSpawnHandlerNpc.handleSpawn(npc, 102, {9}, {10}, 120)
-		MobSpawnHandlerNpc.handleSpawn(npc, 102, {10}, {10}, 120)
+		MobSpawnHandlerNpc.handleSpawn(npc, 103, {5}, {25}, 120)
+		MobSpawnHandlerNpc.handleSpawn(npc, 103, {6}, {25}, 120)
+		MobSpawnHandlerNpc.handleSpawn(npc, 103, {7}, {25}, 120)
+		MobSpawnHandlerNpc.handleSpawn(npc, 103, {8}, {25}, 120)
+		MobSpawnHandlerNpc.handleSpawn(npc, 103, {9}, {25}, 120)
+		MobSpawnHandlerNpc.handleSpawn(npc, 103, {10}, {25}, 120)
 
 	end,
 

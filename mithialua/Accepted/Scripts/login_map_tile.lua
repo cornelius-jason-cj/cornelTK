@@ -11,6 +11,7 @@ login = function(player)
 		player.baseHealth = 100
 		player.baseMagic = 50
 		player.money = 0
+    player:addSpell('return_spell')
 		player:sendStatus()
 		player:calcStat()
 	end

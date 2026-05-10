@@ -164,6 +164,13 @@ end)
 
 onMountItem = function(player)
 	local item = player:getInventoryItem(player.invSlot)
+  local playerLastMount = player.registryString["mountMobId"]
+  local mountMobId = (item and item.look) or playerLastMount
+
+  if not mountMobId or mountMobId == 0 then
+    player:sendMinitext("Please use mount first")
+    return
+  end
 
 	if player:checkIfCast(invis) or player.state == 2 then
 		player:sendMinitext("You cannot do that.")
@@ -183,12 +190,12 @@ onMountItem = function(player)
 	local speed = 50
 
 	-- for i = 1, 32 do
-		player:sendAction(6, 50)
+  player:sendAction(6, 50)
 	-- end
 
 	player.state = 3
-	player.disguise = item.look
-	player.registry["mountMobId"] = 0
+	player.disguise = mountMobId
+	player.registryString["mountMobId"] = mountMobId
 	player.speed = speed
 	player:calcStat()
 end
@@ -354,7 +361,6 @@ end
 onMount = function(player, mob)
 	local disguise = 0
 	local speed = 0
-
 	if mob.yname == "horse" then
 		disguise = 26
 		speed = 50
@@ -391,8 +397,6 @@ onDismount = function(player)
 
 	player:updateState()
 
-	player:sendMinitext("You precariously step again onto the ground.")
-
 	if mountMobId ~= 0 then
 		local x = 0
 		local y = 0
@@ -424,46 +428,47 @@ onDismount = function(player)
 		end]]
 		--
 
-		if side == 0 then
-			x = player.x
-			y = player.y - 1
-		elseif side == 1 then
-			x = player.x + 1
-			y = player.y
-		elseif side == 2 then
-			x = player.x
-			y = player.y + 1
-		elseif side == 3 then
-			x = player.x - 1
-			y = player.y
-		end
+		-- if side == 0 then
+		-- 	x = player.x
+		-- 	y = player.y - 1
+		-- elseif side == 1 then
+		-- 	x = player.x + 1
+		-- 	y = player.y
+		-- elseif side == 2 then
+		-- 	x = player.x
+		-- 	y = player.y + 1
+		-- elseif side == 3 then
+		-- 	x = player.x - 1
+		-- 	y = player.y
+		-- end
 
-		if x < 0 then
-			x = 0
-		end
-		if y < 0 then
-			y = 0
-		end
-		if x > getMapXMax(player.m) then
-			x = getMapXMax(player.m)
-		end
-		if y > getMapYMax(player.m) then
-			y = getMapYMax(player.m)
-		end
+		-- if x < 0 then
+		-- 	x = 0
+		-- end
+		-- if y < 0 then
+		-- 	y = 0
+		-- end
+		-- if x > getMapXMax(player.m) then
+		-- 	x = getMapXMax(player.m)
+		-- end
+		-- if y > getMapYMax(player.m) then
+		-- 	y = getMapYMax(player.m)
+		-- end
 
-		local obj = getObject(player.m, x, y)
-		local mobCheck = player:getObjectsInCell(player.m, x, y, BL_MOB)
-		local npcCheck = player:getObjectsInCell(player.m, x, y, BL_NPC)
-		local pcCheck = player:getObjectsInCell(player.m, x, y, BL_PC)
-		local warpCheck = getWarp(player.m, x, y)
-		local passCheck = getPass(player.m, x, y)
+		-- local obj = getObject(player.m, x, y)
+		-- local mobCheck = player:getObjectsInCell(player.m, x, y, BL_MOB)
+		-- local npcCheck = player:getObjectsInCell(player.m, x, y, BL_NPC)
+		-- local pcCheck = player:getObjectsInCell(player.m, x, y, BL_PC)
+		-- local warpCheck = getWarp(player.m, x, y)
+		-- local passCheck = getPass(player.m, x, y)
 
-		if obj == 0 and #mobCheck == 0 and #npcCheck == 0 and #pcCheck == 0 and passCheck == 0 and not warpCheck then
-			player:spawn(mountMobId, x, y, 1, player.m)
-		else
-			player:spawn(mountMobId, player.x, player.y, 1, player.m)
-		end
+		-- if obj == 0 and #mobCheck == 0 and #npcCheck == 0 and #pcCheck == 0 and passCheck == 0 and not warpCheck then
+		-- 	player:spawn(mountMobId, x, y, 1, player.m)
+		-- else
+		-- 	player:spawn(mountMobId, player.x, player.y, 1, player.m)
+		-- end
 
+    player:sendMinitext("onDismount 10")
 		player.registry["mountMobId"] = 0
 	end
 	
