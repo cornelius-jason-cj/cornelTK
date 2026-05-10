@@ -69,9 +69,7 @@ explorationFieldQuest = {
           player:removeItem("mica", 25)
           player:removeItem("ginseng", 25)
           player:removeItem("fine_snake_meat", 25)
-          player:giveXP(10000)
-          player:giveXP(10000)
-          player:giveXP(10000)
+          player:giveXP(20000)
           player:sendAnimation(49)
           player:addLegend(
             "Explore Field Cave 01",
@@ -125,9 +123,7 @@ explorationFieldQuest = {
           player:removeItem("bear_liver", 50)
           player:removeItem("tiger_liver", 50)
           player:removeItem("fine_snake_meat", 50)
-          player:giveXP(20000)
-          player:giveXP(20000)
-          player:giveXP(20000)
+          player:giveXP(50000)
           player:sendAnimation(49)
           player:addLegend(
             "Explore Field Cave 02",

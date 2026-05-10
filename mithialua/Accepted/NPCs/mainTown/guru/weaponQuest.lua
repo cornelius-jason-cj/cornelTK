@@ -25,9 +25,7 @@ weaponQuest = {
         player:removeItem("antler", 25)
         player:removeItem("gold_acorn", 25)
 
-        player:giveXP(7000)
-        player:giveXP(10200)
-        player:giveXP(14250)
+        player:giveXP(15000)
         player.karma = player.karma + 0.1
 
         if player.baseClass == 1 then
