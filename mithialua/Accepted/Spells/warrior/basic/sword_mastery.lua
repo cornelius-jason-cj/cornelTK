@@ -8,10 +8,24 @@ sword_mastery = {
 			return
 		end
 
+    if player:hasDuration("sword_mastery") then
+      player:sendMinitext("You have cast this spell")
+			return
+    end
+
+    local magicCost = durations / 500
+
+    if (player.magic < magicCost) then
+			player:sendMinitext("Not enough mana.")
+			return
+		end
+
 		player:removeDuras(flanks)
 
 		player:sendAction(6, 35)
+		player:sendAnimation(71)
 		player:setDuration("sword_mastery", durations)
+    player.magic = player.magic - magicCost
 		player:playSound(4)
 		player:calcStat()
 	end,

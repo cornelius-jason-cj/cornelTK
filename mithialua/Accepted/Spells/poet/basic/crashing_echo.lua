@@ -2,8 +2,8 @@ crashing_echo = {
     cast = function(player)
       local spellName = "Crashing Echo"
       local spellIdent = "crashing_echo"
-		  local aethers = 25000
-      local durations = 5000 + math.floor(player.level / 5) * 1000
+		  local aethers = 30000
+      local durations = 10000
 
       if not player:canCast(1, 1, 0) then
         return
@@ -40,8 +40,8 @@ crashing_echo = {
         local damage = math.floor(player.maxMagic * multiplier)
 
         local spellFX = 4001
-        local x = {-3, -2, -1, 0, 1, 2, 3, -2, -1,  0,  1,  2, -1,  0,  1,  0, -2, -1, 0, 1, 2, -1, 0, 1, 0}
-        local y = { 0,  0,  0, 0, 0, 0, 0, -1, -1, -1, -1, -1, -2, -2, -2, -3,  1,  1, 1, 1, 1,  2, 2, 2, 3}
+        local x = {-2, -1,  0,  1,  2, -1,  0,  1, -1,  0,  1,  0,  0}
+        local y = { 0,  0,  0,  0,  0,  1,  1,  1, -1, -1, -1,  2, -2}
         
         for i = 1, #x do
         local targets = player:getObjectsInCell(

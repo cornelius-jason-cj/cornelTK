@@ -2,11 +2,11 @@ calming_aura = {
     cast = function(player)
 		local spellName = "Calming Aura"
 		local spellIdent = "calming_aura"
-        -- local healAmount = (player.maxHealth + player.maxMagic) * 0.125
+    -- local healAmount = (player.maxHealth + player.maxMagic) * 0.125
 		local magicCost = player.maxMagic * 0.1
-        local aethers = 16000
-        local durations = 12000
-        local spellFX = 4002
+    local aethers = 20000
+    local durations = 10000
+    local spellFX = 4002
 
 		if (not player:canCast(1, 1, 0)) then
 			return
