@@ -88,32 +88,13 @@ local _handleLoot = function(mob, loot, player)
 	local amounts = loot.amounts
 	local rates = loot.rates
 	local karma = math.floor(player.karma / 20)
-
-	-- if player.gmLevel == 50 then
-	-- 	print('player karma', karma)
-	-- end
 	
 	for i = 1, #items do
 		local roll = math.random(1, 100000)
 
 		if (amounts[i] > 0 and roll <= (rates[i] + karma) * 1000) then
-			-- if (type(items[i]) == 'number') then
-			-- 	-- Gold
-			-- 	if (amounts[i] == 1) then
-			-- 		mob:dropItem(0, amounts[i], 0, 0)
-			-- 	elseif (amounts[i] >= 2 and amounts[i] <= 99) then
-			-- 		mob:dropItem(1, amounts[i], 0, 0)
-			-- 	elseif (amounts[i] >= 100 and amounts[i] <= 999) then
-			-- 		mob:dropItem(2, amounts[i], 0, 0)
-			-- 	elseif (amounts[i] >= 1000) then
-			-- 		mob:dropItem(3, amounts[i], 0, 0)
-			-- 	end
-			-- else
-				-- mob:dropItem(items[i], math.random(1, amounts[i]), 0, 0)
-				mob:dropItem(items[i], 1, 0, 0)
-			-- end
-
-			characterLog.dropLog(mob, items, amounts)
+      -- mob:dropItem(items[i], 1, 0, 0)
+      player:addItem(items[i], 1)
 		end
 	end
 end

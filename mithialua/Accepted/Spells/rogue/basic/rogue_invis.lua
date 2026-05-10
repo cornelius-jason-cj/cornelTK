@@ -1,4 +1,4 @@
-rogue_invis = {
+invis_rogue = {
     cast = function(player)
       local durations = (player.level + 21) * 1000
     
@@ -6,18 +6,25 @@ rogue_invis = {
         return
       end
           
-      if player:hasDuration("rogue_invis") then
+      if player:hasDuration("invis_rogue") then
         player:sendMinitext("You're already invisible.")
         return
       end
-      
+
+      local magicCost = durations / 500
+
+      if (player.magic < magicCost) then
+        player:sendMinitext("Not enough mana.")
+        return
+      end
       
       player:sendAction(6, 20)
-      player:setDuration("rogue_invis", durations)
+      player:setDuration("invis_rogue", durations)
       player:calcStat()
       player:sendMinitext("You cast Invisible")
+      player.magic = player.magic - magicCost
       player.state = 2
-        if player.gfxClone == 1 then player.gfxName = "" end
+      if player.gfxClone == 1 then player.gfxName = "" end
       player:updateState()
     
     end,

@@ -1,7 +1,7 @@
 onPickUp = function(player)
 	---------single item pickup (comma)---------------------------------------------------------------
 
-	player:setDuration("rogue_invis", 0)
+	player:setDuration("invis_rogue", 0)
 	if player.pickUpType == 0 then
 		local goldFound = false
 		local itemFound = 0

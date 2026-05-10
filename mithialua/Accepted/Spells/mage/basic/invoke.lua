@@ -29,7 +29,7 @@ invoke_mage = {
 	end,
 
 	requirements = function(player)
-		local level = 5
+		local level = 35
 		local items = {"gold_acorn"}
 		local itemAmounts = {10}
 		local description = "A spell that takes away the casters vita in exchange for mana"
