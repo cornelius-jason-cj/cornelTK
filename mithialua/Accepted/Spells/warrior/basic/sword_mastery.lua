@@ -2,7 +2,7 @@ sword_mastery = {
     cast = function(player)
         local spellName = "Sword Mastery"
         local spellIdent = "sword_mastery"
-        local durations = math.max(1, player.level - 9) * 10000
+        local durations = (player.level - 9) * 10000
 
 		if not player:canCast(1, 1, 0) then
 			return
@@ -47,7 +47,7 @@ sword_mastery = {
 		player:sendStatus()
 	end,
 	requirements = function(player)
-		local level = 5
+		local level = 10
 		local items = {"gold_acorn"}
 		local itemAmounts = {10}
 		local description = "Passive spell to attack at all sides."

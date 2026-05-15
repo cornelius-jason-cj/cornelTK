@@ -6,13 +6,15 @@ fire_nova = {
 		if not player:canCast(1, 1, 0) then
 			return
 		end
-        local multiplier = (0.125 + (player.level + 1) / 1000 + player.baseWill / 1000)
-        local damage = math.floor(player.maxMagic * multiplier)
 
-        local magicCost = damage * 0.0225
-        local spellFX = 3002
-		local x = {-1, 0, 1, 0}
-		local y = {0, -1, 0, 1}
+    local multiplier = 0.085 + (player.level + 1) / 1000
+    local damage = math.floor(player.maxMagic * multiplier)
+
+    local magicCost = damage * 0.15
+    
+    local spellFX = 3002
+    local x = {-1,  1, -1,  0,  1, -1,  0,  1}
+    local y = { 0,  0,  1,  1,  1, -1, -1, -1}
 
 		if (player.magic < magicCost) then
 			player:sendMinitext("You do not have enough mana.")
@@ -20,7 +22,7 @@ fire_nova = {
 		end
 
 
-		for i = 1, 4 do
+		for i = 1, #x do
 			local target = player:getObjectsInCell(
 				player.m,
 				player.x + x[i],
@@ -51,7 +53,7 @@ fire_nova = {
 	end,
 
 	requirements = function(player)
-		local level = 5
+		local level = 10
 		local items = {"gold_acorn"}
 		local itemAmounts = {10}
 		local description = "Strike your surroundings with fire."

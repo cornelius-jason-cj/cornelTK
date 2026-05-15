@@ -2,7 +2,7 @@ tiger_claw = {
     cast = function(player)
       local spellName = "Tiger Claw"
       local spellIdent = "tiger_claw"
-		  local aethers = 3000
+		  local aethers = 1000
 
       if not player:canCast(1, 1, 0) then
         return
@@ -13,7 +13,7 @@ tiger_claw = {
       -- local damage = math.floor(player.maxHealth * multiplier ) * rage
       -- local currentMagic = player.magic
       -- local magicCost = player.maxMagic * 0.1
-      local multiplier = (0.125 + (player.level + 1) / 1000)
+      local multiplier = (0.175 + (player.level + 1) / 1000)
       local damage = math.floor(player.maxHealth * multiplier)
       local healthCost = math.floor(damage * 0.15)
       local magicCost = math.floor(damage * 0.15)

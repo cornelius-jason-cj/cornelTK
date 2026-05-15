@@ -1,6 +1,6 @@
 invis_rogue = {
     cast = function(player)
-      local durations = (player.level + 21) * 1000
+      local durations = (player.level - 9) * 10000
     
       if not player:canCast(1, 1, 0) then
         return
@@ -42,7 +42,7 @@ invis_rogue = {
     end,
 
     requirements = function(player)
-      local level = 5
+      local level = 35
       local items = {"gold_acorn"}
       local itemAmounts = {10}
       local description = "Hide in the shadows and gain strength."

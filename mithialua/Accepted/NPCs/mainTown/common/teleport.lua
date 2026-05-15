@@ -12,7 +12,7 @@ TeleportNpc = {
 
     local opts = {"field Cave 00 (Rabbit, Squirrel, Deer)"}
 
-    if player.level >= 5 and player.level < 15 then
+    if player.level >= 5 then
       table.insert(opts, "field Cave 01 (Rats, Bats, Snakes)")
     end
 

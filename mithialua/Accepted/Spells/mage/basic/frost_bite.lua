@@ -2,17 +2,18 @@ frost_bite = {
     cast = function(player)
 		local spellName = "Frost Bite"
 		local spellIdent = "frost_bite"
-		local aether = 2000
+		local aether = 4000
 		local duration = 10000
 
 		if not player:canCast(1, 1, 0) then
 			return
 		end
 
-        local magicCost = player.level * 10
-        local spellFX = 3002
-        local x = {-1, 0, 1, 0, -1, -1, 1, 1, -2, 0, 2, 0}
-        local y = {0, -1, 0, 1, -1, 1, -1, 1, 0, -2, 0, 2}
+    local magicCost = player.level * 20
+
+    local spellFX = 3002
+    local x = {-1,  1, -1,  0,  1, -1,  0,  1}
+    local y = { 0,  0,  1,  1,  1, -1, -1, -1}
 
 		if (player.magic < magicCost) then
 			player:sendMinitext("You do not have enough mana.")
@@ -59,7 +60,7 @@ frost_bite = {
 			end
 		end
 
-        player.magic = player.magic - magicCost
+    player.magic = player.magic - magicCost
 		player:sendAction(6, 35)
 		player:setAether(spellIdent, aether)
 		player:sendMinitext("You cast " .. spellName .. ".")
@@ -67,7 +68,7 @@ frost_bite = {
 	end,
 
 	requirements = function(player)
-		local level = 5
+		local level = 10
 		local items = {"gold_acorn"}
 		local itemAmounts = {10}
 		local description = "Freeze enemy around you."

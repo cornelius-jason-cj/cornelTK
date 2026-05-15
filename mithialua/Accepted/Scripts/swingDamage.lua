@@ -31,22 +31,22 @@ local _getPlayerSwingDamage = function(player, target)
 	local critical = 1
 	
 	if (player.state == 2) then
-		invisible = 2
-		-- if player.level < 35 then
-		-- 	invisible = 2
-		-- elseif player.level < 55 then
-		-- 	invisible = 4
-		-- elseif player.level < 75 then
-		-- 	invisible = 6
-		-- elseif player.level < 95 then
-		-- 	invisible = 8
-		-- else
-		-- 	invisible = 10
-		-- end
+		-- invisible = 2
+		if player.level < 35 then
+			invisible = 4
+		elseif player.level < 55 then
+			invisible = 5
+		elseif player.level < 75 then
+			invisible = 6
+		elseif player.level < 95 then
+			invisible = 8
+		else
+			invisible = 10
+		end
 	end
 
 	if (player.critChance == 2) then
-		critical = 3
+		critical = 4
 	end
 	local swingDamage
 	-- local swingDamage = (s / 2 * enchant + damage * 2.5 + might / 8 + class) * rage * invisible * critical

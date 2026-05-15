@@ -2,8 +2,8 @@ crashing_echo = {
     cast = function(player)
       local spellName = "Crashing Echo"
       local spellIdent = "crashing_echo"
-		  local aethers = 30000
-      local durations = 10000
+		  local aethers = 25000
+      local durations = 15000
 
       if not player:canCast(1, 1, 0) then
         return

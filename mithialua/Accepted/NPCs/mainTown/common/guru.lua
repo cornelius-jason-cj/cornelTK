@@ -386,7 +386,8 @@ MayorOfCityNpc = {
       player.magic = player.maxMagic
       player:updateState()
       player:calcStat()
-			player:sendAnimation(64)
+			player:sendAnimation(296)
+			player:sendAnimation(297)
       player:setDuration("guru_heal", 30000)
       player:sendStatus()
 		end
