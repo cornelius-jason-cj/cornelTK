@@ -1,64 +1,195 @@
-weaponQuest = {
-  basicWeapon = function(player, npc)
-    local t = {
-      graphic = convertGraphic(npc.look, "monster"),
-      color = npc.lookColor
+weaponQuest = {}
+
+local weaponTiers = {
+  {
+    legendIdentifier = "finish_basic_armor_quest",
+    legendText = "Finish Basic Armor Quest",
+    minLevel = 1,
+    maxLevel = 17,
+    exp = 15000,
+    karma = 0.1,
+    rewardText = "To obtain basic weapon, you'll need:\n",
+
+    requirements = {
+      {item = "acorn", amount = 100},
+      {item = "rabbit_meat", amount = 100},
+      {item = "antler", amount = 25},
+      {item = "gold_acorn", amount = 25}
+    },
+
+    rewards = {
+      [1] = "maxcaliber",
+      [2] = "moonblade",
+      [3] = "wicked_staff",
+      [4] = "deaths_fan"
     }
+  },
 
-    if player:hasLegend("finish_basic_weapon_quest") == true then 
-      player:dialogSeq({t, "You have finish this quest"}, 0)
-    end
-
-    local choice = player:menuString(
-      "To get first Weapon, you'll need\n100 Acorn\n100 Rabbit Meat\n25 Antler\n25 Gold Acorn\nDo you have the ingredients?",
-      {"Yes, here they are", "Never mind"}
-    )
-
-    if choice == "Yes, here they are" then
-      if player:hasItem("acorn", 100) == true and
-      player:hasItem('rabbit_meat', 100) == true and
-      player:hasItem('antler', 25) == true and
-      player:hasItem('gold_acorn', 25) == true
-      then
-        player:removeItem("acorn", 100)
-        player:removeItem("rabbit_meat", 100)
-        player:removeItem("antler", 25)
-        player:removeItem("gold_acorn", 25)
-
-        player:giveXP(15000)
-        player.karma = player.karma + 0.1
-
-        if player.baseClass == 1 then
-          player:addItem("maxcaliber", 1)
-        end
-
-        if player.baseClass == 2 then
-          player:addItem("moonblade", 1)
-        end
-
-        if player.baseClass == 3 then
-          player:addItem("wicked_staff", 1)
-        end
-
-        if player.baseClass == 4 then
-          player:addItem("deaths_fan", 1)
-        end
-
-        player:addLegend(
-          "Finish Basic Weapon Quest",
-          "finish_basic_weapon_quest",
-          5,
-          15
-        )
-
-        player:sendAnimation(49)
-        player:dialogSeq({t, "Great! Here is your reward\nBasic Weapon\n31.450 exp\nSmall karma"}, 0)
-      else 
-        player:dialogSeq({t, "It looks like you don't have enough ingredients."}, 0)
-      end
-    elseif choice == "Never mind" then
-      player:dialogSeq({t, "Okay see you"}, 0)
-    end
-
-  end,
+  {
+    legendIdentifier = "learn_basic_weapon_forging",
+    legendText = "Learn Basic Weapon Forging",
+    requiredLegend = "finish_basic_weapon_quest",
+    minLevel = 15,
+    maxLevel = 34,
+    exp = 175000,
+    karma = 0.2,
+    choiceText =  "To learn forge basic weapon, you'll need:\n",
+    
+    requirements = {
+      {
+        item = "Gold Acorn",
+        itemIdent = "gold_acorn",
+        amount = 25
+      },
+      {
+        item = "Tiger Pelt",
+        itemIdent = "tiger_pelt",
+        amount = 75
+      },
+      {
+        item = "Tiger Meat",
+        itemIdent = "tiger_meat",
+        amount = 150
+      },
+    },
+    
+    rewardQty = 1,
+    rewards = {
+      [1] = "basic_weapon_essence",
+      [2] = "basic_weapon_essence",
+      [3] = "basic_weapon_essence",
+      [4] = "basic_weapon_essence"
+    }
+  }
 }
+
+local function buildRequirementText(requirements)
+  local text = ""
+
+  for i = 1, #requirements do
+    text = text ..
+      requirements[i].amount ..
+      " " ..
+      requirements[i].item ..
+      "\n"
+  end
+
+  return text
+end
+
+local function hasRequirements(player, requirements)
+  for i = 1, #requirements do
+    if not player:hasItem(requirements[i].itemIdent, requirements[i].amount) then
+      return false
+    end
+  end
+
+  return true
+end
+
+local function removeRequirements(player, requirements)
+  for i = 1, #requirements do
+    player:removeItem(
+      requirements[i].itemIdent,
+      requirements[i].amount
+    )
+  end
+end
+
+weaponQuest.basicWeapon = function(player, npc)
+
+  local t = {
+    graphic = convertGraphic(npc.look, "monster"),
+    color = npc.lookColor
+  }
+
+  local selectedTier = nil
+
+  for i = 1, #weaponTiers do
+
+    local tier = weaponTiers[i]
+    local requirementPassed = true
+
+    if tier.requiredLegend ~= nil then
+      requirementPassed = player:hasLegend(
+        tier.requiredLegend
+      )
+    end
+
+    if requirementPassed
+      and player.level >= tier.minLevel
+      and player.level <= tier.maxLevel
+      and not player:hasLegend(tier.legendIdentifier)
+    then
+      selectedTier = tier
+      break
+    end
+  end
+
+  if selectedTier == nil then
+    player:dialogSeq({
+      t,
+      "There are no weapon quests available for you right now."
+    }, 0)
+
+    return
+  end
+
+  local choiceMessage =
+    selectedTier.choiceText ..
+    buildRequirementText(selectedTier.requirements) ..
+    "\nDo you have the ingredients?"
+
+  local choice = player:menuString(
+    choiceMessage,
+    {"Yes, here they are", "Never mind"}
+  )
+
+  if choice == "Never mind" then
+    player:dialogSeq({
+      t,
+      "Okay, see you later."
+    }, 0)
+
+    return
+  end
+
+  if not hasRequirements(player, selectedTier.requirements) then
+    player:dialogSeq({
+      t,
+      "It looks like you don't have enough ingredients."
+    }, 0)
+
+    return
+  end
+
+  removeRequirements(player, selectedTier.requirements)
+
+  player:giveXP(selectedTier.exp)
+  player.karma = player.karma + selectedTier.karma
+
+  local rewardItem = selectedTier.rewards[player.baseClass]
+  local rewardQty = selectedTier.rewardQty
+
+  if rewardItem ~= nil then
+    player:addItem(rewardItem, rewardQty)
+  end
+
+  player:addLegend(
+    selectedTier.legendText,
+    selectedTier.legendIdentifier,
+    5,
+    15
+  )
+
+  player:sendAnimation(49)
+
+  player:dialogSeq({
+    t,
+    "Great! Here is your reward:\n" ..
+    selectedTier.rewardText ..
+    "\n\n" ..
+    selectedTier.exp ..
+    " exp\nSmall karma"
+  }, 0)
+end
