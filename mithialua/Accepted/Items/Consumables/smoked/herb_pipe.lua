@@ -19,7 +19,7 @@ small_pipe = {
 
 regular_pipe = {
 	use = function(player)
-		local mana = 500
+		local mana = 1000
 
 		if not player:canAction(1, 0, 0) then
 			return

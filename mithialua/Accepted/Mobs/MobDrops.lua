@@ -74,7 +74,109 @@ local _mobDropsTable = {
 			amounts = {1, 1},
 			rates = {50, 25}
 		}
-	}
+	},
+	--------------
+  ["warthog"] = {
+		loot = {
+			items = {"pork", "rare_pork"},
+			amounts = {1, 1},
+			rates = {50, 25}
+		}
+	},
+  ["bear"] = {
+		loot = {
+			items = {"bears_liver", "bear_fur"},
+			amounts = {1, 1},
+			rates = {50, 25}
+		}
+	},
+  ["tiger"] = {
+		loot = {
+			items = {"tiger_meat", "tiger_pelt"},
+			amounts = {1, 1},
+			rates = {50, 25}
+		}
+	},
+  --------------
+  ["dark_fox"] = {
+		loot = {
+			items = {"fox_fur"},
+			amounts = {1},
+			rates = {50}
+		}
+	},
+  ["blood_fox"] = {
+		loot = {
+			items = {"red_fox_fur"},
+			amounts = {1},
+			rates = {50}
+		}
+	},
+  ["nine_tailed_fox"] = {
+		loot = {
+			items = {"fox_tail"},
+			amounts = {1},
+			rates = {25}
+		}
+	},
+  --------------
+  ["vile_scorpion"] = {
+		loot = {
+			items = {"topaz"},
+			amounts = {1},
+			rates = {50}
+		}
+	},
+  ["pale_scorpion"] = {
+		loot = {
+			items = {"obsidian"},
+			amounts = {1},
+			rates = {50}
+		}
+	},
+  ["crimson_scorpion"] = {
+		loot = {
+			items = {"limestone"},
+			amounts = {1},
+			rates = {25}
+		}
+	},
+  --------------
+  ["black_skeleton"] = {
+		loot = {
+			items = {"ash"},
+			amounts = {1},
+			rates = {50}
+		}
+	},
+  ["skeleton_mage"] = {
+		loot = {
+			items = {"ash","mage_bone"},
+			amounts = {1, 1},
+			rates = {50, 25}
+		}
+	},
+  ["skeleton_warrior"] = {
+		loot = {
+			items = {"ash","warrior_bone"},
+			amounts = {1, 1},
+			rates = {50, 25}
+		}
+	},
+  ["skeleton_rogue"] = {
+		loot = {
+			items = {"ash","rogue_bone"},
+			amounts = {1, 1},
+			rates = {50, 25}
+		}
+	},
+  ["skeleton_poet"] = {
+		loot = {
+			items = {"ash","poet_bone"},
+			amounts = {1, 1},
+			rates = {50, 25}
+		}
+	},
 }
 -- ------------------------------
 -- Common drops

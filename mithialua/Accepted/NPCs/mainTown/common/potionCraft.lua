@@ -9,14 +9,15 @@ PotionCraftNpc = {
 		player.dialogType = 0
 		player.lastClick = npc.ID
 
-		local items = {}
+		local items = {"Small Meat", "Small Pipe"}
 
-    if player:hasLegend("explore_field_cave_01") == false then
-      table.insert(items, "Small Meat")
-      table.insert(items, "Small Pipe")
-    end
+    -- if player:hasLegend("explore_field_cave_01") == false then
+    --   table.insert(items, "Small Meat")
+    --   table.insert(items, "Small Pipe")
+    -- end
 
     if player:hasLegend("explore_field_cave_01") == true then
+      table.insert(items, "------------")
       table.insert(items, "Regular Meat")
       table.insert(items, "Regular Pipe")
     end
@@ -25,6 +26,10 @@ PotionCraftNpc = {
 			"Hello! What would you like to craft today?",
 			items
 		)
+
+    if choice == "------------" then
+			return
+		end
 
 		if choice == "Small Meat" then
 			local choice2 = player:menuString(

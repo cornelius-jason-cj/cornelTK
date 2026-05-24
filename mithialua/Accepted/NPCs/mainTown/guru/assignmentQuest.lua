@@ -31,14 +31,6 @@ assignmentQuest = {
         player:hasItem('snake_meat', 100) == true and
         player:hasItem('fine_snake_meat', 100) == true
       then
-        player:dialogSeq(
-          {
-            t,
-            "Great job!",
-            "Here is your reward"
-          },
-          1
-        )
 
         player:removeItem("rat_meat",100)
         player:removeItem("mica",100)
@@ -54,6 +46,17 @@ assignmentQuest = {
           1
         )
         player.registry["first_assignment"] = 1
+        player.karma = player.karma + 0.2
+        player:sendAnimation(348)
+
+        player:dialogSeq(
+          {
+            t,
+            "Great job! Your karma has slightly increased.",
+            "Come back to me when you reach level 18."
+          },
+          1
+        )
       else 
         player:dialogSeq({t, "Come back to me when you have those items"}, 0)
       end

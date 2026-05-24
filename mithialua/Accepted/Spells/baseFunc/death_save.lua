@@ -63,26 +63,26 @@ death_save = {
 		-- 	end
 		-- end
 
-		local deathMinitext = {
-			"Death is not the End:  Go",
-			"to one of the shaman's",
-			"huts, at the East or West gate."
-		}
-		for i = 1, #deathMinitext do
-			player:sendMinitext(deathMinitext[i])
-		end
+		-- local deathMinitext = {
+		-- 	"Death is not the End:  Go",
+		-- 	"to one of the shaman's",
+		-- 	"huts, at the East or West gate."
+		-- }
+		-- for i = 1, #deathMinitext do
+		-- 	player:sendMinitext(deathMinitext[i])
+		-- end
 
-		player:talkSelf(
-			0,
-			"" .. player.name .. ": I died at " .. player.mapTitle .. ", X: " .. player.x .. ", Y: " .. player.y
-		)
-		player:msg(
-			0,
-			"You have died. Please use the F1 menu and select Silver Thread.",
-			player.ID
-		)
-		local message = "[DEATH]: " .. player.name .. " was killed at " .. player.mapTitle
-		broadcast(-1, message)
+		-- player:talkSelf(
+		-- 	0,
+		-- 	"" .. player.name .. ": I died at " .. player.mapTitle .. ", X: " .. player.x .. ", Y: " .. player.y
+		-- )
+		-- player:msg(
+		-- 	0,
+		-- 	"You have died. Please use the F1 menu and select Silver Thread.",
+		-- 	player.ID
+		-- )
+		-- local message = "[DEATH]: " .. player.name .. " was killed at " .. player.mapTitle
+		-- broadcast(-1, message)
 
 		-- for i = 1, #pc do
 		-- 	if pc[i].gmLevel > 0 then

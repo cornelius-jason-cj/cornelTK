@@ -36,18 +36,18 @@ MayorOfCityNpc = {
 
     if player.class ~= 0 then
       table.insert(opts, "Exploration Quest")
+      table.insert(opts, "---------------------")
+      table.insert(opts, "Gathering Quest")
       -- table.insert(opts, "Mythic Quest")
     end
     
-    if player.level == 99 then
-      table.insert(opts, "Gathering Quest")
-    end
-
-    table.insert(opts, "---------------------")
+    -- if player.level == 99 then
+    --   table.insert(opts, "Gathering Quest")
+    -- end
     
-    if player.level < 99 then
-      table.insert(opts, "I need your guidance")
-    end
+    -- if player.level < 99 then
+    --   table.insert(opts, "I need your guidance")
+    -- end
 
 		local choice = player:menuString(
 			"Hello! How can I help you today?",
@@ -356,11 +356,45 @@ MayorOfCityNpc = {
     end
 
     if choice == "Gathering Quest" then
-      if player.level < 99 then
-        player:dialogSeq({t, "You are not strong enough my friends, comeback when you are lv 99"}, 0)
-      else
-        gatheringQuest.amber(player, npc)
+      local opts = {}
+      
+      if player:hasLegend("explore_field_cave_02") == true then
+        table.insert(opts, "Field Cave 02")
       end
+
+      if player:hasLegend("explore_field_cave_03") == true then
+        table.insert(opts, "Field Cave 03")
+      end
+
+      if player:hasLegend("explore_field_cave_04") == true then
+        table.insert(opts, "Field Cave 04")
+      end
+
+      if player:hasLegend("explore_field_cave_05") == true then
+        table.insert(opts, "Field Cave 05")
+      end
+
+      local choice = player:menuString(
+        "Which cave do you want to explore?",
+        opts
+      )
+
+      if choice == "Field Caves 02" then
+        explorationFieldQuest.fieldCaves(player, npc)
+      end
+
+      if choice == "Field Caves 03" then
+        explorationFieldQuest.fieldCaves(player, npc)
+      end
+
+      if choice == "Field Caves 04" then
+        explorationFieldQuest.fieldCaves(player, npc)
+      end
+
+      if choice == "Field Caves 05" then
+        explorationFieldQuest.fieldCaves(player, npc)
+      end
+
     end
 
 	end),
@@ -388,7 +422,7 @@ MayorOfCityNpc = {
       player:calcStat()
 			player:sendAnimation(296)
 			player:sendAnimation(297)
-      player:setDuration("guru_heal", 30000)
+      player:setAether("guru_heal", 30000)
       player:sendStatus()
 		end
 	end),
