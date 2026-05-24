@@ -10,7 +10,7 @@ fire_nova = {
     local multiplier = 0.085 + (player.level + 1) / 1000
     local damage = math.floor(player.maxMagic * multiplier)
 
-    local magicCost =  math.floor(damage * 0.45)
+    local magicCost =  math.floor(damage * 0.25)
     
     local spellFX = 3002
     local x = {-1,  1, -1,  0,  1, -1,  0,  1}

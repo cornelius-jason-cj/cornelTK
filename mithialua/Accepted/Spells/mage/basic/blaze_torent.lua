@@ -12,7 +12,7 @@ blaze_torent = {
       local multiplier = (0.115 + (player.level + 1) / 1000)
       local damage = math.floor(player.maxMagic * multiplier)
 
-      local magicCost = damage * 0.15
+      local magicCost = damage * 0.1
       local worked = global_zap.cast(player, target, damage, magicCost, spellFX)
       
       if worked ~= 0 then

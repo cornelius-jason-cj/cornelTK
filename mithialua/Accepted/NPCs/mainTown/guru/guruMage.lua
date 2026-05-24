@@ -161,8 +161,8 @@ MageGuruNpc = {
 			player:dialogSeq(
 				{
 					t,
-                    "Hello, here is your second assigment",
-                    "Collect\n25 pcs fox fur\n25 pcs red fox fur\n5 pcs fox tail ",
+          "Hello, here is your second assigment",
+          "Collect\n25 pcs fox fur\n25 pcs red fox fur\n5 pcs fox tail ",
 				},
 				1
 			)

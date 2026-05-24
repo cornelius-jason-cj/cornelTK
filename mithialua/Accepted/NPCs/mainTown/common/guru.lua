@@ -422,7 +422,7 @@ MayorOfCityNpc = {
       player:calcStat()
 			player:sendAnimation(296)
 			player:sendAnimation(297)
-      player:setAether("guru_heal", 30000)
+      player:setDuration("guru_heal", 30000)
       player:sendStatus()
 		end
 	end),

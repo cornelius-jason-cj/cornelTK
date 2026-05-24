@@ -16,9 +16,6 @@ PoetGuruNpc = {
 		elseif player.baseClass ~= 4 then
 			player:dialogSeq({t, "I'm not your Guru"}, 0)
 		elseif player.baseClass == 4 then
-			-- if player.level < 99 then
-			-- 	table.insert(opts, "Divine Secret")
-			-- end
 			table.insert(opts, "Learn Secret")
       table.insert(opts, "Forget Secret")
 			table.insert(opts, "Karma Check")
@@ -96,39 +93,39 @@ PoetGuruNpc = {
 					player:addItem("peasant_garb", 1)
 				end
 				if player.sex == 1 then
-	                player:addItem("peasant_dress", 1)
+          player:addItem("peasant_dress", 1)
 				end
-                player:addItem("yellow_horse_mount", 1)
-                player:addItem("wooden_saber", 1)
-                player:addGold(500)
-                player:updatePath(4, 0)
-				player.baseHealth = 250
-				player.baseMagic = 225
-				player.registry["start_journey"] = 2
-				player:calcStat()
-				player:sendStatus()
+          player:addItem("yellow_horse_mount", 1)
+          player:addItem("wooden_saber", 1)
+          player:addGold(500)
+          player:updatePath(4, 0)
+          player.baseHealth = 250
+          player.baseMagic = 225
+          player.registry["start_journey"] = 2
+          player:calcStat()
+          player:sendStatus()
     
-                player:dialogSeq(
-                    {
-                        t,
-                        "Here is some armor, and a weapon. These are specific to the poet path, and will help get you started.",
-                        "I have also given you some gold, it's all I can spare right now. It will help you with repairs, and getting some other equipment like rings.",
-                        "You also have four herb pipes, these will replenish your mana. Once they are used up you should buy some more, shop keepers around town sell them",
-                        "If you wish to learn some skills let me know, I can teach you many things to help you in battle."
-                    },
-                    1
-                )
-            end
+          player:dialogSeq(
+            {
+              t,
+              "Here is some armor, and a weapon. These are specific to the poet path, and will help get you started.",
+              "I have also given you some gold, it's all I can spare right now. It will help you with repairs, and getting some other equipment like rings.",
+              "You also have four herb pipes, these will replenish your mana. Once they are used up you should buy some more, shop keepers around town sell them",
+              "If you wish to learn some skills let me know, I can teach you many things to help you in battle."
+            },
+            1
+          )
+          end
             
-            if choice2 == "No" then
-                player:dialogSeq(
-                    {
-                        t,
-                        "Very well, I will be waiting here if you change your mind. I am seeking great people all the time to join this great path."
-                    },
-                    1
-                )
-            end
+          if choice2 == "No" then
+            player:dialogSeq(
+              {
+                t,
+                "Very well, I will be waiting here if you change your mind. I am seeking great people all the time to join this great path."
+              },
+              1
+            )
+          end
         end
 
 		if choice == "Divine Secret" then
@@ -152,62 +149,7 @@ PoetGuruNpc = {
     end
 
 		if choice == "Take First Assignment" then
-			player:dialogSeq(
-				{
-					t,
-          "Hello, here is your first assigment",
-          "Collect 200 pcs items that drop from monster in field 01 and rat cave",
-				},
-				1
-			)
-
-      choice2 = player:menuString(
-				"Do you bring all the requirement items?",
-				{"Yes", "No"}
-			)
-
-			if choice2 == "Yes" then
-				if player:hasItem("rabbit_meat", 15) == true and
-          player:hasItem('acorn', 15) == true and
-          player:hasItem('antler', 15) == true and
-          player:hasItem('gold_acorn', 15) == true and
-          player:hasItem('rat_meat', 15) == true and
-          player:hasItem('mica', 15) == true
-        then
-        player:dialogSeq(
-          {
-            t,
-            "Great job!",
-            "Here is your reward"
-          },
-          1
-        )
-
-        player:removeItem("rabbit_meat",15)
-        player:removeItem("acorn",15)
-        player:removeItem("antler",15)
-        player:removeItem("gold_acorn",15)
-        player:removeItem("rat_meat",15)
-        player:removeItem("mica",15)
-
-        player.registry["first_assignment"] = 1
-        player:addItem("deaths_staff", 1)
-					
-        if player.sex == 0 then 
-          player:addItem("autumn_mantle", 1)
-        end
-					
-        if player.sex == 1 then
-          player:addItem("autumn_drapery", 1)
-        end
-        else 
-          player:dialogSeq({t, "Come back to me when you have those items"}, 0)
-        end
-			end
-
-			if choice2 == "No" then
-        player:dialogSeq({t, "Okay see you later"}, 0)
-      end
+      assignmentQuest.firstAssignment(player, npc)
 		end
 
 		if choice == "Take Second Assignment" then
@@ -227,14 +169,14 @@ PoetGuruNpc = {
 				if player:hasItem("fox_fur", 25) == true and
 				player:hasItem('red_fox_fur', 25) == true and
 				player:hasItem('fox_tail', 5) == true then
-                    player:dialogSeq(
-                        {
-                            t,
-                            "Great job!",
-							"Here is your reward"
-                        },
-                        1
-                    )
+        player:dialogSeq(
+            {
+                t,
+                "Great job!",
+            "Here is your reward"
+            },
+            1
+        )
 
 					player:removeItem("fox_fur",25)
 					player:removeItem("red_fox_fur",25)
