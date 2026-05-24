@@ -10,7 +10,7 @@ fire_nova = {
     local multiplier = 0.085 + (player.level + 1) / 1000
     local damage = math.floor(player.maxMagic * multiplier)
 
-    local magicCost = damage * 0.15
+    local magicCost =  math.floor(damage * 0.45)
     
     local spellFX = 3002
     local x = {-1,  1, -1,  0,  1, -1,  0,  1}
@@ -21,6 +21,7 @@ fire_nova = {
 			return
 		end
 
+    player.magic = player.magic - magicCost
 
 		for i = 1, #x do
 			local target = player:getObjectsInCell(
@@ -30,7 +31,7 @@ fire_nova = {
 				BL_MOB
 			)
 			if #target > 0 then
-				global_zap.cast(player, target[1], damage, magicCost, spellFX)
+				global_zap.cast(player, target[1], damage, 0, spellFX)
 			end
 
 			target = player:getObjectsInCell(
@@ -40,7 +41,7 @@ fire_nova = {
 				BL_PC
 			)
 			if #target > 0 then
-				local worked = global_zap.cast(player, target[1], damage, magicCost, spellFX)
+				local worked = global_zap.cast(player, target[1], damage, 0, spellFX)
 				if worked == 2 then
 					target:sendMinitext(player.name .. " cast " .. spellName .. " on you.")
 				end

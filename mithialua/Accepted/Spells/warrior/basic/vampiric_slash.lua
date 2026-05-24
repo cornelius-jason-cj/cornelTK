@@ -1,21 +1,21 @@
 vampiric_slash = {
-    cast = function(player)
-        local spellName = "Vampiric Slash"
-        local spellIdent = "vampiric_slash"
-		local aethers = 15000
-        local multiplier =  0.5
-        local damage = math.floor(player.maxHealth * multiplier )
-        local magicCost = player.maxMagic * 0.15
-        local spellFX = 1002
+  cast = function(player)
+    local spellName = "Vampiric Slash"
+    local spellIdent = "vampiric_slash"
+    local aethers = 15000
+    local multiplier = (0.075 + (player.level + 1) / 1000)
+    local damage = math.floor(player.maxHealth * multiplier )
+    local magicCost = math.floor(damage * 0.25)
+    local spellFX = 1002
 
-        if not player:canCast(1, 1, 0) then
-			return
-		end
+    if not player:canCast(1, 1, 0) then
+      return
+    end
 
-        if (player.magic < magicCost) then
-			player:sendMinitext("You do not have enough mana.")
-			return
-		end
+    if (player.magic < magicCost) then
+      player:sendMinitext("You do not have enough mana.")
+      return
+    end
 
 		local x = 0
 		local y = 0
@@ -34,12 +34,12 @@ vampiric_slash = {
 			return
 		end
 
-        local landed = 0
+    local landed = 0
 		local targetX = player.x + x
 		local targetY = player.y + y
 		local targets = player:getAliveObjectsInCell(map, targetX, targetY, BL_MOB)
 
-        if (#targets > 0) then
+    if (#targets > 0) then
 			global_attack.cast(
 				player,
 				targets[1],
@@ -70,20 +70,20 @@ vampiric_slash = {
 		end
 
 		if (landed == 1) then
-            player:addHealth2(damage)
-            player:setAether(spellIdent, aethers)
+      player:addHealth2(damage)
+      player:setAether(spellIdent, aethers)
 		end
 
-        player.magic = player.magic - magicCost
+    player.magic = player.magic - magicCost
 		player:sendStatus()
 		player:sendMinitext("You cast " .. spellName .. ".")
 		player:sendAction(6, 35)
     end,
 
     requirements = function(player)
-		local level = 5
+		local level = 25
 		local items = {"gold_acorn"}
-		local itemAmounts = {10}
+		local itemAmounts = {50}
 		local description = "Deal damage to your enemy and restore some of your health."
 		return level, items, itemAmounts, description
 	end

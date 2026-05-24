@@ -40,8 +40,8 @@ crashing_echo = {
         local damage = math.floor(player.maxMagic * multiplier)
 
         local spellFX = 4001
-        local x = {-2, -1,  0,  1,  2, -1,  0,  1, -1,  0,  1,  0,  0}
-        local y = { 0,  0,  0,  0,  0,  1,  1,  1, -1, -1, -1,  2, -2}
+        local x = {-2, -1,  1,  2, -1,  0,  1, -1,  0,  1,  0,  0}
+        local y = { 0,  0,  0,  0,  1,  1,  1, -1, -1, -1,  2, -2}
         
         for i = 1, #x do
         local targets = player:getObjectsInCell(

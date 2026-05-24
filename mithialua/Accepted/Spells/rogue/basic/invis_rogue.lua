@@ -42,9 +42,9 @@ invis_rogue = {
     end,
 
     requirements = function(player)
-      local level = 35
+      local level = 25
       local items = {"gold_acorn"}
-      local itemAmounts = {10}
+      local itemAmounts = {50}
       local description = "Hide in the shadows and gain strength."
       return level, items, itemAmounts, description
     end
