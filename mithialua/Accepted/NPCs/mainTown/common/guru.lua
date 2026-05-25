@@ -36,8 +36,8 @@ MayorOfCityNpc = {
 
     if player.class ~= 0 then
       table.insert(opts, "Exploration Quest")
-      table.insert(opts, "---------------------")
-      table.insert(opts, "Gathering Quest")
+      -- table.insert(opts, "---------------------")
+      -- table.insert(opts, "Gathering Quest")
       -- table.insert(opts, "Mythic Quest")
     end
     

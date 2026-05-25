@@ -83,14 +83,9 @@ openingSceneUsedMaps = {}
 openingSceneQueue = {}
 
 advice = {
-	"First time in RetroTK? Visit www.retroTK.com or check out the boards",
-	"Your legend is the history of your character from experiences to accomplishments and more.",
 	"Press 'F1' to gather information about character.",
-	"Visit a trainer today to learn new spells. At level 5, you may choose your destiny.",
 	"Be courteous and mindful to your fellow players and obey the laws.",
-	"Subpaths are chosen at level 99 by visiting the leader of your subpath choice.",
-	"Be sure to visit the neighboring towns and cities to learn how to craft better gear.",
-	"Find a bug/error? Press 'b to open boards and post or /report the issue"
+	"Be sure to visit the towns to learn how to craft better gear.",
 }
 
 getCurSeason = function()

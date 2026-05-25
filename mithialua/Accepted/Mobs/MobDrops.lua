@@ -85,7 +85,7 @@ local _mobDropsTable = {
 	},
   ["bear"] = {
 		loot = {
-			items = {"bears_liver", "bear_fur"},
+			items = {"bear_liver", "bear_fur"},
 			amounts = {1, 1},
 			rates = {50, 25}
 		}
