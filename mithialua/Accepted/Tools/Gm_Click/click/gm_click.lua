@@ -597,7 +597,7 @@ gm_click = {
 				elseif choice == 2 then
 					if target:hasItem(items[found], amount[found]) then
 						target:removeItem(items[found], amount[found])
-						player:addItem(items[found], amount[found])
+						-- player:addItem(items[found], amount[found])
 						player:sendMinitext("Done!!")
 						gm_click.inventory(player, target, npc)
 					else

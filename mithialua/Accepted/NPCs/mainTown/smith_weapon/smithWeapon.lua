@@ -1,8 +1,8 @@
 
 local essenceConfig = {
-  ["Basic Weapon Essence (BAE)"] = {
-    item = "basic_weapon_essence",
-
+  {
+    itemIdentifier = "basic_weapon_essence",
+    itemName = "Basic Weapon Essence (BAE)",
     requirements = {
       {
         itemIdentifier = "tiger_pelt",
@@ -15,18 +15,22 @@ local essenceConfig = {
         amount = 40
       }
     },
-
     expTable = {
       [1] = 8000,
       [5] = 45000,
       [10] = 110000,
       [20] = 252000
+    },
+    karmaTable = {
+      [1] = 0.01,
+      [5] = 0.05,
+      [10] = 0.1,
+      [20] = 0.2
     }
   },
-
-  ["Refine Weapon Essence (RAE)"] = {
-    item = "refine_weapon_essence",
-
+  {
+    itemIdentifier = "refine_weapon_essence",
+    itemName = "Basic Weapon Essence (BAE)",
     requirements = {
       {
         itemIdentifier = "fox_tail",
@@ -39,14 +43,47 @@ local essenceConfig = {
         amount = 40
       }
     },
-
     expTable = {
       [1] = 12000,
       [5] = 67500,
       [10] = 165000,
       [20] = 378000
+    },
+    karmaTable = {
+      [1] = 0.01,
+      [5] = 0.05,
+      [10] = 0.1,
+      [20] = 0.2
     }
-  }
+  },
+  {
+    itemIdentifier = "mystic_weapon_essence",
+    itemName = "Mystic Weapon Essence (MWE)",
+    requirements = {
+      {
+        itemIdentifier = "fox_tail",
+        itemName = "Fox Tail",
+        amount = 20
+      },
+      {
+        itemIdentifier = "topaz",
+        itemName = "Topaz",
+        amount = 40
+      }
+    },
+    expTable = {
+      [1] = 12000,
+      [5] = 67500,
+      [10] = 165000,
+      [20] = 378000
+    },
+    karmaTable = {
+      [1] = 0.01,
+      [5] = 0.05,
+      [10] = 0.1,
+      [20] = 0.2
+    }
+  },
 }
 
 local weaponConfig = {
@@ -91,6 +128,18 @@ local function getPlayerWeaponDisplay(player)
   local classWeapon = weaponConfig[player.baseClass]
 
   return classWeapon.display
+end
+
+local function getEssenceConfigByName(name)
+
+  for i = 1, #essenceConfig do
+
+    if essenceConfig[i].itemName == name then
+      return essenceConfig[i]
+    end
+  end
+
+  return nil
 end
 
 local function buildRequirementText(requirements)
@@ -139,11 +188,20 @@ local function getNextForgeItem(basWeapon, nextLevel)
   return basWeapon .. "_" .. nextLevel
 end
 
-local function craftEssence( player, npc, essenceName, quantity)
+local function removeRequirements(player, requirements)
+  for i = 1, #requirements do
+    player:removeItem(
+      requirements[i].itemIdent,
+      requirements[i].amount
+    )
+  end
+end
+
+local function craftEssence( player, npc, config, quantity)
 
   local t = getNpcTable(npc)
 
-  local config = essenceConfig[essenceName]
+  -- local config = essenceConfig[essenceName]
 
   if config == nil then
     player:dialogSeq({
@@ -155,47 +213,35 @@ local function craftEssence( player, npc, essenceName, quantity)
   end
 
   for i = 1, #config.requirements do
+    local requirement = config.requirements[i]
+    local itemNeed = requirement.itemIdentifier
+    local totalNeed = requirement.amount * quantity
 
-    local requirement =
-      config.requirements[i]
+    player:sendMinitext("itemNeed " .. itemNeed)
+    player:sendMinitext("quantity " .. quantity)
+    player:sendMinitext("totalNeed " .. totalNeed)
 
-    local totalNeed =
-      requirement.amount * quantity
-
-    if not player:hasItem(
-      requirement.itemIdentifier,
-      totalNeed
-    ) then
-
-      player:dialogSeq({
-        t,
-        "You do not have enough materials."
-      }, 0)
-
+    if player:hasItem(itemNeed, totalNeed) ~= true
+    then
+      player:dialogSeq({t, "It looks like you don't have enough ingredients."}, 0)
       return
     end
   end
 
   for i = 1, #config.requirements do
-
-    local requirement =
-      config.requirements[i]
-
-    local totalNeed =
-      requirement.amount * quantity
-
-    player:removeItem(
-      requirement.itemIdentifier,
-      totalNeed
-    )
+    local requirement = config.requirements[i]
+    local totalNeed = requirement.amount * quantity
+    player:removeItem(requirement.itemIdentifier, totalNeed)
   end
 
-  local gainedExp =
-    config.expTable[quantity] or 0
+  -- local gainedExp = config.expTable[quantity] or 0
+  local gainedKarma = config.karmaTable[quantity] or 0
 
-  player:giveXP(gainedExp)
+  -- player:giveXP(gainedExp)
+  player.karma = player.karma + gainedKarma
 
   player:sendAnimation(49)
+  player:addItem(config.itemIdentifier, quantity)
 
   player:dialogSeq({
     t,
@@ -203,7 +249,7 @@ local function craftEssence( player, npc, essenceName, quantity)
     "You created " ..
     quantity ..
     " " ..
-    essenceName .. "."
+    config.itemName .. "."
   }, 0)
 end
 
@@ -215,8 +261,7 @@ local function forgeWeapon(player, npc)
   }
 
   local baseWeapon = getPlayerWeaponBase(player)
-  local currentLevel, currentItem =
-    getCurrentForgeLevel(player, baseWeapon)
+  local currentLevel, currentItem = getCurrentForgeLevel(player, baseWeapon)
 
   if currentLevel == nil then
     player:dialogSeq({
@@ -238,13 +283,12 @@ local function forgeWeapon(player, npc)
 
   local possibleForge = 1
 
-  local essenceNeed = 
-    possibleForge * forgeCost
+  local essenceNeed = possibleForge * forgeCost
 
-  if not player:hasItem(
+  if player:hasItem(
     "basic_weapon_essence",
     essenceNeed
-  ) then
+  ) ~= true then
 
     player:dialogSeq({
       t,
@@ -254,15 +298,10 @@ local function forgeWeapon(player, npc)
     return
   end
 
-  player:removeItem(
-    "basic_weapon_essence",
-    essenceNeed
-  )
-
+  player:removeItem("basic_weapon_essence", essenceNeed)
   player:removeItem(currentItem, 1)
 
-  local nextLevel =
-    currentLevel + possibleForge
+  local nextLevel = currentLevel + possibleForge
 
   local nextWeapon =
     getNextForgeItem(
@@ -307,11 +346,8 @@ SmithWeaponNpc = {
     if choice == "Create Essence" then
       local essenceList = {}
 
-      for essenceName, _ in pairs(essenceConfig) do
-        table.insert(
-          essenceList,
-          essenceName
-        )
+      for i = 1, #essenceConfig do
+        table.insert(essenceList, essenceConfig[i].itemName)
       end
 
       local choice2 = player:menuString(
@@ -319,7 +355,7 @@ SmithWeaponNpc = {
         essenceList
       )
 
-      local config = essenceConfig[choice2]
+      local config = getEssenceConfigByName(choice2)
 
       local choice3 = player:menuString(
         "Each essence need: \n" ..
@@ -333,7 +369,7 @@ SmithWeaponNpc = {
       craftEssence(
         player,
         npc,
-        choice2,
+        config,
         choice3
       )
     end
