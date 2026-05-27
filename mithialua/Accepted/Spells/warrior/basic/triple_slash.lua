@@ -2,7 +2,7 @@ triple_slash = {
     cast = function(player)
       local spellName = "Triple Slash"
       local spellIdent = "triple_slash"
-		  local aethers = 3000
+		  local aethers = 1000
 
       if not player:canCast(1, 1, 0) then
         return
@@ -15,9 +15,9 @@ triple_slash = {
       -- local magicCost = player.maxMagic * 0.1
       -- local healthCost = math.floor(player.maxHealth * 0.1 )
       -- local damage = math.floor(player.maxHealth * 0.2 )
-      local multiplier = (0.125 + (player.level + 1) / 1000)
+      local multiplier = (0.175 + (player.level + 1) / 1000)
       local damage = math.floor(player.maxHealth * multiplier)
-      local healthCost =  math.floor(damage * 0.25)
+      local healthCost =  math.floor(damage * 0.15)
       -- local magicCost = 0
       local spellFX = 1001
       local x = {-1, 0, 1, 0}
@@ -30,6 +30,13 @@ triple_slash = {
       if (player.health < healthCost) then
         player:sendMinitext("You do not have enough vita.")
         return
+      end
+
+      
+      if (player.health - healthCost < 100) then
+        player.health = 100
+      else
+        player.health = player.health - healthCost
       end
 
 
@@ -74,7 +81,7 @@ triple_slash = {
         end
         
     -- player.magic = player.magic - magicCost
-    player.health = player.health - healthCost
+    -- player.health = player.health - healthCost
 		player:sendStatus()
     player:setAether(spellIdent, aethers)
 		player:sendMinitext("You cast " .. spellName .. ".")

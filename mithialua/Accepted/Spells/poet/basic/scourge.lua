@@ -1,6 +1,6 @@
 scourge_poet = {
 	cast = function(player)
-        local spellIdent = "scourge_poet"
+    local spellIdent = "scourge_poet"
 		local duration = 30000
 		local magicCost = player.maxMagic * 0.1
 		local aethers = 30000
@@ -33,7 +33,7 @@ scourge_poet = {
 		player:sendStatus()
 		player:playSound(2)
 		player:sendMinitext("You cast Scourge.")
-        player:setAether(spellIdent, aethers)
+    player:setAether(spellIdent, aethers)
 		-- target:setDuration("scourge_poet", duration)
 		-- target:sendAnimation(39, 0)
 

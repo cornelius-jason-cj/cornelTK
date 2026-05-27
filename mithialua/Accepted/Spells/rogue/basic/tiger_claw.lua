@@ -13,10 +13,10 @@ tiger_claw = {
       -- local damage = math.floor(player.maxHealth * multiplier ) * rage
       -- local currentMagic = player.magic
       -- local magicCost = player.maxMagic * 0.1
-      local multiplier = (0.175 + (player.level + 1) / 1000)
+      local multiplier = (0.275 + (player.level + 1) / 1000)
       local damage = math.floor(player.maxHealth * multiplier)
-      local healthCost = math.floor(damage * 0.15)
-      local magicCost = math.floor(damage * 0.15)
+      local healthCost = math.floor(damage * 0.075)
+      local magicCost = math.floor(damage * 0.075)
       local spellFX = 2001
       local side = player.side
       local x = {0, 0, 0}
@@ -34,13 +34,15 @@ tiger_claw = {
         return
       end
 
-      if (player.magic < healthCost) then
+      if (player.magic < magicCost) then
 			  player:sendMinitext("You do not have enough mana.")
 			  return
 		  end
-      if (player.health < healthCost) then
-			  player:sendMinitext("You do not have enough vita.")
-			  return
+
+      if (player.health - healthCost < 100) then
+        player.health = 100
+      else
+        player.health = player.health - healthCost
       end
 
       for i = 1, 3 do
@@ -84,7 +86,7 @@ tiger_claw = {
       end
         
     player.magic = player.magic - magicCost
-    player.health = player.health - healthCost
+    -- player.health = player.health - healthCost
     player:sendStatus()
     player:setAether(spellIdent, aethers)
 		player:sendMinitext("You cast " .. spellName .. ".")

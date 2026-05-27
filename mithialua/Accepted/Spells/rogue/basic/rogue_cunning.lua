@@ -1,9 +1,9 @@
 rogue_cunning = {
-    cast = function(player)
-        local spellName = "Rogue Cunning"
-        local spellIdent = "rogue_cunning"
-        local durations = math.max(1, player.level - 9) * 10000
-        local multiplier = 8
+  cast = function(player)
+    local spellName = "Rogue Cunning"
+    local spellIdent = "rogue_cunning"
+    local durations = math.max(1, player.level - 9) * 10000
+    local multiplier = 8
 		local baseVita = math.floor(player.baseHealth / 20000)
 		local baseMana = math.floor(player.baseMagic / 10000)
 		local baseMultiplier = baseVita + baseMana
@@ -28,9 +28,11 @@ rogue_cunning = {
 		player:sendStatus()
 		player:sendAction(6, 35)
 	end,
+
 	recast = function(player)
 		player.rage = multiplier
 	end,
+
 	while_cast = function(player)
 		local defaultMultiplier = 8
 		local vitaMultiplier = math.floor(player.baseHealth / 20000)
@@ -41,9 +43,11 @@ rogue_cunning = {
 
 		player.rage = finalMultiplier
 	end,
+
 	uncast = function(player)
 		player.rage = 1
 	end,
+  
 	requirements = function(player)
 		local level = 5
 		local items = {"gold_acorn"}

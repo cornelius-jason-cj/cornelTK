@@ -53,7 +53,7 @@ assignmentQuest = {
           {
             t,
             "Great job! Your karma has slightly increased.",
-            "Come back to me when you reach level 18."
+            "Come back to me when you reach level 35."
           },
           1
         )

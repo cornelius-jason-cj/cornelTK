@@ -2,20 +2,20 @@ calming_aura = {
     cast = function(player)
 		local spellName = "Calming Aura"
 		local spellIdent = "calming_aura"
-    local healthCost = math.floor(player.maxHealth * 0.25)
-		local magicCost = math.floor(player.maxMagic * 0.25)
-    local aethers = 20000
-    local durations = 15000
+    -- local healthCost = math.floor(player.maxHealth * 0.15)
+		local magicCost = math.floor((player.maxHealth + player.maxMagic) * 0.25)
+    local aethers = 35000
+    local durations = 30000
     local spellFX = 4002
 
 		if (not player:canCast(1, 1, 0)) then
 			return
 		end
 
-    if (player.health < healthCost) then
-      player:sendMinitext("You need " .. healthCost .. " vita")
-      return
-    end
+    -- if (player.health < healthCost) then
+    --   player:sendMinitext("You need " .. healthCost .. " vita")
+    --   return
+    -- end
 
 		if (player.magic < magicCost) then
 			player:sendMinitext("You need " .. magicCost .. " mana")
@@ -31,7 +31,7 @@ calming_aura = {
     player:setDuration(spellIdent, durations)
     player:setAether(spellIdent, aethers)
 		player:sendMinitext("You cast " .. spellName .. ".")
-    player.health = player.health - healthCost
+    -- player.health = player.health - healthCost
 		player.magic = player.magic - magicCost
 		player:sendStatus()
 
@@ -50,7 +50,7 @@ calming_aura = {
 	while_cast = function(player)
 		local spellName = "Calming Aura"
 		local spellIdent = "calming_aura"
-    local multiplier = (0.075 + (player.level + 1) / 1000)
+    local multiplier = (0.055 + (player.level + 1) / 1000)
     -- local healAmount = math.floor(player.maxHealth * 0.025 + player.maxMagic * 0.05)
     local healVitaAmount = math.floor(player.maxHealth * multiplier)
     local healManaAmount = math.floor(player.maxMagic * multiplier)

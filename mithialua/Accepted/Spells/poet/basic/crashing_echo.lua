@@ -2,14 +2,14 @@ crashing_echo = {
     cast = function(player)
       local spellName = "Crashing Echo"
       local spellIdent = "crashing_echo"
-		  local aethers = 25000
+		  local aethers = 20000
       local durations = 15000
 
       if not player:canCast(1, 1, 0) then
         return
       end
 
-      local multiplier = (0.15 + (player.level + 1) / 1000)
+      local multiplier = (0.25 + (player.level + 1) / 1000)
       local damage = math.floor(player.maxMagic * multiplier)
 
       local currentMagic = player.magic

@@ -230,13 +230,11 @@ local function completeCaveQuest(
   end
 
   if choice == "Yes" then
-    player:sendMinitext("1")
     if hasRequirements(
       player,
       cave.requirements
     ) == false then
 
-    player:sendMinitext("3")
       player:dialogSeq({
         t,
         "Come back to me when you have those items."
@@ -245,7 +243,6 @@ local function completeCaveQuest(
       return
     end
 
-    player:sendMinitext("4")
     removeRequirements(
       player,
       cave.requirements

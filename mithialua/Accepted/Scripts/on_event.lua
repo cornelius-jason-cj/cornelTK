@@ -241,7 +241,6 @@ equip_delay = {
 }
 
 onDeathPlayer = function(player)
-  player:sendMinitext("onDeathPlayer")
 	player:setDuration("death_save", 500)
 end
 

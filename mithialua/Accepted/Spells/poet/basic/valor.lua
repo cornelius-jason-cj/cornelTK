@@ -19,12 +19,12 @@ valor_poet = {
 	end,
 
 	recast = function(player)
-		player.might = player.might + 20
+		player.might = player.might + player.level
 		player:sendStatus()
 	end,
 
 	uncast = function(player)
-		player.might = player.might - 20
+		player.might = player.might - player.level
 		player:sendStatus()
 	end,
 
