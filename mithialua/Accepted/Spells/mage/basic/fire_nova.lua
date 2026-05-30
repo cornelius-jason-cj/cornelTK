@@ -7,7 +7,7 @@ fire_nova = {
 			return
 		end
 
-    local multiplier = 0.095 + (player.level + 1) / 1000
+    local multiplier = (0.065 + player.karma)
     local damage = math.floor(player.maxMagic * multiplier)
 
     local magicCost =  math.floor(damage * 0.375)
@@ -56,7 +56,7 @@ fire_nova = {
 	requirements = function(player)
 		local level = 10
 		local items = {"gold_acorn"}
-		local itemAmounts = {10}
+		local itemAmounts = {30}
 		local description = "Strike your surroundings with fire."
 		return level, items, itemAmounts, description
 	end

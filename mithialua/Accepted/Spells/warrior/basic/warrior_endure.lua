@@ -1,6 +1,6 @@
 warrior_endure = {
-    cast = function(player)
-        local durations = math.max(1, player.level - 9) * 10000
+  cast = function(player)
+    local durations = math.max(1, player.level - 9) * 10000
 
 		if player:checkIfCast(sanctuaries) then
 			return

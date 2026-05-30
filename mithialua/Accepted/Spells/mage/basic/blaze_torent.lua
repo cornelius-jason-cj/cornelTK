@@ -9,7 +9,7 @@ blaze_torent = {
         return
       end
 
-      local multiplier = (0.115 + (player.level + 1) / 1000)
+      local multiplier = (0.075 + player.karma)
       local damage = math.floor(player.maxMagic * multiplier)
 
       local magicCost = damage * 0.1

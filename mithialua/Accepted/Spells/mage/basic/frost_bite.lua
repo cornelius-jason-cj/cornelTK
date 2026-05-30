@@ -69,7 +69,7 @@ frost_bite = {
 	requirements = function(player)
 		local level = 10
 		local items = {"gold_acorn"}
-		local itemAmounts = {10}
+		local itemAmounts = {30}
 		local description = "Freeze enemy around you."
 		return level, items, itemAmounts, description
 	end

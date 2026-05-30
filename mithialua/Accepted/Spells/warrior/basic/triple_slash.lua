@@ -8,24 +8,12 @@ triple_slash = {
         return
       end
 
-      -- local multiplier = (0.25 + (player.level + 1) / 1000)
-      -- local rage = player.rage / 3
-      -- local damage = math.floor(player.maxHealth * multiplier ) * rage
-      -- local currentMagic = player.magic
-      -- local magicCost = player.maxMagic * 0.1
-      -- local healthCost = math.floor(player.maxHealth * 0.1 )
-      -- local damage = math.floor(player.maxHealth * 0.2 )
-      local multiplier = (0.175 + (player.level + 1) / 1000)
+      local multiplier = (0.275 + player.karma)
       local damage = math.floor(player.maxHealth * multiplier)
       local healthCost =  math.floor(damage * 0.15)
-      -- local magicCost = 0
       local spellFX = 1001
       local x = {-1, 0, 1, 0}
       local y = {0, -1, 0, 1}
-        
-      -- if (player.magic < magicCost) then
-			--   player:sendMinitext("You do not have enough mana.")
-			-- return
 
       if (player.health < healthCost) then
         player:sendMinitext("You do not have enough vita.")

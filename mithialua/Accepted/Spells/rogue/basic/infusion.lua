@@ -1,23 +1,31 @@
 
 infusion_rogue = {
-    cast = function(player)
-        local spellName = "Infusion"
-        local spellIdent = "infusion_rogue"
-        local multiplier = 0.075 + (player.level + 1) / 1000
-        local healAmount = math.floor(player.maxMagic * multiplier )
-		local aether = (11 - math.floor(player.level / 9)) * 1000
-        local magicCost = healAmount * 0.25
+  cast = function(player)
+    local spellName = "Infusion"
+    local spellIdent = "infusion_rogue"
+		local aethers = 20000
+    local multiplier = (0.085 + player.karma)
+    local damage = math.floor(player.maxHealth * multiplier)
+    local healthCost =  math.floor(damage * 0.15)
+
 		if (not player:canCast(1, 1, 0)) then
 			return
 		end
-		if (player.magic < magicCost) then
-			player:sendMinitext("You do not have enough mana.")
-			return
-		end
-		player.attacker = player.ID
-		player:addHealthExtend(healAmount, 0, 0, 0, 0, 0)
-		player.magic = player.magic - magicCost
-        player:setAether(spellIdent, aether)
+		
+    if (player.health < healthCost) then
+      player:sendMinitext("You do not have enough vita.")
+      return
+    end
+
+    if (player.health - healthCost < 100) then
+      player.health = 100
+    else
+      player.health = player.health - healthCost
+    end
+		
+    player.attacker = player.ID
+		target:addMana(damage)
+    player:setAether(spellIdent, aether)
 		player:playSound(5)
 		player:sendAnimation(293)
 		player:sendMinitext("You cast " .. spellName)
@@ -29,7 +37,7 @@ infusion_rogue = {
 		local level = 5
 		local items = {"gold_acorn"}
 		local itemAmounts = {10}
-		local description = "Heal your vita depends on your mana"
+		local description = "Heal your mana depends on your damage"
 		return level, items, itemAmounts, description
 	end
 }

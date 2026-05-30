@@ -1,18 +1,18 @@
 shadow_leech = {
-    cast = function(player)
-        local spellName = "Shadow Leech"
-        local spellIdent = "shadow_leech"
+  cast = function(player)
+    local spellName = "Shadow Leech"
+    local spellIdent = "shadow_leech"
 		local aethers = 15000
-        local multiplier = (0.25 + (player.level + 1) / 1000)
-        local damage = math.floor(player.maxHealth * multiplier )
-        local magicCost = player.maxMagic * 0.15
-        local spellFX = 1002
+    local multiplier = (0.185 + player.karma)
+    local damage = math.floor(player.maxHealth * multiplier )
+    local magicCost = player.maxMagic * 0.15
+    local spellFX = 1002
 
-        if not player:canCast(1, 1, 0) then
+    if not player:canCast(1, 1, 0) then
 			return
 		end
 
-        if (player.magic < magicCost) then
+    if (player.magic < magicCost) then
 			player:sendMinitext("You do not have enough mana.")
 			return
 		end
@@ -34,12 +34,12 @@ shadow_leech = {
 			return
 		end
 
-        local landed = 0
+    local landed = 0
 		local targetX = player.x + x
 		local targetY = player.y + y
 		local targets = player:getAliveObjectsInCell(map, targetX, targetY, BL_MOB)
 
-        if (#targets > 0) then
+    if (#targets > 0) then
 			global_attack.cast(
 				player,
 				targets[1],
@@ -51,7 +51,7 @@ shadow_leech = {
 			landed = 1
 		end
         
-        targets = player:getAliveObjectsInCell(map, targetX, targetY, BL_PC)
+    targets = player:getAliveObjectsInCell(map, targetX, targetY, BL_PC)
 
 
 		if (#targets > 0) then
@@ -70,11 +70,11 @@ shadow_leech = {
 		end
 
 		if (landed == 1) then
-            player:addHealth2(damage)
-            player:setAether(spellIdent, aethers)
+      player:addHealth2(damage)
+      player:setAether(spellIdent, aethers)
 		end
 
-        player.magic = player.magic - magicCost
+    player.magic = player.magic - magicCost
 		player:sendStatus()
 		player:sendMinitext("You cast " .. spellName .. ".")
 		player:sendAction(6, 35)
