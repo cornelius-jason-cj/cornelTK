@@ -4290,18 +4290,38 @@ function Player.giveXPStacked(player, amount, bonus)
 			return
 		end
 
-		if (player.level >= 15 and player.registry["first_assignment"] == 0) then
-			player:sendMinitext("You cannot gain more experience. Please meet your Guru to receive your first assignment.")
+		if (player.level >= 15 and player.karma < 0.01220 ) then
+			player:sendMinitext("You cannot gain more experience until your karma is Sergeant")
 			return
 		end
 
-		if (player.level >= 35 and player.registry["second_assignment"] == 0) then
-			player:sendMinitext("You cannot gain more experience. Please meet your Guru to receive your second assignment.")
+		if (player.level >= 35 and player.karma < 0.02439) then
+			player:sendMinitext("You cannot gain more experience until your karma is Captain")
 			return
 		end
 
-		if (player.level >= 55 and player.registry["third_assignment"] == 0) then
-			player:sendMinitext("You cannot gain more experience. Please meet your Guru to receive your second assignment.")
+		if (player.level >= 50 and player.karma < 0.08806) then
+			player:sendMinitext("You cannot gain more experience until your karma is Colonel")
+			return
+		end
+
+    if (player.level >= 65 and player.karma < 0.14020) then
+			player:sendMinitext("You cannot gain more experience until your karma is General")
+			return
+		end
+
+    if (player.level >= 80 and player.karma < 0.20537) then
+			player:sendMinitext("You cannot gain more experience until your karma is Commander")
+			return
+		end
+
+    if (player.level >= 95 and player.karma < 0.28683) then
+			player:sendMinitext("You cannot gain more experience until your karma is Supreme Commander")
+			return
+		end
+
+    if (player.level == 99 and player.karma < 0.38867) then
+			player:sendMinitext("You cannot gain more experience until your karma is Sir")
 			return
 		end
 

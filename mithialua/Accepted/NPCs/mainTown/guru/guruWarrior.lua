@@ -25,26 +25,26 @@ WarriorGuruNpc = {
     table.insert(opts, "Quest Weapon")
     table.insert(opts, "Quest Armor")
 
-		if player.level >= 15 and
-		  player.registry["first_assignment"] == 0
-    then
-			table.insert(opts, "Take First Assignment")
-		end
+		-- if player.level >= 15 and
+		--   player.registry["first_assignment"] == 0
+    -- then
+		-- 	table.insert(opts, "Take First Assignment")
+		-- end
 
-		if player.level >= 35 and
-		  player.registry["first_assignment"] == 1 and
-		  player.registry["second_assignment"] == 0
-    then
-			table.insert(opts, "Take Second Assignment")
-		end
+		-- if player.level >= 35 and
+		--   player.registry["first_assignment"] == 1 and
+		--   player.registry["second_assignment"] == 0
+    -- then
+		-- 	table.insert(opts, "Take Second Assignment")
+		-- end
 
-		if player.level >= 55 and
-      player.registry["first_assignment"] == 1 and
-      player.registry["second_assignment"] == 1 and
-      player.registry["third_assignment"] == 0
-    then
-			table.insert(opts, "Take Third Assignment")
-		end
+		-- if player.level >= 55 and
+    --   player.registry["first_assignment"] == 1 and
+    --   player.registry["second_assignment"] == 1 and
+    --   player.registry["third_assignment"] == 0
+    -- then
+		-- 	table.insert(opts, "Take Third Assignment")
+		-- end
 
 		local choice = player:menuString(
 			"Hello! How can I help you today?",
@@ -102,7 +102,7 @@ WarriorGuruNpc = {
 
         player:addItem("gold_horse_mount", 1)
         player:addItem("wooden_saber", 1)
-        player:addGold(500)
+        player:addGold(50)
         player:updatePath(1, 0)
         player.baseHealth = 600
         player.baseMagic = 50

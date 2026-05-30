@@ -91,11 +91,12 @@ F1Npc = {
 		end
 
 		table.insert(opts, "Silver Thread")
+		table.insert(opts, "My Karma")
 		table.insert(opts, "Toggles")
 		-- table.insert(opts, "Storage")
 		-- table.insert(opts, "Teleport")
 
-		if player.level == 99 then
+		if (player.level == 99 and player.karma > 0.38867) then
 			table.insert(opts, "Convert Exp")
 		end
 
@@ -369,6 +370,14 @@ F1Npc = {
 			end
 		elseif choice == "Convert Exp" then
 			ExpSellerNpc.showShadowMainMenu(player, npc)
+    elseif choice == "My Karma" then
+      local info = KarmaSystem.getKarmaProgress(player)
+      player:dialogSeq({
+        t,
+        "Current Karma: " .. string.format("%.5f", player.karma) ..
+        "\n\nNext Title: " .. info.nextTitle ..
+        "\nNeed: " .. string.format("%.5f", info.needed) .. " karma"
+      }, 0)
 		end
 	end),
 

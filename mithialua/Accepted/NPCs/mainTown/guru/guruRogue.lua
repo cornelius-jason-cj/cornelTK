@@ -18,33 +18,33 @@ RogueGuruNpc = {
 		elseif player.baseClass == 2 then
 			table.insert(opts, "Learn Secret")
       table.insert(opts, "Forget Secret")
-			table.insert(opts, "Karma Check")
+			-- table.insert(opts, "Karma Check")
 		end
 
 		table.insert(opts, "---------------------")
     table.insert(opts, "Quest Weapon")
     table.insert(opts, "Quest Armor")
 
-		if player.level >= 15 and
-		  player.registry["first_assignment"] == 0
-    then
-			table.insert(opts, "Take First Assignment")
-		end
+		-- if player.level >= 15 and
+		--   player.registry["first_assignment"] == 0
+    -- then
+		-- 	table.insert(opts, "Take First Assignment")
+		-- end
 
-		if player.level >= 35 and
-		  player.registry["first_assignment"] == 1 and
-		  player.registry["second_assignment"] == 0
-    then
-			table.insert(opts, "Take Second Assignment")
-		end
+		-- if player.level >= 35 and
+		--   player.registry["first_assignment"] == 1 and
+		--   player.registry["second_assignment"] == 0
+    -- then
+		-- 	table.insert(opts, "Take Second Assignment")
+		-- end
 
-		if player.level >= 55 and
-      player.registry["first_assignment"] == 1 and
-      player.registry["second_assignment"] == 1 and
-      player.registry["third_assignment"] == 0
-    then
-			table.insert(opts, "Take Third Assignment")
-		end
+		-- if player.level >= 55 and
+    --   player.registry["first_assignment"] == 1 and
+    --   player.registry["second_assignment"] == 1 and
+    --   player.registry["third_assignment"] == 0
+    -- then
+		-- 	table.insert(opts, "Take Third Assignment")
+		-- end
 
 		local choice = player:menuString(
 			"Hello! How can I help you today?",
@@ -101,7 +101,7 @@ RogueGuruNpc = {
 
         player:addItem("white_horse_mount", 1)
         player:addItem("wooden_saber", 1)
-        player:addGold(500)
+        player:addGold(50)
         player:updatePath(2, 0)
 				player.baseHealth = 450
 				player.baseMagic = 125

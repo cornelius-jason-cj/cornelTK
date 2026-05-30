@@ -37,42 +37,42 @@ local _mobDropsTable = {
 		loot = {
 			items = {"rat_meat", "mica"},
 			amounts = {1, 1},
-			rates = {50, 25}
+			rates = {75, 50}
 		}
 	},
 	["mouse"] = {
 		loot = {
 			items = {"rat_meat", "mica"},
 			amounts = {1, 1},
-			rates = {50, 25}
+			rates = {75, 50}
 		}
 	},
 	["bat"] = {
 		loot = {
 			items = {"ginseng_piece", "ginseng"},
 			amounts = {1, 1},
-			rates = {50, 25}
+			rates = {75, 50}
 		}
 	},
 	["big_bat"] = {
 		loot = {
 			items = {"ginseng_piece", "ginseng"},
 			amounts = {1, 1},
-			rates = {50, 25}
+			rates = {75, 50}
 		}
 	},
 	["snake"] = {
 		loot = {
 			items = {"snake_meat", "fine_snake_meat"},
 			amounts = {1, 1},
-			rates = {50, 25}
+			rates = {75, 50}
 		}
 	},
 	["mud_snake"] = {
 		loot = {
 			items = {"snake_meat", "fine_snake_meat"},
 			amounts = {1, 1},
-			rates = {50, 25}
+			rates = {75, 50}
 		}
 	},
 	--------------
@@ -80,21 +80,21 @@ local _mobDropsTable = {
 		loot = {
 			items = {"pork", "rare_pork"},
 			amounts = {1, 1},
-			rates = {50, 25}
+			rates = {75, 50}
 		}
 	},
   ["bear"] = {
 		loot = {
 			items = {"bear_liver", "bear_fur"},
 			amounts = {1, 1},
-			rates = {50, 25}
+			rates = {75, 50}
 		}
 	},
   ["tiger"] = {
 		loot = {
 			items = {"tiger_meat", "tiger_pelt"},
 			amounts = {1, 1},
-			rates = {50, 25}
+			rates = {75, 50}
 		}
 	},
   --------------
@@ -102,14 +102,14 @@ local _mobDropsTable = {
 		loot = {
 			items = {"fox_fur"},
 			amounts = {1},
-			rates = {50}
+			rates = {75}
 		}
 	},
   ["blood_fox"] = {
 		loot = {
 			items = {"red_fox_fur"},
 			amounts = {1},
-			rates = {50}
+			rates = {75}
 		}
 	},
   ["nine_tailed_fox"] = {
@@ -124,14 +124,14 @@ local _mobDropsTable = {
 		loot = {
 			items = {"topaz"},
 			amounts = {1},
-			rates = {50}
+			rates = {75}
 		}
 	},
   ["pale_scorpion"] = {
 		loot = {
 			items = {"obsidian"},
 			amounts = {1},
-			rates = {50}
+			rates = {75}
 		}
 	},
   ["crimson_scorpion"] = {
@@ -146,35 +146,35 @@ local _mobDropsTable = {
 		loot = {
 			items = {"ash"},
 			amounts = {1},
-			rates = {50}
+			rates = {75}
 		}
 	},
   ["skeleton_mage"] = {
 		loot = {
 			items = {"ash","mage_bone"},
 			amounts = {1, 1},
-			rates = {50, 25}
+			rates = {75, 25}
 		}
 	},
   ["skeleton_warrior"] = {
 		loot = {
 			items = {"ash","warrior_bone"},
 			amounts = {1, 1},
-			rates = {50, 25}
+			rates = {75, 25}
 		}
 	},
   ["skeleton_rogue"] = {
 		loot = {
 			items = {"ash","rogue_bone"},
 			amounts = {1, 1},
-			rates = {50, 25}
+			rates = {75, 25}
 		}
 	},
   ["skeleton_poet"] = {
 		loot = {
 			items = {"ash","poet_bone"},
 			amounts = {1, 1},
-			rates = {50, 25}
+			rates = {75, 25}
 		}
 	},
 }
@@ -194,7 +194,7 @@ local _handleLoot = function(mob, loot, player)
 	for i = 1, #items do
 		local roll = math.random(1, 100000)
 
-		if (amounts[i] > 0 and roll <= (rates[i] + karma) * 1000) then
+		if (amounts[i] > 0 and roll <= rates[i] * 1000) then
       -- mob:dropItem(items[i], 1, 0, 0)
       player:addItem(items[i], 1)
 		end

@@ -35,7 +35,8 @@ MayorOfCityNpc = {
     end
 
     if player.class ~= 0 then
-      table.insert(opts, "Exploration Quest")
+      table.insert(opts, "I need your guidance")
+      -- table.insert(opts, "Exploration Quest")
       -- table.insert(opts, "---------------------")
       -- table.insert(opts, "Gathering Quest")
       -- table.insert(opts, "Mythic Quest")
@@ -281,49 +282,58 @@ MayorOfCityNpc = {
     if choice == "I need your guidance" then
       local level = player.level
 
-      if level < 15 then
+      -- if level < 25 then
         player:dialogSeq(
           {
             t,
-            "Greetings, young one. I sense you are seeking knowledge and guidance on your journey.",
-            "As you grow stronger, you will soon find yourself at a pivotal point... When you reach level 15, your guru will bestow upon you a challenging assignment.",
-            "You will need to prove your worth. From what I've heard, you will be required to gather 15 items dropped by the creatures and mysteries lurking in fields and caves.",
-            "Here is the cave coordinates\nField 01 (001, 013)\nField 02 (015, 010)\nField 03 (004, 016)",
-            "This is all I can reveal for now. Stay vigilant and trust in your path, for many trials lie ahead."
-          },
-          1
-        )
-      end
-
-      if level < 35 then
-        player:dialogSeq(
-          {
-            t,
-            "Greetings, young one. I sense you are seeking knowledge and guidance on your journey.",
-            "As you grow stronger, you will soon find yourself at a pivotal point... When you reach level 35, your guru will bestow upon you a challenging assignment.",
-            "You will need to prove your worth. From what I've heard, you will be required to gather items dropped by the creatures in fox cave.",
-            "Fox cave is located at poet village then you go to field 09 (004, 014)",
-            "This is all I can reveal for now. Stay vigilant and trust in your path, for many trials lie ahead."
+            "Greetings, young one. I sense great potential within you, though your journey has only just begun.",
+            
+            "For now, focus on growing stronger and gaining experience. Once you reach level 15, your guru will entrust you with an important assignment that will test both your strength and determination.",
+            
+            "Until then, I recommend visiting the Repeatable Quest Master at (003, 042). Completing repeatable quests is an excellent way to earn gold and support your adventures.",
+            
+            "Use your earnings wisely. Purchase potions whenever necessary, and do not forget to complete your Weapon Quest and Armor Quest after changing your job. The rewards will greatly aid you in battle.",
+            
+            "Remember this well: Karma is one of the most important aspects of life in this world. Your Karma rank will unlock new opportunities and challenges as you progress. You can check your current Karma status by pressing F1.",
+            
+            "If you seek stronger monsters and greater rewards, speak with the Teleport NPC at (018, 042). They can send you to various dungeons where many adventures await.",
+            
+            "Walk your path with patience and courage. Strength alone is not enough—your actions and Karma will shape the future that lies before you."
           },
           1
         )
         return
-      end
+      -- end
 
-      if level < 55 then
-        player:dialogSeq(
-          {
-            t,
-            "Greetings, young one. I sense you are seeking knowledge and guidance on your journey.",
-            "As you grow stronger, you will soon find yourself at a pivotal point... When you reach level 55, your guru will bestow upon you a challenging assignment.",
-            "You will need to prove your worth. From what I've heard, you will be required to gather bones dropped by the creatures in skeleton cave.",
-            "Skeleton cave is located at rogue village then you go to field 09 (004, 014)",
-            "This is all I can reveal for now. Stay vigilant and trust in your path, for many trials lie ahead."
-          },
-          1
-        )
-        return
-      end
+      -- if level < 35 then
+      --   player:dialogSeq(
+      --     {
+      --       t,
+      --       "Greetings, young one. I sense you are seeking knowledge and guidance on your journey.",
+      --       "As you grow stronger, you will soon find yourself at a pivotal point... When you reach level 35, your guru will bestow upon you a challenging assignment.",
+      --       "You will need to prove your worth. From what I've heard, you will be required to gather items dropped by the creatures in fox cave.",
+      --       "Fox cave is located at poet village then you go to field 09 (004, 014)",
+      --       "This is all I can reveal for now. Stay vigilant and trust in your path, for many trials lie ahead."
+      --     },
+      --     1
+      --   )
+      --   return
+      -- end
+
+      -- if level < 55 then
+      --   player:dialogSeq(
+      --     {
+      --       t,
+      --       "Greetings, young one. I sense you are seeking knowledge and guidance on your journey.",
+      --       "As you grow stronger, you will soon find yourself at a pivotal point... When you reach level 55, your guru will bestow upon you a challenging assignment.",
+      --       "You will need to prove your worth. From what I've heard, you will be required to gather bones dropped by the creatures in skeleton cave.",
+      --       "Skeleton cave is located at rogue village then you go to field 09 (004, 014)",
+      --       "This is all I can reveal for now. Stay vigilant and trust in your path, for many trials lie ahead."
+      --     },
+      --     1
+      --   )
+      --   return
+      -- end
     end
 
     if choice == "Exploration Quest" then
@@ -356,44 +366,6 @@ MayorOfCityNpc = {
     end
 
     if choice == "Gathering Quest" then
-      local opts = {}
-      
-      if player:hasLegend("explore_field_cave_02") == true then
-        table.insert(opts, "Field Cave 02")
-      end
-
-      if player:hasLegend("explore_field_cave_03") == true then
-        table.insert(opts, "Field Cave 03")
-      end
-
-      if player:hasLegend("explore_field_cave_04") == true then
-        table.insert(opts, "Field Cave 04")
-      end
-
-      if player:hasLegend("explore_field_cave_05") == true then
-        table.insert(opts, "Field Cave 05")
-      end
-
-      local choice = player:menuString(
-        "Which cave do you want to explore?",
-        opts
-      )
-
-      if choice == "Field Caves 02" then
-        explorationFieldQuest.fieldCaves(player, npc)
-      end
-
-      if choice == "Field Caves 03" then
-        explorationFieldQuest.fieldCaves(player, npc)
-      end
-
-      if choice == "Field Caves 04" then
-        explorationFieldQuest.fieldCaves(player, npc)
-      end
-
-      if choice == "Field Caves 05" then
-        explorationFieldQuest.fieldCaves(player, npc)
-      end
 
     end
 

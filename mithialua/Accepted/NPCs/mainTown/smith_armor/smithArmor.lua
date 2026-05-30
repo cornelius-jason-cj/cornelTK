@@ -28,29 +28,29 @@ local essenceConfig = {
       [20] = 0.2
     }
   },
-  {
-    itemIdentifier = "refine_armor_essence",
-    itemName = "Rasic Armor Essence (RAE)",
-    requirements = {
-      {
-        itemIdentifier = "fox_tail",
-        itemName = "Fox Tail",
-        amount = 20
-      },
-      {
-        itemIdentifier = "topaz",
-        itemName = "Topaz",
-        amount = 40
-      }
-    },
+  -- {
+  --   itemIdentifier = "refine_armor_essence",
+  --   itemName = "Rasic Armor Essence (RAE)",
+  --   requirements = {
+  --     {
+  --       itemIdentifier = "fox_tail",
+  --       itemName = "Fox Tail",
+  --       amount = 20
+  --     },
+  --     {
+  --       itemIdentifier = "topaz",
+  --       itemName = "Topaz",
+  --       amount = 40
+  --     }
+  --   },
 
-    expTable = {
-      [1] = 12000,
-      [5] = 67500,
-      [10] = 165000,
-      [20] = 378000
-    }
-  },
+  --   expTable = {
+  --     [1] = 12000,
+  --     [5] = 67500,
+  --     [10] = 165000,
+  --     [20] = 378000
+  --   }
+  -- },
 }
 
 local armorConfig = {
@@ -224,10 +224,10 @@ local function craftEssence( player, npc, config, quantity)
   end
 
   -- local gainedExp = config.expTable[quantity] or 0
-  local gainedKarma = config.karmaTable[quantity] or 0
+  -- local gainedKarma = config.karmaTable[quantity] or 0
 
   -- player:giveXP(gainedExp)
-  player.karma = player.karma + gainedKarma
+  -- player.karma = player.karma + gainedKarma
 
   player:sendAnimation(49)
   player:addItem(config.itemIdentifier, quantity)
@@ -325,7 +325,12 @@ SmithArmorNpc = {
       player:dialogSeq({t, "Go to your guru at level 15 to learn forging."}, 0)
     end
 
-    local opts = {"Create Essence", "Forge Armor"}
+    local opts = {
+      "Create Essence",
+      "Forge Armor",
+      "-------------",
+      "Upgrade Armor"
+    }
 
     local choice = player:menuString(
 			"Hello! How can I help you today?",
@@ -373,6 +378,15 @@ SmithArmorNpc = {
 
       forgeArmor(player, npc)
 
+    end
+
+    if choice == "Upgrade Armor" then
+      if player.karma < 0.08806 then
+        player:dialogSeq({
+          t,
+          "Your spirit has not yet reached the level I require. Return when you have earned the title of Colonel."
+        }, 0)
+      end
     end
 
   end),

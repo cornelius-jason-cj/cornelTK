@@ -18,30 +18,30 @@ PoetGuruNpc = {
 		elseif player.baseClass == 4 then
 			table.insert(opts, "Learn Secret")
       table.insert(opts, "Forget Secret")
-			table.insert(opts, "Karma Check")
+			-- table.insert(opts, "Karma Check")
 		end
 
 		table.insert(opts, "---------------------")
     table.insert(opts, "Quest Weapon")
     table.insert(opts, "Quest Armor")
 
-		if player.level >= 15 and
-		player.registry["first_assignment"] == 0 then
-			table.insert(opts, "Take First Assignment")
-		end
+		-- if player.level >= 15 and
+		-- player.registry["first_assignment"] == 0 then
+		-- 	table.insert(opts, "Take First Assignment")
+		-- end
 
-		if player.level >= 35 and
-		player.registry["first_assignment"] == 1 and
-		player.registry["second_assignment"] == 0 then
-			table.insert(opts, "Take Second Assignment")
-		end
+		-- if player.level >= 35 and
+		-- player.registry["first_assignment"] == 1 and
+		-- player.registry["second_assignment"] == 0 then
+		-- 	table.insert(opts, "Take Second Assignment")
+		-- end
 
-		if player.level >= 55 and
-		player.registry["first_assignment"] == 1 and
-		player.registry["second_assignment"] == 1 and
-		player.registry["third_assignment"] == 0 then
-			table.insert(opts, "Take Third Assignment")
-		end
+		-- if player.level >= 55 and
+		-- player.registry["first_assignment"] == 1 and
+		-- player.registry["second_assignment"] == 1 and
+		-- player.registry["third_assignment"] == 0 then
+		-- 	table.insert(opts, "Take Third Assignment")
+		-- end
 
 
 		local choice = player:menuString(
@@ -97,7 +97,7 @@ PoetGuruNpc = {
 				end
           player:addItem("yellow_horse_mount", 1)
           player:addItem("wooden_saber", 1)
-          player:addGold(500)
+          player:addGold(50)
           player:updatePath(4, 0)
           player.baseHealth = 250
           player.baseMagic = 225
@@ -182,7 +182,7 @@ PoetGuruNpc = {
 					player:removeItem("red_fox_fur",25)
 					player:removeItem("fox_tail",5)
 
-                    player.registry["second_assignment"] = 1
+          player.registry["second_assignment"] = 1
 					player:addItem("jolt_spear", 1)
 					if player.sex == 0 then 
 						player:addItem("winter_mantle", 1)
@@ -191,26 +191,26 @@ PoetGuruNpc = {
 					if player.sex == 1 then
 						player:addItem("winter_drapery", 1)
 					end
-                else 
-                    player:dialogSeq({t, "Come back to me when you have those items"}, 0)
-                end
+        else 
+            player:dialogSeq({t, "Come back to me when you have those items"}, 0)
+        end
 			end
 
 			if choice2 == "No" then
-                player:dialogSeq({t, "Okay see you later"}, 0)
-            end
+        player:dialogSeq({t, "Okay see you later"}, 0)
+      end
 		end
 
 		if choice == "Take Third Assignment" then
 			player:dialogSeq(
 				{
 					t,
-                    "Hello, here is your third assigment",
-                    "Collect 25 pcs Poet bone and 1 Large amber ring",
+          "Hello, here is your third assigment",
+          "Collect 25 pcs Poet bone and 1 Large amber ring",
 				},
 				1
 			)
-            choice2 = player:menuString(
+      choice2 = player:menuString(
 				"Do you bring all the requirement items?",
 				{"Yes", "No"}
 			)

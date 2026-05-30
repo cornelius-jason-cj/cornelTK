@@ -12,6 +12,12 @@ login = function(player)
 		player.baseMagic = 50
 		player.money = 0
     player:addSpell('return_spell')
+    player:addLegend(
+      "Karma Baby",
+      "karma_baby",
+      130,
+      61
+    )
 		player:sendStatus()
 		player:calcStat()
 	end

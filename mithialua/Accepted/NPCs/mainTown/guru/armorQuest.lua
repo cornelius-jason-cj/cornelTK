@@ -7,13 +7,27 @@ local armorTiers = {
     minLevel = 1,
     maxLevel = 15,
     exp = 15000,
-    karma = 0.1,
-    choiceText =  "To obtain basic armor, you'll need:\n",
+    choiceText =  "To obtain basic armor, you'll need:",
     requirements = {
-      {item = "acorn", amount = 100},
-      {item = "rabbit_meat", amount = 100},
-      {item = "antler", amount = 25},
-      {item = "gold_acorn", amount = 25}
+      {
+        item = "Acorn",
+        itemIdent = "acorn",
+        amount = 100
+      },
+      {
+        item = "Rabbit meat",
+        itemIdent = "rabbit_meat",
+        amount = 100
+      },
+      {
+        item = "Antler",
+        itemIdent = "antler",
+        amount = 25}
+        ,
+      {
+        item = "Gold Acorn",
+        itemIdent = "gold_acorn",
+        amount = 25}
     },
     
     rewardQty = 1,
@@ -23,7 +37,7 @@ local armorTiers = {
       [3] = {"arcane_garb", "arcane_dress"},
       [4] = {"lunar_robes", "lunar_gown"}
     },
-    rewardText = "Great! Here is your reward:\n15000 exp and small karma",
+    rewardText = "Great! Here is take your armor",
   },
 
   {
@@ -33,8 +47,7 @@ local armorTiers = {
     minLevel = 15,
     maxLevel = 34,
     exp = 175000,
-    karma = 0.2,
-    choiceText =  "To learn forge basic armor, you'll need:\n",
+    choiceText =  "To learn forge basic armor, you'll need:",
     
     requirements = {
       {
@@ -81,7 +94,7 @@ end
 
 local function hasRequirements(player, requirements)
   for i = 1, #requirements do
-    if not player:hasItem(requirements[i].itemIdent, requirements[i].amount) then
+    if player:hasItem(requirements[i].itemIdent, requirements[i].amount) ~= true then
       return false
     end
   end
@@ -134,7 +147,7 @@ armorQuest.basicArmor = function(player, npc)
   local choiceMessage =
     selectedTier.choiceText ..
     buildRequirementText(selectedTier.requirements) ..
-    "\nDo you have the ingredients?"
+    "Do you have the ingredients?"
 
   local choice = player:menuString(
     choiceMessage,
@@ -146,7 +159,7 @@ armorQuest.basicArmor = function(player, npc)
     return
   end
 
-  if not hasRequirements(player, selectedTier.requirements) then
+  if hasRequirements(player, selectedTier.requirements) ~= true then
     player:dialogSeq({t, "It looks like you don't have enough ingredients."}, 0)
     return
   end
@@ -154,7 +167,6 @@ armorQuest.basicArmor = function(player, npc)
   removeRequirements(player, selectedTier.requirements)
 
   player:giveXP(selectedTier.exp)
-  player.karma = player.karma + selectedTier.karma
 
   local rewardData = selectedTier.rewards[player.baseClass]
   local rewardQty = selectedTier.rewardQty

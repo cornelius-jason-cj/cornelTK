@@ -28,62 +28,62 @@ local essenceConfig = {
       [20] = 0.2
     }
   },
-  {
-    itemIdentifier = "refine_weapon_essence",
-    itemName = "Basic Weapon Essence (BAE)",
-    requirements = {
-      {
-        itemIdentifier = "fox_tail",
-        itemName = "Fox Tail",
-        amount = 20
-      },
-      {
-        itemIdentifier = "obsidian",
-        itemName = "obsidian",
-        amount = 40
-      }
-    },
-    expTable = {
-      [1] = 12000,
-      [5] = 67500,
-      [10] = 165000,
-      [20] = 378000
-    },
-    karmaTable = {
-      [1] = 0.01,
-      [5] = 0.05,
-      [10] = 0.1,
-      [20] = 0.2
-    }
-  },
-  {
-    itemIdentifier = "mystic_weapon_essence",
-    itemName = "Mystic Weapon Essence (MWE)",
-    requirements = {
-      {
-        itemIdentifier = "fox_tail",
-        itemName = "Fox Tail",
-        amount = 20
-      },
-      {
-        itemIdentifier = "topaz",
-        itemName = "Topaz",
-        amount = 40
-      }
-    },
-    expTable = {
-      [1] = 12000,
-      [5] = 67500,
-      [10] = 165000,
-      [20] = 378000
-    },
-    karmaTable = {
-      [1] = 0.01,
-      [5] = 0.05,
-      [10] = 0.1,
-      [20] = 0.2
-    }
-  },
+  -- {
+  --   itemIdentifier = "refine_weapon_essence",
+  --   itemName = "Basic Weapon Essence (BAE)",
+  --   requirements = {
+  --     {
+  --       itemIdentifier = "fox_tail",
+  --       itemName = "Fox Tail",
+  --       amount = 20
+  --     },
+  --     {
+  --       itemIdentifier = "obsidian",
+  --       itemName = "obsidian",
+  --       amount = 40
+  --     }
+  --   },
+  --   expTable = {
+  --     [1] = 12000,
+  --     [5] = 67500,
+  --     [10] = 165000,
+  --     [20] = 378000
+  --   },
+  --   karmaTable = {
+  --     [1] = 0.01,
+  --     [5] = 0.05,
+  --     [10] = 0.1,
+  --     [20] = 0.2
+  --   }
+  -- },
+  -- {
+  --   itemIdentifier = "mystic_weapon_essence",
+  --   itemName = "Mystic Weapon Essence (MWE)",
+  --   requirements = {
+  --     {
+  --       itemIdentifier = "fox_tail",
+  --       itemName = "Fox Tail",
+  --       amount = 20
+  --     },
+  --     {
+  --       itemIdentifier = "topaz",
+  --       itemName = "Topaz",
+  --       amount = 40
+  --     }
+  --   },
+  --   expTable = {
+  --     [1] = 12000,
+  --     [5] = 67500,
+  --     [10] = 165000,
+  --     [20] = 378000
+  --   },
+  --   karmaTable = {
+  --     [1] = 0.01,
+  --     [5] = 0.05,
+  --     [10] = 0.1,
+  --     [20] = 0.2
+  --   }
+  -- },
 }
 
 local weaponConfig = {
@@ -235,10 +235,10 @@ local function craftEssence( player, npc, config, quantity)
   end
 
   -- local gainedExp = config.expTable[quantity] or 0
-  local gainedKarma = config.karmaTable[quantity] or 0
+  -- local gainedKarma = config.karmaTable[quantity] or 0
 
   -- player:giveXP(gainedExp)
-  player.karma = player.karma + gainedKarma
+  -- player.karma = player.karma + gainedKarma
 
   player:sendAnimation(49)
   player:addItem(config.itemIdentifier, quantity)
@@ -336,7 +336,12 @@ SmithWeaponNpc = {
       player:dialogSeq({t, "Go to your guru at level 15 to learn forging."}, 0)
     end
 
-    local opts = {"Create Essence", "Forge Weapon"}
+    local opts = {
+      "Create Essence",
+      "Forge Weapon",
+      "-------------",
+      "Upgrade Weapon"
+    }
 
     local choice = player:menuString(
 			"Hello! How can I help you today?",
@@ -384,6 +389,15 @@ SmithWeaponNpc = {
 
       forgeWeapon(player, npc)
 
+    end
+
+    if choice == "Upgrade Weapon" then
+      if player.karma < 0.08806 then
+        player:dialogSeq({
+          t,
+          "Your spirit has not yet reached the level I require. Return when you have earned the title of Colonel."
+        }, 0)
+      end
     end
 
   end),
