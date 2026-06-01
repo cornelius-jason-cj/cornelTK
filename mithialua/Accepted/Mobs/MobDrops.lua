@@ -3,7 +3,7 @@
 -- selected number between 1 and the stated amount.
 -- -------------------------------------------------
 local _mobDropsTable = {
-	--------------
+	------Field 00--------
 	["rabbit"] = {
 		loot = {
 			items = {"rabbit_meat"},
@@ -32,7 +32,7 @@ local _mobDropsTable = {
 			rates = {75}
 		}
 	},
-	--------------
+	------Field 01--------
 	["rat"] = {
 		loot = {
 			items = {"rat_meat", "mica"},
@@ -75,7 +75,7 @@ local _mobDropsTable = {
 			rates = {75, 50}
 		}
 	},
-	--------------
+	------Field 02--------
   ["warthog"] = {
 		loot = {
 			items = {"pork", "rare_pork"},
@@ -97,7 +97,7 @@ local _mobDropsTable = {
 			rates = {75, 50}
 		}
 	},
-  --------------
+	------Field 03--------
   ["dark_fox"] = {
 		loot = {
 			items = {"fox_fur"},
@@ -119,7 +119,7 @@ local _mobDropsTable = {
 			rates = {25}
 		}
 	},
-  --------------
+	------Field 04--------
   ["vile_scorpion"] = {
 		loot = {
 			items = {"topaz"},
@@ -141,7 +141,7 @@ local _mobDropsTable = {
 			rates = {25}
 		}
 	},
-  --------------
+	------Field 05-------
   ["black_skeleton"] = {
 		loot = {
 			items = {"ash"},
@@ -175,6 +175,151 @@ local _mobDropsTable = {
 			items = {"ash","poet_bone"},
 			amounts = {1, 1},
 			rates = {75, 25}
+		}
+	},
+	------Field 06--------
+  ["muck_ogre"] = {
+		loot = {
+			items = {"white_star","yellow_star"},
+			amounts = {1, 1},
+			rates = {75, 25}
+		}
+	},
+  ["slime_ogre"] = {
+		loot = {
+			items = {"white_star","yellow_star"},
+			amounts = {1, 1},
+			rates = {75, 25}
+		}
+	},
+  ["log_ogre"] = {
+		loot = {
+			items = {"white_star","yellow_star"},
+			amounts = {1, 1},
+			rates = {75, 25}
+		}
+	},
+  ["hill_ogre"] = {
+		loot = {
+			items = {"white_star","yellow_star"},
+			amounts = {1, 1},
+			rates = {75, 25}
+		}
+	},
+	------Field 07--------
+  ["red_shade"] = {
+		loot = {
+			items = {"red_rubber"},
+			amounts = {1},
+			rates = {75}
+		}
+	},
+  ["blue_shade"] = {
+		loot = {
+			items = {"blue_rubber"},
+			amounts = {1},
+			rates = {75}
+		}
+	},
+	------Field 08--------
+  ["star_fire"] = {
+		loot = {
+			items = {"ball_of_fire", "red_string"},
+			amounts = {1, 1},
+			rates = {75, 25}
+		}
+	},
+  ["egogo"] = {
+		loot = {
+			items = {"ball_of_fire", "magical_string"},
+			amounts = {1, 1},
+			rates = {75, 25}
+		}
+	},
+  ["green_ogre"] = {
+		loot = {
+			items = {"red_star", "red_string"},
+			amounts = {1, 1},
+			rates = {75, 25}
+		}
+	},
+  ["horong"] = {
+		loot = {
+			items = {"red_star", "magical_string"},
+			amounts = {1, 1},
+			rates = {75, 25}
+		}
+	},
+	------Field 09--------
+  ["coral_devourer"] = {
+		loot = {
+			items = {"fish"},
+			amounts = {1},
+			rates = {50}
+		}
+	},
+  ["sea_specter"] = {
+		loot = {
+			items = {"fish"},
+			amounts = {1},
+			rates = {50}
+		}
+	},
+  ["abyssal_serpent"] = {
+		loot = {
+			items = {"warrior_seal", "mage_seal"},
+			amounts = {1, 1},
+			rates = {25, 25}
+		}
+	},
+  ["shadow_serpent"] = {
+		loot = {
+			items = {"rogue_seal", "poet_seal"},
+			amounts = {1, 1},
+			rates = {25, 25}
+		}
+	},
+  ["leviathan"] = {
+		loot = {
+			items = {"armor_essence"},
+			amounts = {1},
+			rates = {5}
+		}
+	},
+  ------Field 10 --------
+  ["nimble_ninja"] = {
+		loot = {
+			items = {"bottle"},
+			amounts = {1},
+			rates = {50}
+		}
+	},
+  ["nimble_assasin"] = {
+		loot = {
+			items = {"bottle"},
+			amounts = {1},
+			rates = {50}
+		}
+	},
+  ["skilled_ninja"] = {
+		loot = {
+			items = {"sword_metal", "staff_metal"},
+			amounts = {1, 1},
+			rates = {25, 25}
+		}
+	},
+  ["skilled_assasin"] = {
+		loot = {
+			items = {"blade_metal", "fan_metal"},
+			amounts = {1, 1},
+			rates = {25, 25}
+		}
+	},
+  ["Onyx"] = {
+		loot = {
+			items = {"weapon_essence"},
+			amounts = {1},
+			rates = {5}
 		}
 	},
 }

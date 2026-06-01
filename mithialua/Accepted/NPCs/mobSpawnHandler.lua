@@ -108,12 +108,13 @@ MobSpawnHandlerNpc = {
 		-- 	end
 		-- end
 
+    -- field cave 00 rabbit squirrel deer doe
 		MobSpawnHandlerNpc.handleSpawn(npc, 102, {1}, {70}, 120)
 		MobSpawnHandlerNpc.handleSpawn(npc, 102, {2}, {70}, 120)
 		MobSpawnHandlerNpc.handleSpawn(npc, 102, {3}, {15}, 120)
 		MobSpawnHandlerNpc.handleSpawn(npc, 102, {4}, {15}, 120)
 
-    -- field cave 01
+    -- field cave 01 rat mouse bat big_bat snake mud_snake
 		MobSpawnHandlerNpc.handleSpawn(npc, 103, {5}, {25}, 120)
 		MobSpawnHandlerNpc.handleSpawn(npc, 103, {6}, {25}, 120)
 		MobSpawnHandlerNpc.handleSpawn(npc, 103, {7}, {25}, 120)
@@ -121,27 +122,57 @@ MobSpawnHandlerNpc = {
 		MobSpawnHandlerNpc.handleSpawn(npc, 103, {9}, {25}, 120)
 		MobSpawnHandlerNpc.handleSpawn(npc, 103, {10}, {25}, 120)
 
-    -- field cave 02
+    -- field cave 02  warthog bear tiger
 		MobSpawnHandlerNpc.handleSpawn(npc, 104, {11}, {35}, 120)
 		MobSpawnHandlerNpc.handleSpawn(npc, 104, {12}, {35}, 120)
 		MobSpawnHandlerNpc.handleSpawn(npc, 104, {13}, {35}, 120)
 
-    -- field cave 03
+    -- field cave 03 dark_fox blood_fox nine_tailed_fox
 		MobSpawnHandlerNpc.handleSpawn(npc, 105, {14}, {45}, 120)
 		MobSpawnHandlerNpc.handleSpawn(npc, 105, {15}, {45}, 120)
 		MobSpawnHandlerNpc.handleSpawn(npc, 105, {16}, {10}, 120)
 
-    -- field cave 04
+    -- field cave 04 vile_scorpion pale_scorpion crimson_scorpion
 		MobSpawnHandlerNpc.handleSpawn(npc, 106, {17}, {45}, 120)
 		MobSpawnHandlerNpc.handleSpawn(npc, 106, {18}, {45}, 120)
 		MobSpawnHandlerNpc.handleSpawn(npc, 106, {19}, {10}, 120)
 
-    -- field cave 05
+    -- field cave 05  black_skeleton skeleton_mage skeleton_warrior skeleton_rogue skeleton_poet
 		MobSpawnHandlerNpc.handleSpawn(npc, 107, {20}, {25}, 120)
 		MobSpawnHandlerNpc.handleSpawn(npc, 107, {21}, {25}, 120)
 		MobSpawnHandlerNpc.handleSpawn(npc, 107, {22}, {25}, 120)
 		MobSpawnHandlerNpc.handleSpawn(npc, 107, {23}, {25}, 120)
 		MobSpawnHandlerNpc.handleSpawn(npc, 107, {24}, {25}, 120)
+
+    -- field cave 06  muck_ogre slime_ogre log_ogre hill_ogre
+		MobSpawnHandlerNpc.handleSpawn(npc, 108, {25}, {30}, 120)
+		MobSpawnHandlerNpc.handleSpawn(npc, 108, {26}, {30}, 120)
+		MobSpawnHandlerNpc.handleSpawn(npc, 108, {27}, {30}, 120)
+		MobSpawnHandlerNpc.handleSpawn(npc, 108, {28}, {30}, 120)
+
+    -- field cave 07  red_shade blue_shade
+		MobSpawnHandlerNpc.handleSpawn(npc, 109, {43}, {50}, 120)
+		MobSpawnHandlerNpc.handleSpawn(npc, 109, {44}, {50}, 120)
+
+    -- field cave 08  star_fire egogo green_ogre horong
+		MobSpawnHandlerNpc.handleSpawn(npc, 110, {45}, {25}, 120)
+		MobSpawnHandlerNpc.handleSpawn(npc, 110, {46}, {25}, 120)
+		MobSpawnHandlerNpc.handleSpawn(npc, 110, {47}, {25}, 120)
+		MobSpawnHandlerNpc.handleSpawn(npc, 110, {48}, {25}, 120)
+
+    -- field cave 09  coral_devourer sea_specter abyssal_serpent shadow_serpent leviathan
+		MobSpawnHandlerNpc.handleSpawn(npc, 111, {29}, {30}, 120)
+		MobSpawnHandlerNpc.handleSpawn(npc, 111, {30}, {30}, 120)
+		MobSpawnHandlerNpc.handleSpawn(npc, 111, {31}, {20}, 120)
+		MobSpawnHandlerNpc.handleSpawn(npc, 111, {32}, {20}, 120)
+		MobSpawnHandlerNpc.handleSpawn(npc, 111, {33}, {1}, 600)
+
+    -- field cave 10  nimble_ninja nimble_assasin skilled_ninja skilled_assasin Onyx
+		MobSpawnHandlerNpc.handleSpawn(npc, 112, {35}, {30}, 120)
+		MobSpawnHandlerNpc.handleSpawn(npc, 112, {36}, {30}, 120)
+		MobSpawnHandlerNpc.handleSpawn(npc, 112, {37}, {20}, 120)
+		MobSpawnHandlerNpc.handleSpawn(npc, 112, {38}, {20}, 120)
+		MobSpawnHandlerNpc.handleSpawn(npc, 112, {39}, {1}, 600)
 
 	end,
 
