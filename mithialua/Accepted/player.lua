@@ -204,6 +204,26 @@ function Player.removeHealthExtend(player, amount, sleep, deduction, ac, damageS
 			player.state = 1
 			player:updateState()
 		else
+      if player:hasDuration("counter_stance_1") or
+        player:hasDuration("counter_stance_2") or
+        player:hasDuration("counter_stance_3") or
+        player:hasDuration("counter_stance_4") or
+        player:hasDuration("counter_stance_5")
+      then
+        local reflect = math.floor(player.bonusReflect)
+
+        if (reflect > 0) then
+            attacker.attacker = player.ID
+            player.damage = reflect
+            attacker:removeHealthExtend(
+                reflect,
+                1,
+                1,
+                1,
+                1
+            )
+        end
+      end
 			player.health = player.health - netAmount
 			player:sendStatus()
 		end

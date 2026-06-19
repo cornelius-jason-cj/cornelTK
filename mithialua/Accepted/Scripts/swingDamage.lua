@@ -29,34 +29,44 @@ local _getPlayerSwingDamage = function(player, target)
 	local rage = math.max(player.rage, 1)
 	local invisible = 1
 	local critical = 1
+  local bonusDamage = player.bonusDamage
 	
 	if (player.state == 2) then
-		-- invisible = 2
 		if player.level < 35 then
-			invisible = 4
+			invisible = 1.5
 		elseif player.level < 55 then
-			invisible = 5
+			invisible = 2
 		elseif player.level < 75 then
-			invisible = 6
+			invisible = 2.5
 		elseif player.level < 95 then
-			invisible = 8
-		else
-			invisible = 10
+			invisible = 3
 		end
 	end
 
 	if (player.critChance == 2) then
-		critical = 4
+		critical = 2
 	end
+
+  -- Warrior
+  -- swingDamage = (s / 2 + might * 3) * enchant * rage
+
+  -- Rogue
+  -- swingDamage = (s / 2 + might * 2) * invisible * rage
+
+  -- Mage
+  -- swingDamage = (s / 2 + might)
+
+  -- Poet
+  -- swingDamage = (s / 2 + might)
 	local swingDamage
 	-- local swingDamage = (s / 2 * enchant + damage * 2.5 + might / 8 + class) * rage * invisible * critical
 
 	if player.class == 1 then
-		swingDamage =  (s / 2 + might * 3 + grace + will /2 ) * enchant * rage
+		swingDamage = (s / 2 + might * 3) * enchant * rage * bonusDamage
 	elseif player.class == 2 then
-		swingDamage =  (s / 2 + might + grace + will / 2 ) * invisible * rage
+		swingDamage = (s / 2 + might * 2 + bonusDamage) * invisible * rage 
 	else
-		swingDamage =  (s / 2 + might /2 + will /2 ) * rage
+		swingDamage = (s / 2 + might)
 	end
 
 
@@ -288,4 +298,28 @@ swingDamage = function(block, target, printf)
 				target:deductArmor(block.critChance)
 			end
 	end
+
+  if (block.blType == BL_PC and finalDamage > 0) then
+    local lifeSteal = block.bonusLifeSteal or 0
+
+    if (lifeSteal > 0) then
+      -- Berserker passive: double lifesteal below 30% HP
+      local hpPercent = block.health / block.maxHealth
+
+      if (hpPercent <= 0.30) then
+        lifeSteal = lifeSteal * 2
+      end
+
+      local heal = math.floor(finalDamage * lifeSteal)
+
+      if (heal > 0) then
+        block.health = math.min(
+          block.health + heal,
+          block.maxHealth
+        )
+
+        block:sendStatus()
+      end
+    end
+  end
 end

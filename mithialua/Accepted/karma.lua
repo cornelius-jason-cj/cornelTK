@@ -22,6 +22,7 @@ KarmaSystem.tiers = {
     legend = "karma_common"
   },
   {
+    -- exp rate + 1%
     karma = 0.00581,
     title = "Karma Soldier",
     legend = "karma_soldier"
@@ -37,12 +38,14 @@ KarmaSystem.tiers = {
     legend = "karma_captain"
   },
   {
+    -- bonus stat +5
     karma = 0.04635,
     title = "Karma Major",
     legend = "karma_major"
   },
   -----------------------------------------------------
   {
+    -- exp + 2%
     karma = 0.08806,
     title = "Karma Colonel",
     legend = "karma_colonel"
@@ -58,12 +61,14 @@ KarmaSystem.tiers = {
     legend = "karma_citizen"
   },
   {
+    -- bonus stat +5
     karma = 0.28683,
     title = "Karma Amateur",
     legend = "karma_amateur"
   },
   -----------------------------------------------------
   {
+    -- exp & drop rate + 3%
     karma = 0.38867,
     title = "Karma Sir",
     legend = "karma_sir"
@@ -85,6 +90,7 @@ KarmaSystem.tiers = {
   },
   -----------------------------------------------------
   {
+    -- exp & drop rate + 4%
     karma = 1.12256,
     title = "Karma Marquis",
     legend = "karma_marquis"
@@ -106,6 +112,7 @@ KarmaSystem.tiers = {
   },
   -----------------------------------------------------
   {
+    -- exp & drop rate + 5%
     karma = 2.91431,
     title = "Karma Incredible",
     legend = "karma_incredible"
@@ -127,6 +134,7 @@ KarmaSystem.tiers = {
   },
   -----------------------------------------------------
   {
+    -- exp & drop rate + 6%
     karma = 7.28869,
     title = "Karma Praetorian",
     legend = "karma_praetorian"
@@ -148,6 +156,7 @@ KarmaSystem.tiers = {
   },
   -----------------------------------------------------
   {
+    -- exp & drop rate + 7%
     karma = 22.02645,
     title = "Karma Nobel",
     legend = "karma_nobel"
@@ -169,6 +178,7 @@ KarmaSystem.tiers = {
   },
   -----------------------------------------------------
   {
+    -- exp & drop rate + 8%
     karma = 78.64302,
     title = "Karma Golem",
     legend = "karma_golem"

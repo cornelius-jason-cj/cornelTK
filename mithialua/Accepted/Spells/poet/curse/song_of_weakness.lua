@@ -1,0 +1,2 @@
+-- mana: 60
+-- buff: reduce armor musuh -40%

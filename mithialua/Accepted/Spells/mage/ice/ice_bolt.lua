@@ -1,0 +1,2 @@
+-- mana: 45
+-- damage: 250 + will * 3

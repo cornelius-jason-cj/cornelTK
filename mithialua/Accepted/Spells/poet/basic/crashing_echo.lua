@@ -34,58 +34,58 @@ crashing_echo = {
 		player:playSound(18)
   end,
 
-    while_cast = function(player)
-      local spellName = "Crashing Echo"
-      local spellIdent = "crashing_echo"
-      local multiplier = (0.125 + player.karma)
-      local damage = math.floor(player.maxMagic * multiplier)
+  while_cast = function(player)
+    local spellName = "Crashing Echo"
+    local spellIdent = "crashing_echo"
+    local multiplier = (0.125 + player.karma)
+    local damage = math.floor(player.maxMagic * multiplier)
 
-      local spellFX = 4001
-      local x = {-2, -1,  1,  2, -1,  0,  1, -1,  0,  1,  0,  0}
-      local y = { 0,  0,  0,  0,  1,  1,  1, -1, -1, -1,  2, -2}
-        
-      for i = 1, #x do
-        local targets = player:getObjectsInCell(
+    local spellFX = 4001
+    local x = {-2, -1,  1,  2, -1,  0,  1, -1,  0,  1,  0,  0}
+    local y = { 0,  0,  0,  0,  1,  1,  1, -1, -1, -1,  2, -2}
+      
+    for i = 1, #x do
+      local targets = player:getObjectsInCell(
+        player.m,
+        player.x + x[i],
+        player.y + y[i],
+        BL_MOB
+      )
+      
+        if (#targets > 0) then
+          global_zap.cast(
+            player,
+            targets[1],
+            damage,
+            0,
+            spellFX
+          )
+        end
+
+        targets = player:getObjectsInCell(
           player.m,
           player.x + x[i],
           player.y + y[i],
-          BL_MOB
+          BL_PC
         )
-        
-          if (#targets > 0) then
-            global_zap.cast(
-              player,
-              targets[1],
-              damage,
-              0,
-              spellFX
-            )
-          end
-
-          targets = player:getObjectsInCell(
-            player.m,
-            player.x + x[i],
-            player.y + y[i],
-            BL_PC
+        if (#targets > 0) then
+          local worked = global_zap.cast(
+            player,
+            targets[1],
+            damage,
+            0,
+            spellFX
           )
-          if (#targets > 0) then
-            local worked = global_zap.cast(
-              player,
-              targets[1],
-              damage,
-              0,
-              spellFX
-            )
-  
-          if (worked == 2) then
-            -- targets[1]:sendMinitext(player.name .. " cast " .. spellNames[alignmentIndex] .. " on you.")
-          end
+
+        if (worked == 2) then
+          -- targets[1]:sendMinitext(player.name .. " cast " .. spellNames[alignmentIndex] .. " on you.")
         end
       end
-    end,
+    end
+  end,
 
 
-    requirements = function(player)
+  requirements = function(player)
 		local level = 5
 		local items = {"gold_acorn"}
 		local itemAmounts = {10}

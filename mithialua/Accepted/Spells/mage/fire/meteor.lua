@@ -1,0 +1,2 @@
+-- mana:200
+-- damage: 1000 + will * 8

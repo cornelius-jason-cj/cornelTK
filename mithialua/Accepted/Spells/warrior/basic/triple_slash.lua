@@ -36,37 +36,37 @@ triple_slash = {
           BL_MOB
         )
         
-          if (#targets > 0) then
-            global_attack.cast(
-              player,
-              targets[1],
-              damage,
-              0,
-              spellFX
-            )
-          end
+        if (#targets > 0) then
+          global_attack.cast(
+            player,
+            targets[1],
+            damage,
+            0,
+            spellFX
+          )
+        end
 
-          targets = player:getObjectsInCell(
-            player.m,
-            player.x + x[i],
-            player.y + y[i],
-            BL_PC
+        targets = player:getObjectsInCell(
+          player.m,
+          player.x + x[i],
+          player.y + y[i],
+          BL_PC
+        )
+
+        if (#targets > 0) then
+          local worked = global_attack.cast(
+            player,
+            targets[1],
+            damage,
+            0,
+            spellFX
           )
 
-          if (#targets > 0) then
-            local worked = global_attack.cast(
-              player,
-              targets[1],
-              damage,
-              0,
-              spellFX
-            )
-  
-            if (worked == 2) then
-              targets[1]:sendMinitext(player.name .. " cast " .. spellNames[alignmentIndex] .. " on you.")
-            end
+          if (worked == 2) then
+            targets[1]:sendMinitext(player.name .. " cast " .. spellNames[alignmentIndex] .. " on you.")
           end
         end
+      end
         
     -- player.magic = player.magic - magicCost
     -- player.health = player.health - healthCost

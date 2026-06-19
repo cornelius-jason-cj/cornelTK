@@ -43,43 +43,43 @@ onLevel = function(player)
 	end
 
 	if (player.baseClass == 1) then
-		player.baseMight = player.baseMight + 1
-		player.baseGrace = player.baseGrace + secondary
-		player.baseWill = player.baseWill + tertiary
-		player.baseHealth = player.baseHealth + math.random(72, 81)
-		player.baseMagic = player.baseMagic + math.random(8, 9)
+		-- player.baseMight = player.baseMight + 1
+		-- player.baseGrace = player.baseGrace + secondary
+		-- player.baseWill = player.baseWill + tertiary
+		player.baseHealth = player.baseHealth + 80
+		player.baseMagic = player.baseMagic + 10
 	elseif (player.baseClass == 2) then
-		player.baseMight = player.baseMight + secondary
-		player.baseGrace = player.baseGrace + 1
-		player.baseWill = player.baseWill + tertiary
-		player.baseHealth = player.baseHealth + math.random(56, 63)
-		player.baseMagic = player.baseMagic + math.random(24, 27)
+		-- player.baseMight = player.baseMight + secondary
+		-- player.baseGrace = player.baseGrace + 1
+		-- player.baseWill = player.baseWill + tertiary
+		player.baseHealth = player.baseHealth + 60
+		player.baseMagic = player.baseMagic + 20
 	elseif (player.baseClass == 3) then
-		player.baseMight = player.baseMight + tertiary
-		player.baseGrace = player.baseGrace + secondary
-		player.baseWill = player.baseWill + 1
-		player.baseHealth = player.baseHealth + math.random(40, 45)
-		player.baseMagic = player.baseMagic + math.random(40, 45)
+		-- player.baseMight = player.baseMight + tertiary
+		-- player.baseGrace = player.baseGrace + secondary
+		-- player.baseWill = player.baseWill + 1
+		player.baseHealth = player.baseHealth + 40
+		player.baseMagic = player.baseMagic + 40
 	elseif (player.baseClass == 4) then
-		player.baseMight = player.baseMight + tertiary
-		player.baseGrace = player.baseGrace + tertiary
-		player.baseWill = player.baseWill + 1
-		player.baseHealth = player.baseHealth + math.random(48, 54)
-		player.baseMagic = player.baseMagic + math.random(32, 36)
+		-- player.baseMight = player.baseMight + tertiary
+		-- player.baseGrace = player.baseGrace + tertiary
+		-- player.baseWill = player.baseWill + 1
+		player.baseHealth = player.baseHealth + 50
+		player.baseMagic = player.baseMagic + 30
 	elseif (player.baseClass == 0) then
-		player.baseMight = player.baseMight + primary
-		player.baseGrace = player.baseGrace + secondary
-		player.baseWill = player.baseWill + tertiary
-		player.baseHealth = player.baseHealth + math.random(45, 55)
-		player.baseMagic = player.baseMagic + math.random(32, 36)
+		-- player.baseMight = player.baseMight + primary
+		-- player.baseGrace = player.baseGrace + secondary
+		-- player.baseWill = player.baseWill + tertiary
+		player.baseHealth = player.baseHealth + 40
+		player.baseMagic = player.baseMagic + 20
 	end
 
 	player.level = player.level + 1
-	player.baseArmor = player.baseArmor - 1
+	-- player.baseArmor = player.baseArmor - 1
 
-	if player.level >= 99 then
-		player.baseArmor = 1
-	end
+	-- if player.level >= 99 then
+		-- player.baseArmor = 1
+	-- end
 
 	player:calcStat()
 	player.health = player.maxHealth

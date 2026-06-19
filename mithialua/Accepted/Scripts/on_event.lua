@@ -241,6 +241,7 @@ equip_delay = {
 }
 
 onDeathPlayer = function(player)
+  player.storedDamage = 0
 	player:setDuration("death_save", 500)
 end
 

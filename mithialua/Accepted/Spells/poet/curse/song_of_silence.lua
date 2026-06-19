@@ -1,0 +1,2 @@
+-- mana: 100
+-- effect: para single enemies include boss

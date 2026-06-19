@@ -120,8 +120,14 @@ Tools = {
     -- --------------------------------------------------------------------
 	testLua = function(player)
 		print(player.name)
-		local name = 'euforia'
+		local name = 'cornel'
 		local target = Player(name)
+    target:addLegend(
+      "Karma Baby",
+      "karma_baby",
+      130,
+      61
+    )
 		-- target.karma = target.karma + 10
 		-- print(target.karma)
 		-- target.karma = target.karma + 120

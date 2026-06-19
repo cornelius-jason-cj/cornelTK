@@ -1,0 +1,2 @@
+-- mana: 120
+-- effect: 250 + will * 3

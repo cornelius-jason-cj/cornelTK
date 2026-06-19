@@ -1,0 +1,2 @@
+-- mana: 180
+-- damage: aoe damage

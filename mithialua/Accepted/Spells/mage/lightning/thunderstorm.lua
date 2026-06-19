@@ -1,0 +1,3 @@
+-- mana: 220
+-- damage: damage: 250 + will * 3 + grace
+-- effect: aoe spam petir

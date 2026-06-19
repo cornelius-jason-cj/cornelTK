@@ -1,0 +1,2 @@
+-- mana: 80
+-- buff: party increase damage 15% 

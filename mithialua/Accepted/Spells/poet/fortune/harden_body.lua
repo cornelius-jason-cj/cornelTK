@@ -1,0 +1,2 @@
+--mana: 200
+-- buff party: invunerable

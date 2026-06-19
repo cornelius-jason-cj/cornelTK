@@ -228,11 +228,13 @@ struct map_sessiondata {
 	unsigned long ambushtimer;
 	unsigned int max_hp, max_mp, tempmax_hp, attacker, rangeTarget, equipid, breakid, pvp[20][2], killspvp, timevalues[5], lastvita, groupid, disptimer, disptimertick, basemight, basewill, basegrace, basearmor, intpercentage, profileStatus;
 	int might, will, grace, armor, minSdam, maxSdam, minLdam, maxLdam, hit, dam, healing, healingtimer, pongtimer, backstab;
+  int bonusMight, bonusGrace, bonusWill, bonusArmor;
 	int heartbeat;
 	int flank, polearm, tooclose, canmove, iswalking, paralyzed, blind, drunk, snare, silence, critchance, afk, afktime, totalafktime, afktimer, extendhit, speed;
 	int crit, duratimer, scripttimer, scripttick, secondduratimer, thirdduratimer, fourthduratimer, fifthduratimer, wisdom, bindx, bindy, hunter;
 	short protection, miss, attack_speed, con;
 	float rage, enchanted, sleep, deduction, damage, invis, fury, critmult, dmgshield, vregenoverflow, mregenoverflow;
+  float bonusDamage, bonusCrit, bonusHealing, bonusLifeSteal, bonusReflect;
 	double dmgdealt, dmgtaken;
 	char afkmessage[80], mail[4000], ipaddress[255];
 	char takeoffid, attacked, boardshow, clone, action, luaexec, deathflag, selfbar, groupbars, mobbars, disptimertype, sendstatus_tick;

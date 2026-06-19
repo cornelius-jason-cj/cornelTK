@@ -1,0 +1,2 @@
+-- mana: 80
+-- buff: party reduce damage taken -25%

@@ -1,0 +1,2 @@
+-- mana: 120
+-- effect: freeze enemies area exclude boss

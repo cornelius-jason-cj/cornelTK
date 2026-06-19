@@ -1,0 +1,3 @@
+-- mana: 40
+-- damage: 350 + will * 4
+-- effect: heal player 20% dari damage

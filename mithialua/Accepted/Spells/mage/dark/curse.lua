@@ -1,0 +1,2 @@
+-- mana: 80
+-- effect: -10% def musuh

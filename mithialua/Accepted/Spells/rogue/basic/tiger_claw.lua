@@ -27,7 +27,7 @@ tiger_claw = {
       elseif (side == 1) then
         x = {1, 2, 3}
       elseif (side == 2) then
-              y = {1, 2, 3}
+        y = {1, 2, 3}
       elseif (side == 3) then
         x = {-1, -2, -3}
       else

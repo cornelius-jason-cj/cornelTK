@@ -1,0 +1,2 @@
+-- mana: 100
+-- damage aoe dot

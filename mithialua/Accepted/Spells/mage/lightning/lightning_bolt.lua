@@ -1,0 +1,2 @@
+-- mana: 50
+-- damage: 250 + will * 3 + grace

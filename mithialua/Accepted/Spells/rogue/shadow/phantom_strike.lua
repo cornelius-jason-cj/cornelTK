@@ -1,0 +1,1 @@
+-- damage: hanya ketika invis

@@ -1,0 +1,3 @@
+-- mana:90
+-- damage: 300 + will * 4
+-- AOE depan karakter

@@ -1,0 +1,3 @@
+-- mana:0
+-- vita: korbankan hp sendiri untuk damage 
+-- damage: 1000 + will * 10

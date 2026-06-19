@@ -1,0 +1,3 @@
+-- mana: 12
+-- damage: 100 + will * 2
+-- DOT

@@ -836,6 +836,17 @@ int pc_calcstat(USER* sd) {
 	sd->paralyzed = 0;
 	sd->blind = 0;
 	sd->drunk = 0;
+  
+  sd->bonusMight = 0;
+  sd->bonusGrace = 0;
+  sd->bonusWill = 0;
+  sd->bonusArmor = 0;
+
+  sd->bonusDamage = 0.0f;
+  sd->bonusCrit = 0.0f;
+  sd->bonusHealing = 0.0f;
+  sd->bonusLifeSteal = 0.0f;
+  sd->bonusReflect = 0.0f;
 
 	if (!sd->rage) sd->rage = 1.0f;
 	if (!sd->enchanted) sd->enchanted = 1.0f;
@@ -966,11 +977,19 @@ int pc_calcstat(USER* sd) {
 			sd->status.realtnl = 0;
 		}
 	}
+  sd->might += sd->bonusMight;
+  sd->grace += sd->bonusGrace;
+  sd->will += sd->bonusWill;
+  sd->armor += sd->bonusArmor;
+
+  sd->enchanted += sd->bonusDamage;
+  sd->critmult += sd->bonusCrit;
+  sd->healing += sd->bonusHealing;
 
 	if (sd->might > 255) sd->might = 255;
 	if (sd->grace > 255) sd->grace = 255;
 	if (sd->will > 255) sd->will = 255;
-	if (sd->might < 0) sd->might = 0;
+	if (sd->might < 0) sd->might = 0;w
 	if (sd->grace < 0) sd->grace = 0;
 	if (sd->will < 0) sd->will = 0;
 

@@ -1,0 +1,2 @@
+-- mana: 80
+-- effect: remove all negatif buff and death protection
