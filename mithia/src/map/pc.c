@@ -989,7 +989,7 @@ int pc_calcstat(USER* sd) {
 	if (sd->might > 255) sd->might = 255;
 	if (sd->grace > 255) sd->grace = 255;
 	if (sd->will > 255) sd->will = 255;
-	if (sd->might < 0) sd->might = 0;w
+	if (sd->might < 0) sd->might = 0;
 	if (sd->grace < 0) sd->grace = 0;
 	if (sd->will < 0) sd->will = 0;
 
