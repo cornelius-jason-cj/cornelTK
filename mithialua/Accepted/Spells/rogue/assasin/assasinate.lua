@@ -1,4 +1,4 @@
-local aethers = 6000
+local aethers = 3000
 
 assasinate_1 = {
   cast = function(player)
@@ -9,8 +9,8 @@ assasinate_1 = {
     local damage = math.floor(formula)
     local side = player.side
     
-    local vitaCost = 100
-    local manaCost = 50
+    local vitaCost = 30
+    local manaCost = 15
       
     if not player:canCast(1, 1, 0) then
       return
@@ -99,8 +99,8 @@ assasinate_2 = {
     local damage = math.floor(formula)
     local side = player.side
     
-    local vitaCost = 150
-    local manaCost = 75
+    local vitaCost = 60
+    local manaCost = 30
       
     if not player:canCast(1, 1, 0) then
       return
@@ -140,7 +140,13 @@ assasinate_2 = {
 				BL_MOB
 			)
 			if #target > 0 then
-				global_zap.cast(player, target[1], damage, 0, spellFX)
+        global_attack.cast(
+          player,
+          targets[1],
+          damage,
+          0,
+          spellFX
+        )
 			end
 
 			target = player:getObjectsInCell(
@@ -150,10 +156,10 @@ assasinate_2 = {
 				BL_PC
 			)
 			if #target > 0 then
-				local worked = global_zap.cast(player, target[1], damage, 0, spellFX)
-				if worked == 2 then
-					target:sendMinitext(player.name .. " cast " .. spellName .. " on you.")
-				end
+				-- local worked = global_zap.cast(player, target[1], damage, 0, spellFX)
+				-- if worked == 2 then
+				-- 	target:sendMinitext(player.name .. " cast " .. spellName .. " on you.")
+				-- end
 			end
 		end
     
@@ -227,10 +233,10 @@ assasinate_3 = {
 				BL_PC
 			)
 			if #target > 0 then
-				local worked = global_zap.cast(player, target[1], damage, 0, spellFX)
-				if worked == 2 then
-					target:sendMinitext(player.name .. " cast " .. spellName .. " on you.")
-				end
+				-- local worked = global_zap.cast(player, target[1], damage, 0, spellFX)
+				-- if worked == 2 then
+				-- 	target:sendMinitext(player.name .. " cast " .. spellName .. " on you.")
+				-- end
 			end
 		end
     
@@ -304,10 +310,10 @@ assasinate_4 = {
 				BL_PC
 			)
 			if #target > 0 then
-				local worked = global_zap.cast(player, target[1], damage, 0, spellFX)
-				if worked == 2 then
-					target:sendMinitext(player.name .. " cast " .. spellName .. " on you.")
-				end
+				-- local worked = global_zap.cast(player, target[1], damage, 0, spellFX)
+				-- if worked == 2 then
+				-- 	target:sendMinitext(player.name .. " cast " .. spellName .. " on you.")
+				-- end
 			end
 		end
     
@@ -381,10 +387,10 @@ assasinate_5 = {
 				BL_PC
 			)
 			if #target > 0 then
-				local worked = global_zap.cast(player, target[1], damage, 0, spellFX)
-				if worked == 2 then
-					target:sendMinitext(player.name .. " cast " .. spellName .. " on you.")
-				end
+				-- local worked = global_zap.cast(player, target[1], damage, 0, spellFX)
+				-- if worked == 2 then
+				-- 	target:sendMinitext(player.name .. " cast " .. spellName .. " on you.")
+				-- end
 			end
 		end
     

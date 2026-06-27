@@ -44,8 +44,7 @@ global_zap = {
 		--but all become the same once alignment is chosen:
 		------thunder bolt = 10, spark = 11, singe = 12.
 		--13 is for taunt or other spells that play zap sound but no animation.
-
-		if (pcalign == 3001) then -- blaze torent
+    if (pcalign == 3001) then -- blaze torent
 			target:playSound(2)
 			target:sendAnimation(45)
 		elseif (pcalign == 3002) then -- fire nova

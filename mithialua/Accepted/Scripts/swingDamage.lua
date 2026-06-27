@@ -29,8 +29,10 @@ local _getPlayerSwingDamage = function(player, target)
 	local rage = math.max(player.rage, 1)
 	local invisible = 1
 	local critical = 1
-  local bonusDamage = player.bonusDamage
-	
+  local bonusDamage = math.max(player.bonusDamage, 1)
+  local bonusCrit = player.bonusCrit
+  local critChance = math.floor(grace / 20) + bonusCrit
+
 	if (player.state == 2) then
 		if player.level < 35 then
 			invisible = 1.5
@@ -43,10 +45,13 @@ local _getPlayerSwingDamage = function(player, target)
 		end
 	end
 
-	if (player.critChance == 2) then
-		critical = 2
+	if (math.random(1, 100) <= critChance) then
+    player:talkSelf(3, "Critical!")
+    player:playSound(14)
+    target:sendAnimation(424)
+    critical = 2
 	end
-
+  
   -- Warrior
   -- swingDamage = (s / 2 + might * 3) * enchant * rage
 
@@ -62,11 +67,11 @@ local _getPlayerSwingDamage = function(player, target)
 	-- local swingDamage = (s / 2 * enchant + damage * 2.5 + might / 8 + class) * rage * invisible * critical
 
 	if player.class == 1 then
-		swingDamage = (s / 2 + might * 3) * enchant * rage * bonusDamage
+		swingDamage = (s + might * 3 ) * bonusDamage * enchant * rage
 	elseif player.class == 2 then
-		swingDamage = (s / 2 + might * 2 + bonusDamage) * invisible * rage 
+		swingDamage = (s + grace * 2 + bonusDamage) * critical * invisible
 	else
-		swingDamage = (s / 2 + might)
+		swingDamage = (s + might)
 	end
 
 
@@ -301,25 +306,33 @@ swingDamage = function(block, target, printf)
 
   if (block.blType == BL_PC and finalDamage > 0) then
     local lifeSteal = block.bonusLifeSteal or 0
-
     if (lifeSteal > 0) then
       -- Berserker passive: double lifesteal below 30% HP
       local hpPercent = block.health / block.maxHealth
 
       if (hpPercent <= 0.30) then
-        lifeSteal = lifeSteal * 2
+        lifeSteal = lifeSteal * 1.5
       end
 
       local heal = math.floor(finalDamage * lifeSteal)
 
       if (heal > 0) then
-        block.health = math.min(
-          block.health + heal,
-          block.maxHealth
-        )
-
+        block:addHealthExtend(heal, 0, 0, 0, 0, 0)
+        block:sendAnimation(425)
         block:sendStatus()
       end
+    end
+  end
+
+  if (block.blType == BL_MOB and finalDamage > 0) then
+    if player:hasDuration("counter_stance_1") or
+        player:hasDuration("counter_stance_2") or
+        player:hasDuration("counter_stance_3") or
+        player:hasDuration("counter_stance_4") or
+        player:hasDuration("counter_stance_5")
+      then
+        local reflect = math.floor(target.bonusReflect)
+        block:removeHealthExtend(reflect, 0, 0, 0, 0, 0)
     end
   end
 end

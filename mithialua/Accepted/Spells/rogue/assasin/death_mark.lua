@@ -1,4 +1,5 @@
-local aethers = 2000
+local aethers = 3000
+local durations = 6000
 
 death_mark_1 = {
   cast = function(player)
@@ -7,7 +8,7 @@ death_mark_1 = {
     
     local side = player.side
 
-    local manaCost = 80
+    local manaCost = 20
 
     if not player:canCast(1, 1, 0) then
       return
@@ -44,6 +45,7 @@ death_mark_1 = {
     if (#targets > 0) then
       targets[1]:setDuration(spellIdent, durations)
       targets[1]:sendAnimation(39, 0)
+		  targets[1].armor = targets[1].armor + 2
       targets[1].cursed = 1
     end
 
@@ -57,6 +59,7 @@ death_mark_1 = {
     if (#targets > 0) then
       targets[1]:setDuration(spellIdent, durations)
       targets[1]:sendAnimation(39, 0)
+		  targets[1].armor = targets[1].armor + 2
       targets[1].cursed = 1
     end
     
@@ -67,15 +70,23 @@ death_mark_1 = {
     player:sendMinitext("You cast " .. spellName .. ".")
     player:sendAction(6, 35)
   end,
+  
+  while_cast = function(block)
+		if (block.blType == BL_MOB and block.charState ~= 2) then
+			block:sendAnimation(39, 0)
+		elseif (block.blType == BL_PC and block.state ~= 2) then
+			block:sendAnimation(39, 0)
+		end
+	end,
 
-  recast = function(target)
-		target.armor = target.armor + 5
+  recast = function(target, player)
+		target.armor = target.armor + 2
 		target.cursed = 1
 		target:sendStatus()
 	end,
 
   uncast = function(target)
-		target.armor = target.armor - 5
+		target.armor = target.armor - 2
 		target.cursed = 0
 		target:sendStatus()
 	end,
@@ -88,7 +99,7 @@ death_mark_2 = {
     
     local side = player.side
     
-    local manaCost = 100
+    local manaCost = 30
 
     if not player:canCast(1, 1, 0) then
       return
@@ -125,6 +136,7 @@ death_mark_2 = {
     if (#targets > 0) then
       targets[1]:setDuration(spellIdent, durations)
       targets[1]:sendAnimation(39, 0)
+		  targets[1].armor = targets[1].armor + 4
       targets[1].cursed = 1
     end
 
@@ -138,6 +150,7 @@ death_mark_2 = {
     if (#targets > 0) then
       targets[1]:setDuration(spellIdent, durations)
       targets[1]:sendAnimation(39, 0)
+		  targets[1].armor = targets[1].armor + 4
       targets[1].cursed = 1
     end
     
@@ -149,14 +162,22 @@ death_mark_2 = {
     player:sendAction(6, 35)
   end,
 
+  while_cast = function(block)
+		if (block.blType == BL_MOB and block.charState ~= 2) then
+			block:sendAnimation(39, 0)
+		elseif (block.blType == BL_PC and block.state ~= 2) then
+			block:sendAnimation(39, 0)
+		end
+	end,
+
   recast = function(target)
-		target.armor = target.armor + 10
+		target.armor = target.armor + 25
 		target.cursed = 1
 		target:sendStatus()
 	end,
 
   uncast = function(target)
-		target.armor = target.armor - 10
+		target.armor = target.armor - 25
 		target.cursed = 0
 		target:sendStatus()
 	end,
@@ -206,6 +227,7 @@ death_mark_3 = {
     if (#targets > 0) then
       targets[1]:setDuration(spellIdent, durations)
       targets[1]:sendAnimation(39, 0)
+		  targets[1].armor = targets[1].armor + 8
       targets[1].cursed = 1
     end
 
@@ -219,6 +241,7 @@ death_mark_3 = {
     if (#targets > 0) then
       targets[1]:setDuration(spellIdent, durations)
       targets[1]:sendAnimation(39, 0)
+		  targets[1].armor = targets[1].armor + 8
       targets[1].cursed = 1
     end
     
@@ -231,14 +254,22 @@ death_mark_3 = {
     player:sendAction(6, 35)
   end,
 
+  while_cast = function(block)
+		if (block.blType == BL_MOB and block.charState ~= 2) then
+			block:sendAnimation(39, 0)
+		elseif (block.blType == BL_PC and block.state ~= 2) then
+			block:sendAnimation(39, 0)
+		end
+	end,
+
   recast = function(target)
-		target.armor = target.armor + 15
+		target.armor = target.armor + 8
 		target.cursed = 1
 		target:sendStatus()
 	end,
 
   uncast = function(target)
-		target.armor = target.armor - 15
+		target.armor = target.armor - 8
 		target.cursed = 0
 		target:sendStatus()
 	end,
@@ -288,6 +319,7 @@ death_mark_4 = {
     if (#targets > 0) then
       targets[1]:setDuration(spellIdent, durations)
       targets[1]:sendAnimation(39, 0)
+		  targets[1].armor = targets[1].armor + 15
       targets[1].cursed = 1
     end
 
@@ -301,6 +333,7 @@ death_mark_4 = {
     if (#targets > 0) then
       targets[1]:setDuration(spellIdent, durations)
       targets[1]:sendAnimation(39, 0)
+		  targets[1].armor = targets[1].armor + 15
       targets[1].cursed = 1
     end
     
@@ -312,14 +345,22 @@ death_mark_4 = {
     player:sendAction(6, 35)
   end,
 
+  while_cast = function(block)
+		if (block.blType == BL_MOB and block.charState ~= 2) then
+			block:sendAnimation(39, 0)
+		elseif (block.blType == BL_PC and block.state ~= 2) then
+			block:sendAnimation(39, 0)
+		end
+	end,
+
   recast = function(target)
-		target.armor = target.armor + 20
+		target.armor = target.armor + 15
 		target.cursed = 1
 		target:sendStatus()
 	end,
 
   uncast = function(target)
-		target.armor = target.armor - 20
+		target.armor = target.armor - 15
 		target.cursed = 0
 		target:sendStatus()
 	end,
@@ -369,6 +410,7 @@ death_mark_5 = {
     if (#targets > 0) then
       targets[1]:setDuration(spellIdent, durations)
       targets[1]:sendAnimation(39, 0)
+		  targets[1].armor = targets[1].armor + 25
       targets[1].cursed = 1
     end
 
@@ -382,6 +424,7 @@ death_mark_5 = {
     if (#targets > 0) then
       targets[1]:setDuration(spellIdent, durations)
       targets[1]:sendAnimation(39, 0)
+		  targets[1].armor = targets[1].armor + 25
       targets[1].cursed = 1
     end
     
@@ -394,14 +437,22 @@ death_mark_5 = {
     player:sendAction(6, 35)
   end,
 
+  while_cast = function(block)
+		if (block.blType == BL_MOB and block.charState ~= 2) then
+			block:sendAnimation(39, 0)
+		elseif (block.blType == BL_PC and block.state ~= 2) then
+			block:sendAnimation(39, 0)
+		end
+	end,
+
   recast = function(target)
-		target.armor = target.armor + 30
+		target.armor = target.armor + 25
 		target.cursed = 1
 		target:sendStatus()
 	end,
 
   uncast = function(target)
-		target.armor = target.armor - 30
+		target.armor = target.armor - 25
 		target.cursed = 0
 		target:sendStatus()
 	end,

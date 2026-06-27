@@ -982,7 +982,7 @@ int pc_calcstat(USER* sd) {
   sd->will += sd->bonusWill;
   sd->armor += sd->bonusArmor;
 
-  sd->enchanted += sd->bonusDamage;
+  // sd->enchanted += sd->bonusDamage;
   sd->critmult += sd->bonusCrit;
   sd->healing += sd->bonusHealing;
 

@@ -9,8 +9,8 @@ execution_1 = {
     local damage = math.floor(formula)
     local side = player.side
 
-    local vitaCost = 80
-    local manaCost = 40
+    local vitaCost = 40
+    local manaCost = 15
 
     if not player:canCast(1, 1, 0) then
       return
@@ -365,7 +365,7 @@ execution_5 = {
     local spellName = "Execution"
     local spellIdent = "execution_5"
     
-    local formula = 2000 + player.might * 6 + player.maxHealth * 0.25
+    local formula = 2000 + player.might * 6
     local damage = math.floor(formula)
     local side = player.side
 

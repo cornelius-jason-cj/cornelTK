@@ -35,7 +35,7 @@ MayorOfCityNpc = {
     end
 
     if player.class ~= 0 then
-      table.insert(opts, "I need your guidance")
+      -- table.insert(opts, "I need your guidance")
       -- table.insert(opts, "Exploration Quest")
       -- table.insert(opts, "---------------------")
       -- table.insert(opts, "Gathering Quest")
@@ -63,15 +63,15 @@ MayorOfCityNpc = {
 
     if choice == "Start Journey" then
       player:dialogSeq(
-      {
-        t,
-        "Welcome to our town! I'm Cornel, and I'll help you get started.",
-        "First, go to Heimdall (17,42) and select Field 00",
-        "Hunt squirrels and rabbits, then collect 10 Acorns and 10 Rabbit Meat",
-        "You can come back to town using return spell"
-      },
-      1
-    )        
+        {
+          t,
+          "Welcome to our town! I'm Cornel, and I'll help you get started.",
+          "First, go to Heimdall (17,42) and select Field 00",
+          "Hunt squirrels and rabbits, then collect 10 Acorns and 10 Rabbit Meat",
+          "You can come back to town using return spell and just say heal I will heal you"
+        },
+        1
+      )        
 
     choice2 = player:menuString(
       "Do you bring 10 acorn and 10 rabbit meat?",
@@ -106,18 +106,16 @@ MayorOfCityNpc = {
         player:dialogSeq({t, "Come back to me when you have reach level 5, you can earn EXP by crafting items at (044, 034)"}, 0)
       end 
             
-      player:dialogSeq(
-        {
-          t,
-          "Great job! Now it's time to choose your class.",
-          "There are four classes: Warrior, Rogue, Mage, and Poet.",
-          "Warriors are melee fighters with strong armor and moderate damage.",
-          "Rogues are melee fighters with high damage but moderate armor.",
-          "Mages are ranged fighters with high DPS but weak armor.",
-          "Poets can fight both melee and ranged, excelling in support spells with normal armor."
-        },
-        1
-      )
+      player:dialogSeq({
+        t,
+        "Excellent work! You have reached level 5.",
+        "You are no longer just a Novice. It is now time to choose your class.",
+        "There are four classes available:\n- Warrior\n- Rogue\n- Mage\n- Poet",
+        "Each class has four unique builds that unlock powerful spells as you grow stronger.",
+        "Your spell progression depends on your attributes.\n\nPlan your Might, Grace, and Will carefully before learning new spells.",
+        "Don't worry, you can view your available builds again later through your class trainer."
+      }, 1)
+
       choice2 = player:menuString(
         "Which class do you want to choose?",
         {"Warrior", "Rogue", "Mage", "Poet"}

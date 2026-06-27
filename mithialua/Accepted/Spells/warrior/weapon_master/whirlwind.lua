@@ -55,11 +55,11 @@ whirlwind_1 = {
         BL_PC
       )
       if #targets > 0 then
-        if( targets[1].state == 1 or targets[1].blType == BL_PC) then
-        player:sendMinitext("You can not cast on player")
-        else
-          global_zap.cast(player, targets[1], damage, 0, spellFX)
-        end
+        -- if( targets[1].state == 1 or targets[1].blType == BL_PC) then
+        -- player:sendMinitext("You can not cast on player")
+        -- else
+        --   global_zap.cast(player, targets[1], damage, 0, spellFX)
+        -- end
       end
 		end
 
@@ -124,11 +124,11 @@ whirlwind_2 = {
         BL_PC
       )
       if #targets > 0 then
-        if( targets[1].state == 1 or targets[1].blType == BL_PC) then
-        player:sendMinitext("You can not cast on player")
-        else
-          global_zap.cast(player, targets[1], damage, 0, spellFX)
-        end
+        -- if( targets[1].state == 1 or targets[1].blType == BL_PC) then
+        -- player:sendMinitext("You can not cast on player")
+        -- else
+        --   global_zap.cast(player, targets[1], damage, 0, spellFX)
+        -- end
       end
 		end
 
@@ -193,11 +193,11 @@ whirlwind_3 = {
         BL_PC
       )
       if #targets > 0 then
-        if( targets[1].state == 1 or targets[1].blType == BL_PC) then
-        player:sendMinitext("You can not cast on player")
-        else
-          global_zap.cast(player, targets[1], damage, 0, spellFX)
-        end
+        -- if( targets[1].state == 1 or targets[1].blType == BL_PC) then
+        -- player:sendMinitext("You can not cast on player")
+        -- else
+        --   global_zap.cast(player, targets[1], damage, 0, spellFX)
+        -- end
       end
 		end
 
@@ -262,11 +262,11 @@ whirlwind_4 = {
         BL_PC
       )
       if #targets > 0 then
-        if( targets[1].state == 1 or targets[1].blType == BL_PC) then
-        player:sendMinitext("You can not cast on player")
-        else
-          global_zap.cast(player, targets[1], damage, 0, spellFX)
-        end
+        -- if( targets[1].state == 1 or targets[1].blType == BL_PC) then
+        -- player:sendMinitext("You can not cast on player")
+        -- else
+        --   global_zap.cast(player, targets[1], damage, 0, spellFX)
+        -- end
       end
 		end
 
@@ -331,11 +331,11 @@ whirlwind_5 = {
         BL_PC
       )
       if #targets > 0 then
-        if( targets[1].state == 1 or targets[1].blType == BL_PC) then
-        player:sendMinitext("You can not cast on player")
-        else
-          global_zap.cast(player, targets[1], damage, 0, spellFX)
-        end
+        -- if( targets[1].state == 1 or targets[1].blType == BL_PC) then
+        -- player:sendMinitext("You can not cast on player")
+        -- else
+        --   global_zap.cast(player, targets[1], damage, 0, spellFX)
+        -- end
       end
 		end
 

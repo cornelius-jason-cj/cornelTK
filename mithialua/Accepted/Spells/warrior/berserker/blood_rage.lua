@@ -1,13 +1,10 @@
-
-local aethers = 70000
-
 blood_rage_1 = {
   cast = function(player)
-    local durations = 10 * 1000
+    local durations = 5 * 1000
+    local spellName = "Blood Rage"
     local spellIdent = "blood_rage_1"
-    local desc = "Damage increase 10%, Armor -10"
 
-    local manaCost = 50
+    local manaCost = 20
 
     if not player:canCast(1, 1, 0) then
       return
@@ -19,20 +16,31 @@ blood_rage_1 = {
     end
 
     player.magic = player.magic - manaCost
-    
+
     player:playSound(5)
-    player:sendMinitext(desc)
+    player:sendMinitext("You cast " .. spellName .. ".")
     player:setDuration(spellIdent, durations)
-    player:setAether(spellIdent, aethers)
-    player:sendAnimation(2)
+    player:sendAnimation(178)
+    player:calcStat()
   end,
 
   recast = function(player)
-		player.bonusDamage  = player.bonusDamage + 1.1
-		player.bonusArmor = player.bonusArmor - 10
+    local bonusDmg = 1.1
+    local penaltyDef = 10
+
+    if player.armor + penalty > 100 then
+      penalty = 100 - player.armor
+    end
+
+		player.bonusDamage  = player.bonusDamage + bonusDmg
+		player.bonusArmor = player.bonusArmor + penalty
+		player:sendStatus()
 	end,
 
 	uncast = function(player)
+    local spellIdent = "blood_rage_1"
+    local aethers = 30 * 1000
+    player:setAether(spellIdent, aethers)
 		player:sendStatus()
     player:calcStat()
 	end,
@@ -40,9 +48,9 @@ blood_rage_1 = {
 
 blood_rage_2 = {
   cast = function(player)
-    local durations = 15 * 1000
+    local durations = 10 * 1000
+    local spellName = "Blood Rage"
     local spellIdent = "blood_rage_2"
-    local desc = "Damage increase 20%, Armor -10"
 
     local manaCost = 75
 
@@ -54,22 +62,33 @@ blood_rage_2 = {
       player:sendMinitext("You do not have enough mana.")
       return
     end
-    
+
     player.magic = player.magic - manaCost
 
     player:playSound(5)
-    player:sendMinitext(desc)
+    player:sendMinitext("You cast " .. spellName .. ".")
     player:setDuration(spellIdent, durations)
-    player:setAether(spellIdent, aethers)
-    player:sendAnimation(2)
+    player:sendAnimation(178)
+    player:calcStat()
   end,
 
   recast = function(player)
-		player.bonusDamage  = player.bonusDamage + 1.2
-		player.bonusArmor = player.bonusArmor - 10
+    local bonusDmg = 1.2
+    local penaltyDef = 15
+
+    if player.armor + penalty > 100 then
+      penalty = 100 - player.armor
+    end
+
+		player.bonusDamage  = player.bonusDamage + bonusDmg
+		player.bonusArmor = player.bonusArmor + penalty
+		player:sendStatus()
 	end,
 
 	uncast = function(player)
+    local spellIdent = "blood_rage_2"
+    local aethers = 25 * 1000
+    player:setAether(spellIdent, aethers)
 		player:sendStatus()
     player:calcStat()
 	end,
@@ -77,9 +96,9 @@ blood_rage_2 = {
 
 blood_rage_3 = {
   cast = function(player)
-    local durations = 25 * 1000
+    local durations = 15 * 1000
+    local spellName = "Blood Rage"
     local spellIdent = "blood_rage_3"
-    local desc = "Damage increase 30%, Armor -10"
 
     local manaCost = 100
 
@@ -95,18 +114,29 @@ blood_rage_3 = {
     player.magic = player.magic - manaCost
 
     player:playSound(5)
-    player:sendMinitext(desc)
+    player:sendMinitext("You cast " .. spellName .. ".")
     player:setDuration(spellIdent, durations)
-    player:setAether(spellIdent, aethers)
-    player:sendAnimation(2)
+    player:sendAnimation(178)
+    player:calcStat()
   end,
 
   recast = function(player)
-		player.bonusDamage  = player.bonusDamage + 1.35
-		player.bonusArmor = player.bonusArmor - 10
+    local bonusDmg = 1.35
+    local penaltyDef = 20
+
+    if player.armor + penalty > 100 then
+      penalty = 100 - player.armor
+    end
+
+		player.bonusDamage  = player.bonusDamage + bonusDmg
+		player.bonusArmor = player.bonusArmor + penalty
+		player:sendStatus()
 	end,
 
 	uncast = function(player)
+    local spellIdent = "blood_rage_3"
+    local aethers = 20 * 1000
+    player:setAether(spellIdent, aethers)
 		player:sendStatus()
     player:calcStat()
 	end,
@@ -114,9 +144,9 @@ blood_rage_3 = {
 
 blood_rage_4 = {
   cast = function(player)
-    local durations = 40 * 1000
+    local durations = 20 * 1000
+    local spellName = "Blood Rage"
     local spellIdent = "blood_rage_4"
-    local desc = "Damage increase 40%, Armor -10"
 
     local manaCost = 125
 
@@ -132,18 +162,29 @@ blood_rage_4 = {
     player.magic = player.magic - manaCost
 
     player:playSound(5)
-    player:sendMinitext(desc)
+    player:sendMinitext("You cast " .. spellName .. ".")
     player:setDuration(spellIdent, durations)
-    player:setAether(spellIdent, aethers)
-    player:sendAnimation(2)
+    player:sendAnimation(178)
+    player:calcStat()
   end,
 
   recast = function(player)
-		player.bonusDamage  = player.bonusDamage + 1.55
-		player.bonusArmor = player.bonusArmor - 10
+    local bonusDmg = 1.55
+    local penaltyDef = 25
+
+    if player.armor + penalty > 100 then
+      penalty = 100 - player.armor
+    end
+
+		player.bonusDamage  = player.bonusDamage + bonusDmg
+		player.bonusArmor = player.bonusArmor + penalty
+		player:sendStatus()
 	end,
 
 	uncast = function(player)
+    local spellIdent = "blood_rage_4"
+    local aethers = 15 * 1000
+    player:setAether(spellIdent, aethers)
 		player:sendStatus()
     player:calcStat()
 	end,
@@ -151,9 +192,9 @@ blood_rage_4 = {
 
 blood_rage_5 = {
   cast = function(player)
-    local durations = 60 * 1000
+    local durations = 30 * 1000
+    local spellName = "Blood Rage"
     local spellIdent = "blood_rage_5"
-    local desc = "Damage increase 50%, Armor -10"
     
     local manaCost = 150
 
@@ -169,18 +210,29 @@ blood_rage_5 = {
     player.magic = player.magic - manaCost
 
     player:playSound(5)
-    player:sendMinitext(desc)
+    player:sendMinitext("You cast " .. spellName .. ".")
     player:setDuration(spellIdent, durations)
-    player:setAether(spellIdent, aethers)
-    player:sendAnimation(2)
+    player:sendAnimation(178)
+    player:calcStat()
   end,
 
   recast = function(player)
-		player.bonusDamage  = player.bonusDamage + 1.8
-		player.bonusArmor = player.bonusArmor - 10
+    local bonusDmg = 1.8
+    local penaltyDef = 30
+
+    if player.armor + penalty > 100 then
+      penalty = 100 - player.armor
+    end
+
+		player.bonusDamage  = player.bonusDamage + bonusDmg
+		player.bonusArmor = player.bonusArmor + penalty
+		player:sendStatus()
 	end,
 
 	uncast = function(player)
+    local spellIdent = "blood_rage_5"
+    local aethers = 10 * 1000
+    player:setAether(spellIdent, aethers)
 		player:sendStatus()
     player:calcStat()
 	end,

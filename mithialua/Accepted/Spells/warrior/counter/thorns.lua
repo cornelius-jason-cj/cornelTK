@@ -1,14 +1,13 @@
-local aethers = 30000
 
 thorns_1 = {
   cast = function(player)
     local spellName = "Thorns"
     local spellIdent = "thorns_1"
     local desc = "Release Thorn around you"
-    local durations = 2 * 1000
-
-    local vitaCost = 100
-    local manaCost = 50
+    local durations = 4 * 1000
+    
+    local vitaCost = 40
+    local manaCost = 20
 
     if not player:canCast(1, 1, 0) then
       return
@@ -30,7 +29,6 @@ thorns_1 = {
     player:playSound(5)
     player:sendMinitext(desc)
     player:setDuration(spellIdent, durations)
-    player:setAether(spellIdent, aethers)
     player:sendAnimation(2)
   end,
 
@@ -68,6 +66,12 @@ thorns_1 = {
       -- end
     end
   end,
+
+  uncast = function(player)
+    local aethers = 20 * 1000
+    local spellIdent = "thorns_1"
+    player:setAether(spellIdent, aethers)
+  end
 }
 
 thorns_2 = {
@@ -100,7 +104,6 @@ thorns_2 = {
     player:playSound(5)
     player:sendMinitext(desc)
     player:setDuration(spellIdent, durations)
-    player:setAether(spellIdent, aethers)
     player:sendAnimation(2)
   end,
 
@@ -140,6 +143,12 @@ thorns_2 = {
     end
     player:sendStatus()
   end,
+
+  uncast = function(player)
+    local aethers = 15 * 1000
+    local spellIdent = "thorns_2"
+    player:setAether(spellIdent, aethers)
+  end
 }
 
 thorns_3 = {
@@ -172,7 +181,6 @@ thorns_3 = {
     player:playSound(5)
     player:sendMinitext(desc)
     player:setDuration(spellIdent, durations)
-    player:setAether(spellIdent, aethers)
     player:sendAnimation(2)
   end,
 
@@ -212,6 +220,12 @@ thorns_3 = {
     end
     player:sendStatus()
   end,
+  
+  uncast = function(player)
+    local aethers = 15 * 1000
+    local spellIdent = "thorns_3"
+    player:setAether(spellIdent, aethers)
+  end
 }
 
 thorns_4 = {
@@ -219,7 +233,7 @@ thorns_4 = {
     local spellName = "Thorns"
     local spellIdent = "thorns_4"
     local desc = "Release Thorn around you"
-    local durations = 8 * 1000
+    local durations = 6 * 1000
 
     local vitaCost = 250
     local manaCost = 125
@@ -244,7 +258,6 @@ thorns_4 = {
     player:playSound(5)
     player:sendMinitext(desc)
     player:setDuration(spellIdent, durations)
-    player:setAether(spellIdent, aethers)
     player:sendAnimation(2)
   end,
 
@@ -284,6 +297,12 @@ thorns_4 = {
     end
     player:sendStatus()
   end,
+  
+  uncast = function(player)
+    local aethers = 10 * 1000
+    local spellIdent = "thorns_4"
+    player:setAether(spellIdent, aethers)
+  end
 }
 
 thorns_5 = {
@@ -316,7 +335,6 @@ thorns_5 = {
     player:playSound(5)
     player:sendMinitext(desc)
     player:setDuration(spellIdent, durations)
-    player:setAether(spellIdent, aethers)
     player:sendAnimation(2)
   end,
 
@@ -356,4 +374,10 @@ thorns_5 = {
     end
     player:sendStatus()
   end,
+
+  uncast = function(player)
+    local aethers = 10 * 1000
+    local spellIdent = "thorns_5"
+    player:setAether(spellIdent, aethers)
+  end
 }

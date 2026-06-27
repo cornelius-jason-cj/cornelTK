@@ -50,7 +50,7 @@ frost_bite = {
 				-- end
                 
 				if( target[1].state == 1 or target[1].blType == BL_PC) then
-        player:sendMinitext("You can not cast on player")
+          player:sendMinitext("You can not cast on player")
 				else
 					target[1]:setDuration(spellIdent, duration)
 					target[1]:sendAnimation(52, 0)

@@ -17,14 +17,14 @@ MageGuruNpc = {
 		elseif player.baseClass ~= 3 then
 			player:dialogSeq({t, "I'm not your Guru"}, 0)
 		elseif player.baseClass == 3 then
-			table.insert(opts, "Learn Secret")
-      table.insert(opts, "Forget Secret")
+			-- table.insert(opts, "Learn Secret")
+      -- table.insert(opts, "Forget Secret")
 			-- table.insert(opts, "Karma Check")
+      table.insert(opts,"Build Guide")
+      table.insert(opts, "---------------------")
+      table.insert(opts, "Quest Weapon")
+      table.insert(opts, "Quest Armor")
 		end
-
-		table.insert(opts, "---------------------")
-    table.insert(opts, "Quest Weapon")
-    table.insert(opts, "Quest Armor")
 
 		-- if player.level >= 15 and
 		--   player.registry["first_assignment"] == 0
@@ -104,8 +104,11 @@ MageGuruNpc = {
         player:addItem("wooden_saber", 1)
         player:addGold(50)
         player:updatePath(3, 0)
-				player.baseHealth = 100
-				player.baseMagic = 300
+				player.baseHealth = 250
+				player.baseMagic = 350
+        player.baseMight = 5
+        player.baseGrace = 5
+        player.baseWill = 5
 				player.registry["start_journey"] = 2
 				player:calcStat()
 				player:sendStatus()

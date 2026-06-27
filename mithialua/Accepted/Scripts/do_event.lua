@@ -1197,3 +1197,45 @@ roomExpTotal = function(block, room, minutes)
 		"Room: " .. room .. " Max: " .. maxPotential .. " Expected: " .. expectedPotential
 	)
 end
+
+setTrap = function(block, trap, duration)
+	if duration == nil then duration = 3600000 end
+	local m, x, y = block.m, block.x, block.y
+	block:dropItemXY(6, 1, m, x, y)	
+	block:addNPC(trap, m, x, y, 1000, duration, block.ID)
+end
+
+canTriggerTrap = function(block, npc)
+	
+	if block.ID == npc.owner and block.pvp == 0 then --can't trigger your own traps outside of pk
+		return false 
+	end
+	
+	if block.blType == BL_PC and block.pvp == 0 then --player cant trigger traps outside of pvp - this may be better with a canPK check, also might need adjustments based on trap owner to allow for random traps in dungeons
+		return false
+	end
+	
+	if block.state == 1 then --no one can trigger traps while dead
+		return false
+	end
+
+	return true
+end
+
+removeTrap = function(npc)
+
+	local item = npc:getObjectsInCellWithTraps(npc.m,npc.x,npc.y,BL_ITEM)
+
+	if #item > 0 then
+		for i = 1, #item do
+			if item[i] ~= nil then
+				if item[i].id == 6 then --trap item
+					item[i]:delete()
+					break
+				end
+			end
+		end
+	end
+	
+	npc:delete()
+end

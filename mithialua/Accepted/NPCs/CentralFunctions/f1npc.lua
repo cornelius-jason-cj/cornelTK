@@ -90,6 +90,7 @@ F1Npc = {
 			string = string .. "\n\nMap ID: " .. player.m .. " X: " .. player.x .. " Y: " .. player.y
 		end
 
+		table.insert(opts, "Increase Status")
 		table.insert(opts, "Silver Thread")
 		table.insert(opts, "My Karma")
 		table.insert(opts, "Toggles")
@@ -378,6 +379,16 @@ F1Npc = {
         "\n\nNext Title: " .. info.nextTitle ..
         "\nNeed: " .. string.format("%.5f", info.needed) .. " karma"
       }, 0)
+     elseif choice == "Increase Status" then
+      if player.baseClass == 1 then
+        increaseStatus.warrior(player,npc)
+      elseif player.baseClass == 2 then
+        increaseStatus.rogue(player,npc)
+      elseif player.baseClass == 3 then
+        increaseStatus.mage(player,npc)
+      elseif player.baseClass == 4 then
+        increaseStatus.poet(player,npc)
+      end
 		end
 	end),
 

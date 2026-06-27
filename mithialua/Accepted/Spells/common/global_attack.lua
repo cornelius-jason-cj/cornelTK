@@ -42,20 +42,19 @@ global_attack = {
 		target:removeHealthExtend(damage, 1, 1, 1, 1, 0)
 		target:sendStatus()
 
-		if (pcalign == 1001) then -- triple slash
+		if (pcalign == 1001) then -- execution
 			target:playSound(14)
-			target:sendAnimation(60)
+			target:sendAnimation(281)
 		elseif (pcalign == 1002) then -- vampiric slash
 			target:playSound(12)
 			target:sendAnimation(120)
 		elseif (pcalign == 2001) then -- tiger claw
 			target:playSound(12)
-			target:sendAnimation(32)
+			target:sendAnimation(128)
 		else -- default unaligned zap.
 			target:playSound(56)
 			target:sendAnimation(4)
 		end
-
 
 		if target.id ~= player.id and target.blType == BL_PC then
 			return 2

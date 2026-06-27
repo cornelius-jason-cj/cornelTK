@@ -43,35 +43,28 @@ onLevel = function(player)
 	end
 
 	if (player.baseClass == 1) then
-		-- player.baseMight = player.baseMight + 1
-		-- player.baseGrace = player.baseGrace + secondary
-		-- player.baseWill = player.baseWill + tertiary
-		player.baseHealth = player.baseHealth + 80
-		player.baseMagic = player.baseMagic + 10
+		player.baseHealth = player.baseHealth + 140
+		player.baseMagic = player.baseMagic + 20
+    player.registry["status_points"] = player.registry["status_points"] + 3
+    player.level = player.level + 1
 	elseif (player.baseClass == 2) then
-		-- player.baseMight = player.baseMight + secondary
-		-- player.baseGrace = player.baseGrace + 1
-		-- player.baseWill = player.baseWill + tertiary
-		player.baseHealth = player.baseHealth + 60
-		player.baseMagic = player.baseMagic + 20
-	elseif (player.baseClass == 3) then
-		-- player.baseMight = player.baseMight + tertiary
-		-- player.baseGrace = player.baseGrace + secondary
-		-- player.baseWill = player.baseWill + 1
-		player.baseHealth = player.baseHealth + 40
+		player.baseHealth = player.baseHealth + 100
 		player.baseMagic = player.baseMagic + 40
-	elseif (player.baseClass == 4) then
-		-- player.baseMight = player.baseMight + tertiary
-		-- player.baseGrace = player.baseGrace + tertiary
-		-- player.baseWill = player.baseWill + 1
-		player.baseHealth = player.baseHealth + 50
-		player.baseMagic = player.baseMagic + 30
-	elseif (player.baseClass == 0) then
-		-- player.baseMight = player.baseMight + primary
-		-- player.baseGrace = player.baseGrace + secondary
-		-- player.baseWill = player.baseWill + tertiary
+    player.registry["status_points"] = player.registry["status_points"] + 3
+    player.level = player.level + 1
+	elseif (player.baseClass == 3) then
 		player.baseHealth = player.baseHealth + 40
-		player.baseMagic = player.baseMagic + 20
+		player.baseMagic = player.baseMagic + 90
+    player.registry["status_points"] = player.registry["status_points"] + 3
+    player.level = player.level + 1
+	elseif (player.baseClass == 4) then
+		player.baseHealth = player.baseHealth + 60
+		player.baseMagic = player.baseMagic + 60
+    player.registry["status_points"] = player.registry["status_points"] + 3
+    player.level = player.level + 1
+	elseif (player.baseClass == 0) then
+		player.baseHealth = player.baseHealth + 20
+		player.baseMagic = player.baseMagic + 10
 	end
 
 	player.level = player.level + 1

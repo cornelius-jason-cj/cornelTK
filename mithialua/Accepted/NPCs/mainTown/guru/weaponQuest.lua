@@ -7,7 +7,7 @@ local weaponTiers = {
     minLevel = 5,
     maxLevel = 99,
     exp = 15000,
-    choiceText =  "To obtain basic weapon, you'll need:",
+    choiceText =  "To obtain basic weapon, you'll need:\n",
 
     requirements = {
       {

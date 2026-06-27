@@ -1,15 +1,12 @@
-
-local aethers = 40000
-
 critical_focus_1 = {
   cast = function(player)
     local spellName = "Critical Focus"
     local spellIdent = "critical_focus_1"
     
     local durations = 5 * 1000
-    local desc = "Critical Chance increase 5%"
+    local desc = "Critical Chance increase 10%"
 
-    local manaCost = 40
+    local manaCost = 15
 
     if not player:canCast(1, 1, 0) then
       return
@@ -25,15 +22,19 @@ critical_focus_1 = {
     player:playSound(5)
     player:sendMinitext(desc)
     player:setDuration(spellIdent, durations)
-    player:setAether(spellIdent, aethers)
     player:sendAnimation(2)
+    player:calcStat()
   end,
 
   recast = function(player)
-		player.bonusCrit  = player.bonusCrit + 5
+		player.bonusCrit  = player.bonusCrit + 10
+		player:sendStatus()
 	end,
 
 	uncast = function(player)
+    local spellIdent = "critical_focus_1"
+    local aethers = 30 * 1000
+    player:setAether(spellIdent, aethers)
 		player:sendStatus()
     player:calcStat()
 	end,
@@ -45,9 +46,9 @@ critical_focus_2 = {
     local spellIdent = "critical_focus_2"
     
     local durations = 10 * 1000
-    local desc = "Critical Chance increase 10%"
+    local desc = "Critical Chance increase 20%"
 
-    local manaCost = 60
+    local manaCost = 30
 
     if not player:canCast(1, 1, 0) then
       return
@@ -63,15 +64,19 @@ critical_focus_2 = {
     player:playSound(5)
     player:sendMinitext(desc)
     player:setDuration(spellIdent, durations)
-    player:setAether(spellIdent, aethers)
     player:sendAnimation(2)
+    player:calcStat()
   end,
 
   recast = function(player)
-		player.bonusCrit  = player.bonusCrit + 10
+		player.bonusCrit  = player.bonusCrit + 20
+		player:sendStatus()
 	end,
 
 	uncast = function(player)
+    local spellIdent = "critical_focus_2"
+    local aethers = 25 * 1000
+    player:setAether(spellIdent, aethers)
 		player:sendStatus()
     player:calcStat()
 	end,
@@ -83,7 +88,7 @@ critical_focus_3 = {
     local spellIdent = "critical_focus_3"
     
     local durations = 15 * 1000
-    local desc = "Critical Chance increase 15%"
+    local desc = "Critical Chance increase 30%"
 
     local manaCost = 80
 
@@ -101,15 +106,19 @@ critical_focus_3 = {
     player:playSound(5)
     player:sendMinitext(desc)
     player:setDuration(spellIdent, durations)
-    player:setAether(spellIdent, aethers)
     player:sendAnimation(2)
+    player:calcStat()
   end,
 
   recast = function(player)
-		player.bonusCrit  = player.bonusCrit + 15
+		player.bonusCrit  = player.bonusCrit + 30
+		player:sendStatus()
 	end,
 
 	uncast = function(player)
+    local spellIdent = "critical_focus_3"
+    local aethers = 20 * 1000
+    player:setAether(spellIdent, aethers)
 		player:sendStatus()
     player:calcStat()
 	end,
@@ -118,7 +127,7 @@ critical_focus_3 = {
 critical_focus_4 = {
   cast = function(player)
     local spellName = "Critical Focus"
-    local spellIdent = "critical_focus_5"
+    local spellIdent = "critical_focus_4"
     
     local durations = 20 * 1000
     local desc = "Critical Chance increase 20%"
@@ -139,15 +148,19 @@ critical_focus_4 = {
     player:playSound(5)
     player:sendMinitext(desc)
     player:setDuration(spellIdent, durations)
-    player:setAether(spellIdent, aethers)
     player:sendAnimation(2)
+    player:calcStat()
   end,
 
   recast = function(player)
 		player.bonusCrit  = player.bonusCrit + 20
+		player:sendStatus()
 	end,
 
 	uncast = function(player)
+    local spellIdent = "critical_focus_4"
+    local aethers = 15 * 1000
+    player:setAether(spellIdent, aethers)
 		player:sendStatus()
     player:calcStat()
 	end,
@@ -177,15 +190,19 @@ critical_focus_5 = {
     player:playSound(5)
     player:sendMinitext(desc)
     player:setDuration(spellIdent, durations)
-    player:setAether(spellIdent, aethers)
     player:sendAnimation(2)
+    player:calcStat()
   end,
 
   recast = function(player)
 		player.bonusCrit  = player.bonusCrit + 30
+		player:sendStatus()
 	end,
 
 	uncast = function(player)
+    local spellIdent = "critical_focus_5"
+    local aethers = 10 * 1000
+    player:setAether(spellIdent, aethers)
 		player:sendStatus()
     player:calcStat()
 	end,

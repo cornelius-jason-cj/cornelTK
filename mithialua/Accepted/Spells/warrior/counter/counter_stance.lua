@@ -1,4 +1,4 @@
-local aethers = 60000
+
 
 counter_stance_1 = {
   cast = function(player)
@@ -7,8 +7,8 @@ counter_stance_1 = {
     local desc = "You cast " .. spellName .. "."
     local durations = 5 * 1000
 
-    local vitaCost = 80
-    local manaCost = 40
+    local vitaCost = 30
+    local manaCost = 10
 
     if not player:canCast(1, 1, 0) then
       return
@@ -30,16 +30,24 @@ counter_stance_1 = {
     player:playSound(5)
     player:sendMinitext(desc)
     player:setDuration(spellIdent, durations)
-    player:setAether(spellIdent, aethers)
-    player:sendAnimation(2)
+    player:sendAnimation(490)
+    player:calcStat()
   end,
-  
+
+  while_cast = function(player)
+    player:sendAnimation(490)
+  end,
+
   recast = function(player)
     local reflect = 50 + player.might * 0.1
 		player.bonusReflect = reflect
+		player:sendStatus()
 	end,
 
 	uncast = function(player)
+    local aethers = 30 * 1000
+    local spellIdent = "counter_stance_1"
+    player:setAether(spellIdent, aethers)
 		player:sendStatus()
     player:calcStat()
 	end,
@@ -75,17 +83,24 @@ counter_stance_2 = {
     player:playSound(5)
     player:sendMinitext(desc)
     player:setDuration(spellIdent, durations)
-    player:setAether(spellIdent, aethers)
-    player:sendAnimation(2)
-
+    player:sendAnimation(490)
+    player:calcStat()
   end,
     
+  while_cast = function(player)
+    player:sendAnimation(490)
+  end,
+
   recast = function(player)
     local reflect = 150 + player.might * 0.3
 		player.bonusReflect = reflect
+		player:sendStatus()
 	end,
 
 	uncast = function(player)
+    local aethers = 25 * 1000
+    local spellIdent = "counter_stance_2"
+    player:setAether(spellIdent, aethers)
 		player:sendStatus()
     player:calcStat()
 	end,
@@ -121,17 +136,24 @@ counter_stance_3 = {
     player:playSound(5)
     player:sendMinitext(desc)
     player:setDuration(spellIdent, durations)
-    player:setAether(spellIdent, aethers)
-    player:sendAnimation(2)
-
+    player:sendAnimation(490)
+    player:calcStat()
   end,
       
+  while_cast = function(player)
+    player:sendAnimation(490)
+  end,
+
   recast = function(player)
     local reflect = 350 + player.might * 0.6
 		player.bonusReflect = reflect
+		player:sendStatus()
 	end,
 
 	uncast = function(player)
+    local aethers = 20 * 1000
+    local spellIdent = "counter_stance_3"
+    player:setAether(spellIdent, aethers)
 		player:sendStatus()
     player:calcStat()
 	end,
@@ -167,17 +189,24 @@ counter_stance_4 = {
     player:playSound(5)
     player:sendMinitext(desc)
     player:setDuration(spellIdent, durations)
-    player:setAether(spellIdent, aethers)
-    player:sendAnimation(2)
+    player:sendAnimation(490)
+    player:calcStat()
+  end,
 
+  while_cast = function(player)
+    player:sendAnimation(490)
   end,
 
   recast = function(player)
     local reflect = 650 + player.might * 1
 		player.bonusReflect = reflect
+		player:sendStatus()
 	end,
 
 	uncast = function(player)
+    local aethers = 15 * 1000
+    local spellIdent = "counter_stance_4"
+    player:setAether(spellIdent, aethers)
 		player:sendStatus()
     player:calcStat()
 	end,
@@ -210,16 +239,24 @@ counter_stance_5 = {
     player:playSound(5)
     player:sendMinitext(desc)
     player:setDuration(spellIdent, durations)
-    player:setAether(spellIdent, aethers)
-    player:sendAnimation(2)
-
+    player:sendAnimation(490)
+    player:calcStat()
   end,
-    recast = function(player)
+
+  while_cast = function(player)
+    player:sendAnimation(490)
+  end,
+
+  recast = function(player)
     local reflect = 1050 + player.might * 1.5
 		player.bonusReflect = reflect
+		player:sendStatus()
 	end,
 
 	uncast = function(player)
+    local aethers = 10 * 1000
+    local spellIdent = "counter_stance_1"
+    player:setAether(spellIdent, aethers)
 		player:sendStatus()
     player:calcStat()
 	end,

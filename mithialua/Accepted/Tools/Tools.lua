@@ -122,12 +122,35 @@ Tools = {
 		print(player.name)
 		local name = 'cornel'
 		local target = Player(name)
-    target:addLegend(
-      "Karma Baby",
-      "karma_baby",
-      130,
-      61
-    )
+    target.baseGrace = 68
+    target.registry["status_points"] = 0
+    target:calcStat()
+    target:sendStatus()
+    -- target.registry["rogue_build"] = 0
+
+    
+    -- target:removeSpell("assasinate_1")
+    -- target:removeSpell("critical_focus_1")
+    -- target:removeSpell("death_mark_1")
+
+    -- target:removeSpell("deadly_toxin_1")
+    -- target:removeSpell("toxic_cloud_1")
+    -- target:removeSpell("venom_blade_1")
+
+    -- target:removeSpell("eclipse_1")
+    -- target:removeSpell("phantom_strike_1")
+    -- target:removeSpell("shadow_form_1")
+
+    -- target:removeSpell("explosive_trap_1")
+    -- target:removeSpell("poison_trap_1")
+    -- target:removeSpell("spike_trap_1")
+
+    -- target:addLegend(
+    --   "Karma Baby",
+    --   "karma_baby",
+    --   130,
+    --   61
+    -- )
 		-- target.karma = target.karma + 10
 		-- print(target.karma)
 		-- target.karma = target.karma + 120
